@@ -1,0 +1,30 @@
+
+.logo_header {
+	fill: #000;
+
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.logo_footer {
+	fill: #FFF;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+@media (min-width: 320px) and (max-width: 1023px) {
+	.logo_header {
+		margin-left: 7px;
+	}
+
+	.logo_header svg {
+		width: 58.15px;
+		height: 19.83px;
+	}
+
+	.logo_footer svg {
+		width: 58.15px;
+		height: 19.83px;
+		margin-left: -3px;
+	}
+}

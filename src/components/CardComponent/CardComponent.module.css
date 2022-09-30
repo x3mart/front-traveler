@@ -1,0 +1,338 @@
+.tour_card {
+    flex: none;
+    width: 350px;
+    height:360px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.tour_card:not(:nth-child(3n+3)) {
+    margin-right: 30px;
+}
+
+.tour_image {
+    width: 100%;
+    height:200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px 8px 0 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.tour_badges_upper {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    top: 0;
+    left: 0;
+    padding: 15px;
+    z-index: 1;
+}
+
+.tour_badges_recomended {
+    background: #2AA2D6;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-weight: 750;
+    font-size: 10px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.tour_badges_lower {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    top: 136px;
+    left: 0;
+    padding: 20px;
+    z-index: 1;
+}
+
+.tour_badge {
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-weight: 750;
+    font-size: 10px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.tour_badge.green {
+    background: #84BB59;
+}
+
+.tour_badge.orange {
+    background: #EF8F21;
+}
+
+/*.tour_data {*/
+/*    padding: 20px;*/
+/*}*/
+
+.tour_name_section {
+    width: calc(100% - 40px);
+    padding-bottom: 20px;
+    flex: 1 0 auto;
+    margin: 20px 20px 0 20px;
+}
+
+.tour_country {
+    font-weight: 750;
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.tour_name {
+    margin-top: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.tour_data_section {
+    border-top: 1px solid #EBEBEB;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ebebeb;
+    margin: 0 20px 20px 20px;
+    width: calc(100% - 40px);
+    height: 60px;
+    flex: 0 0 auto;
+}
+
+.tour_leader_section {
+    display: flex;
+}
+
+.leader_avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+.tour_leader_name_section {
+
+}
+
+.leader_name {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+    margin-bottom: 4px;
+}
+
+.leader_rating {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.leader_rating img {
+    margin-right: 5px;
+    height: 9px;
+    width: 9px;
+}
+
+.leader_rating span {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #84BB59;
+}
+
+.tour_price_section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.tour_duration {
+    font-weight: 450;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.tour_price {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #000000;
+}
+
+.tour_discounted_price {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration-line: line-through;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.title_button {
+    width: 255px;
+    height: 48px;
+    background: #EF8F21;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    border: none;
+}
+
+.cut_tour_card {
+    flex: none;
+    width: 255px;
+    height:410px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.cut_tour_card:not(:nth-child(3n+3)) {
+    margin-right: 30px;
+}
+
+.cut_tour_image {
+    width: 100%;
+    height:200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px 8px 0 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.cut_tour_badge {
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-weight: 750;
+    font-size: 10px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.cut_tour_badge.green {
+    background: #84BB59;
+}
+
+.cut_tour_badge.orange {
+    background: #EF8F21;
+}
+
+.cut_tour_name_section {
+    width: calc(100% - 40px);
+    padding-bottom: 20px;
+    flex: 1 0 auto;
+    margin: 20px 20px 0 20px;
+}
+
+.cut_tour_country {
+    font-weight: 750;
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.cut_tour_name {
+    margin-top: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.cut_tour_button_section {
+    border-top: 1px solid #EBEBEB;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ebebeb;
+    margin: 0 20px 20px 20px;
+    width: calc(100% - 40px);
+    flex-direction: column;
+}
+
+.cut_tour_button {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cut_tour_button:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.cut_tour_button.transparent {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    font-weight: 450;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.cut_tour_button.green {
+    background: #84BB59;
+    border: none;
+    font-weight: 750;
+    font-size: 13px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.cut_tour_price_section {
+
+}
+
+.cut_tour_duration {
+
+}
+
+.cut_tour_price {
+
+}
+
+.cut_tour_discounted_price {
+
+}

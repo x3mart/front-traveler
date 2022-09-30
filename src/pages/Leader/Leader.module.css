@@ -1,0 +1,167 @@
+.leader_wrapper {
+    display: flex;
+}
+
+.leader_left_section {
+    margin-right: 30px;
+    min-width: 255px;
+    flex: 1;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.leader_left_section img {
+    width: 255px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.leader_main {
+    margin-right: 30px;
+    flex: 2;
+}
+
+.leader_data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.leader_data:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.leader_data:last-child {
+    margin-bottom: 30px;
+}
+
+.leader_last_visit {
+    margin-bottom: 10px;
+}
+
+.leader_header {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+}
+
+.leader_data_image_text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leader_data img {
+    margin-right: 10px;
+}
+
+.leader_data span{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    color: #000000;
+}
+
+.leader_right_section {
+    min-width: 255px;
+    flex: 1;
+}
+
+.leader_approved {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.leader_approved_image_text {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(0, 0, 0, 0.25);
+}
+
+.leader_approved_image_text.approved{
+    color: #84BB59;
+}
+
+.leader_approved_image {
+    width: 22px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.leader_approved_image_text img {
+    margin-right: 10px;
+}
+
+.tours_wrapper {
+    display: flex;
+}
+
+.tours_set_section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.team_card {
+    width: 255px;
+    height: 368px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.team_card:not(:last-child) {
+    margin-right: 30px;
+}
+
+.team_card_top {
+    border-bottom: 1px solid #EBEBEB;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team_card_avatar {
+    border-radius: 50%;
+    width: 125px;
+    height: 125px;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 20px;
+}
+
+.team_card_name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #000000;
+}
+
+.team_card_bottom {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+

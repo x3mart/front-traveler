@@ -1,0 +1,37 @@
+.buttons_set {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    padding-top: 30px;
+    border-bottom: 1px solid #EBEBEB;
+    border-top: 1px solid #EBEBEB;
+}
+
+.buttons_set button {
+    padding: 9px 20px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin: 0 10px 10px 0;
+    cursor: pointer;
+}
+
+.buttons_set button.submit {
+    color: #FFFFFF;
+    background: #2aa2d6;
+    border: none;
+}
+
+.buttons_set button.reset {
+    color: #FFFFFF;
+    background: #DF7070;
+    border: none;
+}
+
+
+

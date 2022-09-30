@@ -1,0 +1,7 @@
+.wallpaper_container {
+    height: 480px;
+    width: 100%;
+    margin: 0 auto 20px auto;
+    background-position: center;
+    background-size: cover;
+}

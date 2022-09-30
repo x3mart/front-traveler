@@ -1,0 +1,116 @@
+.popup_wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+}
+
+.popup_card {
+    min-width: 300px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.popup_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #EBEBEB;
+    padding-bottom: 20px;
+}
+
+.popup_header img {
+    cursor: pointer;
+}
+
+.popup_header_title {
+    padding-left: 24px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    position: relative;
+}
+
+.popup_header_title::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #2AA2D6;
+    border-radius: 8px;
+}
+
+.popup_body {
+    margin: 20px 0 10px;
+    width: 100%;
+    position: relative;
+}
+
+.popup_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid #EBEBEB;
+    padding-top: 20px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #9B9B9B;
+}
+
+.popup_footer_text_submit {
+    cursor: pointer;
+    color: #84BB59;
+}
+
+.popup_footer_text_reset {
+    cursor: pointer;
+}
+
+.popup_card_button {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popup_card_button.active {
+    color: #84BB59;
+    border: 1px solid #84BB59;
+}
+
+.search_type_wrapper {
+    max-height: 221px;
+    overflow-y: auto;
+}
+
+.search_type_element {
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.search_type_element.active {
+    color: #84BB59;
+}

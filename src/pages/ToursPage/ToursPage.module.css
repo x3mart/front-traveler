@@ -1,0 +1,15 @@
+.sort_button {
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+
+    text-align: right;
+
+    color: #000000;
+}
+
+.tours_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}

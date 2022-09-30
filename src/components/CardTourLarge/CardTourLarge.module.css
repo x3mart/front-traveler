@@ -1,0 +1,195 @@
+.card_tour_image {
+	width: 100%;
+	height: 280px;
+
+	border-radius: 8px 8px 0 0;
+	background: url(../../assets/img/static-img/img3.png);
+}
+
+.card_tour_image svg {
+	position: relative;
+	top: 20px;
+	left: 690px;
+}
+
+.card_tour_content {
+	position: relative;
+
+	padding: 0 18px 18px 18px;
+}
+
+.card_tour_content_place_info {
+	/* border-bottom: 1px solid #EBEBEB;  */
+	position: absolute;
+	top: -80px;
+
+	padding-bottom: 5px;
+}
+
+.card_tour_content_guide_info {
+	display: flex;
+	justify-content: space-between;
+}
+
+.card_tour_content_place_info h3 {
+	margin-top: 15px;
+
+	color: var(--background);
+
+	font-size: 32px;
+	font-weight: 600;
+	line-height: 20px;
+}
+
+.card_tour_content_place_info h4 {
+	margin-top: 0;
+	margin-bottom: 0;
+
+	color: var(--background);
+
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 15px;
+}
+
+.card_tour_content_guide_info_name {
+	display: flex;
+}
+
+.card_tour_content_guide_info_name_avatar {
+	width: 40px;
+	height: 40px;
+	margin-top: 19px;
+
+	border-radius: 50%;
+	background: grey;
+}
+
+.card_tour_content_guide_info_name_raiting {
+	margin-top: 22px;
+	margin-left: 10px;
+}
+
+.card_tour_content_guide_info_name_raiting h4 {
+	margin: 0 0 3px 0;
+
+	font-size: 13px;
+}
+
+.card_tour_content_guide_info_name_raiting svg {
+	margin: 0 5px 0 0;
+}
+
+.card_tour_content_guide_info_name_raiting span {
+	margin: 0 5px 0 0;
+}
+
+.card_tour_content_guide_info_cost {
+	text-align: right;
+}
+
+.card_tour_content_guide_info_cost h3 {
+	margin-top: 2px;
+
+	letter-spacing: 1.7px;
+}
+
+.card_tour_content_guide_info_cost h4 {
+	margin-bottom: 0;
+
+	letter-spacing: -0.6px;
+}
+
+.card_tour_content_guide_info_cost span {
+	font-family: var(--font-family-rub);
+}
+
+@media (min-width: 320px) and (max-width: 798.999px) {
+	.card_tour_image {
+		width: 260px;
+		height: 140px;
+	}
+
+	.card_tour_content_place_info {
+		/* border-bottom: 1px solid #EBEBEB;  */
+		position: unset;
+
+		padding-bottom: 5px;
+
+		border-bottom: 1px solid #EBEBEB;
+	}
+
+	.card_tour_content_place_info h3 {
+		margin-top: 15px;
+		margin-top: -1px;
+		margin-bottom: 3px;
+
+		color: var(--black);
+
+		font-size: 32px;
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 20px;
+	}
+
+	.card_tour_content_place_info h4 {
+		margin-top: 0;
+		margin-bottom: 0;
+
+		color: var(--black);
+
+		font-size: 20px;
+		font-size: 10px;
+		font-weight: 600;
+		line-height: 15px;
+	}
+
+	.card_tour_content_guide_info_name_raiting h4 {
+		margin: 0 0 3px 0;
+
+		font-size: 12px;
+	}
+
+	.card_tour {
+		margin-left: 15px;
+	}
+
+	.card_tour_image svg {
+		position: relative;
+		top: 9px;
+		left: 234px;
+
+		width: 16px;
+		height: 17px;
+	}
+
+	.card_tour_content {
+		padding: 10px;
+	}
+
+	.card_tour_content_guide_info_name_avatar {
+		width: 32px;
+		height: 32px;
+		margin-top: 0;
+	}
+
+	.card_tour_content_guide_info_name_raiting {
+		margin-top: 0;
+		margin-left: 10px;
+	}
+
+	.card_tour_content_guide_info_cost h3 {
+		margin-top: 0;
+
+		letter-spacing: 1.7px;
+		letter-spacing: 0;
+	}
+
+	.card_tour_content_guide_info_cost h4 {
+		margin-top: 0;
+	}
+
+	.card_tour_content_guide_info {
+		margin-top: 10px;
+	}
+}

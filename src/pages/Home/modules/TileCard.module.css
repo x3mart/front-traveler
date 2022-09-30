@@ -1,0 +1,65 @@
+.card_tour {
+    flex: none;
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+.set-1 {
+    width: 100%;
+}
+
+.set-2 {
+    width: calc((100% - 30px) / 2)
+}
+
+.set-3 {
+    width: calc((100% - 60px) / 3);
+    height: 240px;
+}
+
+.set-4 {
+    width: calc((100% - 90px) / 4);
+    height: 175px;
+}
+
+.set-5 {
+    width: calc((100% - 120px) / 5);
+}
+
+.set-2:not(:nth-child(2n+2)) {
+    margin-right: 30px;
+}
+
+.set-3:not(:nth-child(3n+3)) {
+    margin-right: 30px;
+}
+
+.set-4:not(:nth-child(4n+4)) {
+    margin-right: 30px;
+}
+
+.set-5:not(:nth-child(5n+5)) {
+    margin-right: 30px;
+}
+
+
+.card_title {
+    font-weight: 750;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.card_subtitle {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+}

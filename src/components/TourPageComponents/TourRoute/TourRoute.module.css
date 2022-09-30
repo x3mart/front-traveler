@@ -1,0 +1,57 @@
+.tour_route_container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tour_route_map {
+    margin: 20px 0;
+    width: 730px;
+    height: 400px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tour_route_map_map {
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+}
+
+.tour_route_map_map ymaps {
+    border-radius: 8px;
+}
+
+.tour_route_data_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tour_route_data {
+    max-width: 47%;
+}
+
+.tour_route_data_title {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.tour_route_data_data {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.air_tickets_text {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    margin: 10px 0 20px 0;
+}

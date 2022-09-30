@@ -1,0 +1,217 @@
+.search_bar_wrapper {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.search_bar_wrapper.active_region {
+    border-radius: 8px 8px 8px 0;
+}
+
+.search_bar_wrapper img {
+    margin-right: 20px;
+}
+
+.search_bar_wrapper span {
+    font-weight: 450;
+    font-size: 18px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.25);
+}
+
+.search_field_wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.search_field {
+    display: flex;
+}
+
+.search_bar_country {
+    width: 50%;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.search_bar_country_input {
+    height: 80px;
+    flex: none;
+    border-radius: 8px 0 0 8px;
+    border-right: 1px solid #E9E9E9;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    cursor: pointer;
+}
+
+.search_bar_country_input.border {
+    border: 1px solid #E9E9E9;
+}
+
+.search_bar_country_input.active_region {
+    border-radius: 8px 0 0 0;
+}
+
+.search_bar_country_input_text.active {
+    color: #000000;
+}
+
+.search_bar_country.active {
+    border-radius: 8px 0 0 0;
+}
+
+.search_bar_date {
+    width: 50%;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.search_bar_date_input {
+    height: 80px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid #E9E9E9;
+    padding: 0 30px;
+    cursor: pointer;
+}
+
+.search_bar_date_input.border {
+    border: 1px solid #E9E9E9;
+    border-right: none;
+}
+
+.search_bar_date_input_text.active {
+    color: #000000;
+}
+
+.search_bar_date_active {
+    width: 100%;
+    /*display: flex;*/
+    align-items: center;
+    border-top: 1px solid #E9E9E9;
+    border-right: none;
+    background-color: #FFFFFF;
+    border-radius: 0 0 8px 8px;
+    z-index: 2;
+    padding: 30px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.search_bar_button {
+    height: 80px;
+    width: 255px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2AA2D6;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+
+.search_bar_button_border {
+    border: 1px solid #fff;
+}
+
+.search_bar_button span {
+    font-weight: 750;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+}
+
+.traveler_calendar {
+    width: 100%!important;
+    margin-bottom: 30px;
+    border: none!important;
+    border-radius: 0 0 8px 8px;
+}
+
+.traveler_calendar .react-calendar__tile--active {
+    background-color: #84BB59!important;
+    color: white;
+}
+
+.traveler_calendar .react-calendar__tile--now {
+    background-color: #2AA2D6;
+}
+
+.search_bar_date_active_footer {
+    display: flex;
+    border-top: 1px solid #EBEBEB;
+    padding-top: 20px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #9B9B9B;
+    justify-content: center;
+}
+
+.search_bar_date_active_footer div {
+    cursor: pointer;
+}
+
+.search_bar_region_active {
+    width: 100%;
+    /*display: flex;*/
+    align-items: center;
+    border-top: 1px solid #E9E9E9;
+    border-right: none;
+    background-color: #FFFFFF;
+    border-radius: 0 0 8px 8px;
+    z-index: 1;
+    padding: 30px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.traveler_region {
+    width: 100%!important;
+    margin-bottom: 30px;
+    border: none!important;
+    border-radius: 0 0 8px 8px;
+}
+
+.filter_buttons_wrapper {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.filter_button {
+    padding: 10px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin: 0 10px 10px 0;
+}
+
+.filter_button.active {
+    color: #84BB59;
+    border: 1px solid #84BB59;
+}
+
+.filter_selectable_data_wrapper {
+    columns:3;
+    max-height: 380px;
+    overflow-y: auto;
+    margin: 20px 0;
+}
+
+.selectable_data {
+    cursor: pointer;
+}
+
+.selectable_data.active_data {
+    color: #84BB59;
+}

@@ -1,0 +1,27 @@
+.tour_inclusions_container {
+    width: 100%;
+    display: flex;
+    margin: 20px 0;
+}
+
+.inclusions_column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inclusion {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.inclusion img {
+    height: 17px;
+    width: 17px;
+    margin-right: 10px;
+}

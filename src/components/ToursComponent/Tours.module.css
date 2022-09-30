@@ -1,0 +1,4 @@
+.tours_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,107 @@
+.tour_leader_container {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.tour_leader_header {
+    display: flex;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EBEBEB;
+}
+
+.tour_leader_avatar {
+    /*flex: 1;*/
+    min-height: 125px;
+    min-width: 125px;
+    max-height: 125px;
+    max-width: 125px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.tour_leader_about {
+    /*flex: 4;*/
+}
+
+.tour_leader_name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.tour_leader_bio {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.tour_leader_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.tour_leader_ratings {
+    width: 220px;
+}
+
+.tour_leader_ratings_row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tour_leader_ratings_name {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.tour_leader_ratings_value {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    color: #000000;
+}
+
+.tour_leader_ratings_value img {
+    height: 12px;
+    width: 12px;
+    margin-right: 6px;
+}
+
+.tour_leader_ratings_value span {
+    color: #84BB59;
+}
+
+.tour_leader_button {
+    display: flex;
+    height: 52px;
+    width: 308px;
+    background: #EF8F21;
+    box-sizing: border-box;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 750;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: 'AvenirNextCyr-Regular';
+    border: none;
+}

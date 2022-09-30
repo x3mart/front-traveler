@@ -1,0 +1,44 @@
+.tour_leader_section {
+    display: flex;
+}
+
+.leader_avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+.tour_leader_name_section {
+
+}
+
+.leader_name {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+    margin-bottom: 4px;
+}
+
+.leader_rating {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.leader_rating img {
+    margin-right: 5px;
+    height: 9px;
+    width: 9px;
+}
+
+.leader_rating span {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #84BB59;
+}

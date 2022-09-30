@@ -1,0 +1,62 @@
+.rating_wrapper {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio_button {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    background-color: #EEEEEE;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.radio_button:not(:first-child):before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 6px;
+    left: -20px;
+    top: 7px;
+    background-color: #EEEEEE;
+}
+
+.radio_button.active:not(:first-child):before {
+    background-color: #84BB59;
+}
+
+.radio_button.active {
+    background-color: #84BB59;
+}
+
+.uncut {
+    margin-left: 20px;
+}
+
+.uncut.active {
+    background-color: #84BB59;
+}
+
+.uncut:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 6px;
+    left: -20px;
+    top: 7px;
+    background-color: #EEEEEE;
+}
+
+.uncut.active:before {
+    background-color: #84BB59;
+}
+
+.rating_star.not_first {
+    margin-left: 10px;
+}

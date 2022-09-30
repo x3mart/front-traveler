@@ -1,0 +1,45 @@
+.list_page_wallpaper {
+    width: 100%;
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+}
+
+.list_page_header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list_page_title {
+    flex: 3;
+    font-weight: 750;
+    font-size: 30px;
+    line-height: 37px;
+    color: #000000;
+}
+
+.list_page_data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: 1;
+    font-weight: 450;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.list_page_description {
+    margin-top: 30px;
+    border-top: 1px solid #EBEBEB;
+    padding-top: 30px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.list_page_tours {
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,41 @@
+.tour_review_container {
+    width: 100%;
+}
+
+.tour_review_text {
+    margin: 20px 0;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.activity_wrapper {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.video_wrapper {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.video_wrapper iframe{
+    border-radius: 8px;
+}
+
+.activity_text {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.activity_image {
+    border-radius: 8px;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+}

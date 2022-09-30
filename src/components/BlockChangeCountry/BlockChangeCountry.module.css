@@ -1,0 +1,166 @@
+.block_viewed {
+	margin: 0 auto;
+	padding-top: 40px;
+	padding-bottom: 25px;
+
+	/* background: var(--background-grey); */
+	background-repeat: no-repeat;
+}
+
+.change_country_block {
+	display: flex;
+	/*justify-content: space-between;*/
+
+	/*margin-top: 80px;*/
+}
+
+.change_country_block_item_first_block_title {
+	margin-top: 30px;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 17px;
+	color: #000000;
+	z-index: -1;
+}
+
+.change_country_block_item_first_block_title.active {
+	color: #2AA2D6;
+}
+
+.change_country_block_item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 160px;
+	height: 175px;
+}
+
+.change_country_block_item h4 {
+	margin-top: 7px;
+
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.change_country_block_item_first_block {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px 10px;
+	width: 140px;
+	height: 120px;
+	/*background-size: contain;*/
+	/*background-position: center;*/
+	/*background-repeat: no-repeat;*/
+	z-index: -1;
+}
+
+.change_country_block_item_first_block svg {
+	max-width: 140px;
+	max-height: 120px;
+}
+
+.europe_icon {
+	margin-top: -8px;
+}
+
+.asia_icon {
+	margin-top: 1px;
+}
+
+.africa_icon {
+	margin-top: -18px;
+}
+
+.south_america_icon {
+	margin-top: -18px;
+}
+
+.australia_icon {
+	margin-top: -5px;
+}
+
+.north_america_icon {
+	margin-top: -4px;
+}
+
+.wrapper {
+	width: 1110px;
+	margin: 0 auto;
+
+	/* padding: 25px 0 25px 0; */
+}
+
+@media (min-width: 320px) and (max-width: 798.999px) {
+	.wrapper {
+		width: unset;
+	}
+
+	.block_viewed {
+		padding-top: 17px;
+		padding-bottom: 0;
+	}
+
+	.change_country_block {
+		overflow: hidden;
+		margin-top: 41px;
+		overflow-x: auto;
+	}
+
+	.change_country_block_item {
+		width: 115px;
+    	height: 145px;
+		margin-left: 17px;
+		text-align: center;
+	}
+
+	.change_country_block_item_first_block {
+		width: 100%;
+		height: 104px;
+	}
+
+	.europe_icon {
+		margin-top: -10px;
+		width: 100px;
+		height: 100px;
+		margin-left: 9px;
+	}
+
+	.asia_icon {
+		margin-top: -10px;
+		margin-left: 13px;
+		width: 100px;
+		height: 100px;
+	}
+	
+	.africa_icon {
+		margin-top: 2px;
+		width: 100px;
+		height: 79px;
+	}
+	
+	.south_america_icon {
+		margin-top: 9px;
+		width: 100px;
+		height: 80px;
+	}
+	
+	.australia_icon {
+		margin-top: 9px;
+		width: 100px;
+		height: 80px;
+	}
+	
+	.north_america_icon {
+		margin-top: 9px;
+		width: 100px;
+		height: 80px;
+	}
+}
+
+@media (min-width: 799px) and (max-width: 1130px) {
+	.wrapper {
+		width: unset;
+		padding: 0px 10px 0px 10px;
+	}
+}

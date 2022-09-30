@@ -1,0 +1,98 @@
+.history_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card_body {
+    width: 255px;
+    flex: none;
+    height: 410px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.card_body:not(:nth-child(3n+3)) {
+    margin-right: 30px;
+}
+
+.card_top {
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 8px 8px 0 0;
+}
+
+.card_badge {
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-weight: 750;
+    font-size: 10px;
+    line-height: 12px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.card_badge.orange {
+    background-color: #EF8F21;
+}
+
+.card_badge.green {
+    background-color: #84BB59;
+}
+
+.card_middle {
+    padding: 20px 0;
+    margin: 0 20px;
+    border-bottom: 1px solid #EBEBEB;
+}
+
+.card_middle_country {
+    font-weight: 750;
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.card_middle_title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.card_bottom {
+    padding: 20px;
+}
+
+.card_bottom_button {
+    padding: 12px 0;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-weight: 450;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+    background-color: transparent;
+}
+
+.card_bottom_button.success {
+    border: none;
+    background: #84BB59;
+    border-radius: 8px;
+    font-weight: 750;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.card_bottom_button:not(:last-child) {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,22 @@
+.tour_gallery_container {
+    width: 100%;
+}
+
+.gallery_wrapper {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gallery_image {
+    margin-bottom: 20px;
+    width: 350px;
+    height: 240px;
+    border-radius: 8px;
+    background-position: center;
+    background-size: cover;
+    box-sizing: border-box;
+    cursor: pointer;
+}

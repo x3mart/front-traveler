@@ -1,0 +1,36 @@
+.tour_accommodation_container {
+    width: 100%;
+}
+
+.tour_accommodation_container ul {
+    margin: 20px 0;
+}
+
+.tour_accommodation_container li {
+    list-style-type: disc;
+    margin-left: 20px;
+    /*padding: 20px 0 0 0;*/
+    border-bottom: none;
+}
+
+.tour_accommodation_container li:not(:last-child) {
+    padding-bottom: 10px;
+}
+
+.gallery_wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.gallery_image {
+    width: 350px;
+    height: 240px;
+    border-radius: 8px;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 20px;
+    cursor: pointer;
+}

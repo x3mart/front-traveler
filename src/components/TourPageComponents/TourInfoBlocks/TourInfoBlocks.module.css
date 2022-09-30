@@ -1,0 +1,77 @@
+.tour_info_blocks_container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tour_info_block {
+    width: 160px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F6F7F9;
+    border-radius: 8px;
+}
+
+.tour_info_block:not(:last-child) {
+    margin-right: 30px;
+}
+
+
+.tour_info_block_value {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 4px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tour_info_block_languages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tour_info_block_language {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.tour_info_block_language:not(:last-child) {
+    margin-right: 10px;
+}
+
+.tour_info_block_language_name {
+
+}
+
+.tour_info_block_language_name div {
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    padding: 10px;
+}
+
+.tour_info_block_name {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #000000;
+}
+
+.dots_container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.dots_container svg:not(:last-child) {
+    margin-right: 6px;
+}
+

@@ -1,0 +1,37 @@
+.regions_block {
+    display: flex;
+}
+
+.region_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.region_wrapper:not(:last-child) {
+    margin-right: 30px;
+}
+
+.region_icon {
+    width: 140px;
+    height: 120px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.region_icon.active {
+    filter: brightness(0) saturate(100%) invert(54%) sepia(80%) saturate(1232%) hue-rotate(165deg) brightness(93%) contrast(80%);
+}
+
+.region_title {
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    pointer-events: none;
+}
+
+.region_title.active {
+    color: #2AA2D6;
+}

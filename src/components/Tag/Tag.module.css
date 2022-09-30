@@ -1,0 +1,157 @@
+.s {
+	display: inline-block;
+
+	box-sizing: border-box;
+	width: 255px;
+	height: 175px;
+	margin-bottom: 30px;
+
+	border-radius: 8px;
+	/*background: url(../../assets/img/static-img/Rectangle8.png);*/
+}
+
+.s h4 {
+	margin-top: 117px;
+
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+
+	color: #FFF;
+
+	font-size: 16px;
+	font-weight: 750;
+	line-height: 20px;
+}
+
+.m {
+	display: inline-block;
+
+	box-sizing: border-box;
+	width: 350px;
+	height: 240px;
+	margin-bottom: 30px;
+
+
+	/* background: url(david-marcu-VfUN94cUy4o-unsplash.jpg); */
+	border-radius: 8px;
+}
+
+.b {
+	display: inline-block;
+
+	box-sizing: border-box;
+	width: 350px;
+	height: 360px;
+
+
+	/* background: url(david-marcu-VfUN94cUy4o-unsplash.jpg); */
+	border-radius: 8px;
+	background: #FFF;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+}
+
+.l {
+	display: inline-block;
+
+	box-sizing: border-box;
+	width: 730px;
+	height: 360px;
+	margin-right: 30px;
+
+	border-radius: 8px;
+	background: #FFF;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+}
+
+.t {
+	width: 255px;
+	height: 337px;
+	padding-top: 28px;
+
+	border-radius: 8px;
+
+	background: #FFF;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+}
+
+.feedback {
+	width: 540px;
+	height: 385px;
+
+	border-radius: 8px;
+
+	background: #FFF;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+}
+
+.about_expert {
+	width: 255px;
+	height: 368px;
+
+	background: #FFFFFF;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.03);
+	border-radius: 8px;
+	padding-top: 32px;
+}
+
+.border {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 320px) and (max-width: 798.999px) {
+	.s {
+		width: 95%;
+		height: 120px;
+		margin-right: 0;
+		margin-bottom: 15.9px;
+		background-repeat: round;
+	}
+
+	.m {
+		width: 100%; 
+		margin-right: 0;
+		height: unset;
+		margin-bottom: 0px;
+    	padding-bottom: 0px;
+	}
+
+	.b {
+		width: 275px;
+		height: 247px;
+		margin-right: 0;
+	}
+
+	.l {
+		width: 100%;
+		height: 247px;
+		margin-right: 0;
+	}
+
+	.s h4 {
+		margin-top: 81px;
+	}
+
+	.t {
+		width: 201px;
+    	height: 243px;
+		padding-top: 14px;
+		
+	}
+
+	.feedback {
+		width: 260px;
+		height: 322px;
+	
+		border-radius: 8px;
+	
+		background: #FFF;
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+	}
+}
+
+@media (min-width: 799px) and (max-width: 1130px) {
+	.l {
+		width: 420px;
+		
+	}
+}
