@@ -170,20 +170,18 @@ export const update_local_user = data => async dispatch => {
 }
 
 export const signUp = (status, data) => async dispatch => {
-  setConfig(!!localStorage.getItem('access'))
-
+  const config = setConfig(!!localStorage.getItem('access'))
+  console.log(config)
   const body = JSON.stringify(data)
 
   try {
     const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/${status}/`, body, config)
-
 
     dispatch({
       type: t.SIGNUP_SUCCESS,
       payload: res.status
     })
   } catch (err) {
-
     dispatch({
       type: t.SIGNUP_FAIL,
       payload: {data: err.response.data, status: err.response.status},
