@@ -46,6 +46,7 @@ const Register = ({ language, signUp, error, reg_status, clear_errors }) => {
     setData({
       ...data,
       [name]: value,
+      ref:window.location.search?.substring(window.location.search?.indexOf('ref=')+4)
     })
   }
 
