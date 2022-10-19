@@ -9,11 +9,12 @@ const Promo = ({user}) => {
 
   useEffect(() => {
     if(user?.referral_link) {
-      if(user?.referral_link?.length > 25) {
-        setLink(truncateText(user?.referral_link, 25))
-      } else {
-        setLink(user?.referral_link)
-      }
+      //if(user?.referral_link?.length > 25) {
+      //  setLink(user?.referral_link)
+        //truncateText(user?.referral_link, 25)
+      //} else {
+      setLink(user?.referral_link)
+      //}
     }
   }, [user])
 
@@ -27,7 +28,7 @@ const Promo = ({user}) => {
       <div className='stock_block'>
         <p>ПРИГЛАСИ ДРУЗЕЙ НА TRAVELER.MARKET И ПОЛУЧИ СКИДКУ НА ЛЮБОЙ ТУР</p>
         <div className='stock_block_info'>
-          <p>у вас: 0 баллов</p>
+          <p>у вас: {user?.referrals_score} баллов</p>
           <p>1 балл = 1 RUB</p>
         </div>
         <p>

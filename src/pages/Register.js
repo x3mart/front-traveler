@@ -46,6 +46,7 @@ const Register = ({ language, signUp, error, reg_status, clear_errors }) => {
     setData({
       ...data,
       [name]: value,
+      ref: new URLSearchParams(window.location.search).get('ref')
     })
   }
 
