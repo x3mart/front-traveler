@@ -1632,7 +1632,7 @@ a.paragraph_content_underline {
 }
 
 .stock_block_info_link_block_input {
-  width: 177px;
+  width: 175px;
   height: 40px;
   border: none;
   border-radius: 8px 0 0 8px;
@@ -1652,6 +1652,29 @@ a.paragraph_content_underline {
   box-sizing: border-box;
   border-radius: 0px 8px 8px 0px;
   cursor: pointer;
+}
+
+.stock_block_info_link_block_button_tooltip {
+  opacity: 0;
+  position: relative;
+  top: -33px;
+  left: -30px;
+  background-color: #303030;
+  border: 1px solid white;
+  color:white;
+}
+
+.stock_block_info_link_block_button:focus > .stock_block_info_link_block_button_tooltip {
+  -webkit-animation: cssAnimation 1.5s forwards; 
+  animation: cssAnimation 1.5s forwards;
+}
+@keyframes cssAnimation {
+  0%   {opacity: 1;}
+  100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+  0%   {opacity: 1;}
+  100% {opacity: 0;}
 }
 
 .social_block {

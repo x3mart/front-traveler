@@ -43,10 +43,12 @@ const Promo = ({user}) => {
           <input
             disabled={true}
             className='stock_block_info_link_block_input'
-            placeholder={link}
+            value={link}
             type='text'
           />
-          <button className='stock_block_info_link_block_button' onClick={() => handleClick(link)}/>
+          <button className='stock_block_info_link_block_button' onClick={() => handleClick(link)}>
+            <span className='stock_block_info_link_block_button_tooltip'>Скопировано!</span>
+          </button>
         </div>
       </div>
     </>
