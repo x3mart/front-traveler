@@ -1637,17 +1637,16 @@ a.paragraph_content_underline {
   border: none;
   border-radius: 8px 0 0 8px;
   padding-left: 10px;
+  cursor: text;
 }
 
 .stock_block_info_link_block_button {
   width: 40px;
   height: 40px;
-
   background: #2aa2d6;
   background-image: url(./assets/img/copy41.svg);
   background-repeat: no-repeat;
-  background-position-x: 10px;
-  background-position-y: 10px;
+  background-position: center;
   border: 1px solid #ffffff;
   box-sizing: border-box;
   border-radius: 0px 8px 8px 0px;
