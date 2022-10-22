@@ -1632,26 +1632,48 @@ a.paragraph_content_underline {
 }
 
 .stock_block_info_link_block_input {
-  width: 177px;
+  width: 175px;
   height: 40px;
   border: none;
   border-radius: 8px 0 0 8px;
   padding-left: 10px;
+  cursor: text;
 }
 
 .stock_block_info_link_block_button {
   width: 40px;
   height: 40px;
-
   background: #2aa2d6;
   background-image: url(./assets/img/copy41.svg);
   background-repeat: no-repeat;
-  background-position-x: 10px;
-  background-position-y: 10px;
+  background-position: center;
   border: 1px solid #ffffff;
   box-sizing: border-box;
   border-radius: 0px 8px 8px 0px;
   cursor: pointer;
+}
+
+.stock_block_info_link_block_button_tooltip {
+  opacity: 0;
+  position: relative;
+  top: -33px;
+  left: -30px;
+  background-color: #303030;
+  border: 1px solid white;
+  color:white;
+}
+
+.stock_block_info_link_block_button:focus > .stock_block_info_link_block_button_tooltip {
+  -webkit-animation: cssAnimation 1.5s forwards; 
+  animation: cssAnimation 1.5s forwards;
+}
+@keyframes cssAnimation {
+  0%   {opacity: 1;}
+  100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+  0%   {opacity: 1;}
+  100% {opacity: 0;}
 }
 
 .social_block {
