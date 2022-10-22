@@ -1658,8 +1658,10 @@ a.paragraph_content_underline {
   position: relative;
   top: -33px;
   left: -30px;
-  background-color: #303030;
+  padding: 4px;
+  background-color: rgb(75, 74, 74);
   border: 1px solid white;
+  border-radius: 4px;
   color:white;
 }
 
