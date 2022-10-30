@@ -15,7 +15,6 @@ import {connect} from 'react-redux'
 import Modal from "./Modal";
 import {useHistory} from "react-router-dom";
 import PopUp from "../../PopUp/PopUp";
-import { tablePaginationClasses } from '@mui/material'
 
 const TourCard = ({
                     language,
