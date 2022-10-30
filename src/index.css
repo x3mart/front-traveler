@@ -3633,7 +3633,7 @@ input[type='file'] {
   border-radius: 4px;
 }
 
-.tour-label-active {
+/* .tour-label-active {
   background-color: #84bb59;
 }
 .tour-label-moderation {
@@ -3641,7 +3641,7 @@ input[type='file'] {
 }
 .tour-label-draft {
   background-color: #303030;
-}
+} */
 
 /*.tour-data {*/
 /*  padding: 20px;*/
