@@ -646,7 +646,7 @@ const toursReducer = (state = initialState, action) => {
       return {
         ...state,
         current_tour: payload,
-        tours: state.tours.map(item => (item.id === payload.id ? payload : item)),
+        tours: state.tours?.results ? state.tours.results.map(item => (item.id === payload.id ? payload : item)) : state.tours.map(item => (item.id === payload.id ? payload : item)),
         error: {},
         secondary_nav: updateNav(state.secondary_nav, payload.completed_sections),
       }

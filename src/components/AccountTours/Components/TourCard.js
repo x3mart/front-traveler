@@ -28,20 +28,20 @@ const TourCard = ({
                     getTour,
                   }) => {
   const history = useHistory()
-  const label = tour.is_active
-    ? 'Опубликовано'
-    : tour.on_moderation
-      ? 'На Модерации'
-      : tour.is_draft
-        ? 'Черновик'
-        : ''
-  const cssClass = tour.is_active
-    ? 'active'
-    : tour.on_moderation
-      ? 'moderation'
-      : tour.is_draft
-        ? 'draft'
-        : ''
+  // const label = tour.published
+  //   ? 'Опубликовано'
+  //   : tour.on_moderation
+  //     ? 'На Модерации'
+  //     : tour.declined
+  //       ? 'Черновик'
+  //       : ''
+  // const cssClass = tour.published
+  //   ? 'active'
+  //   : tour.on_moderation
+  //     ? 'moderation'
+  //     : tour.declined
+  //       ? 'draft'
+  //       : ''
 
   const myRef = useRef()
 
@@ -63,6 +63,12 @@ const TourCard = ({
     getTour(tour.id)
     setActive(false)
     history.push(`/${language}/account/tours/${tour.id}/edit/main`)
+  }
+
+  const handleTourPreview = () => {
+    getTour(tour.id)
+    setActive(false)
+    history.push(`/${language}/account/tours/${tour.id}/edit/preview`)
   }
 
   const handleTourCopy = () => {
@@ -87,7 +93,7 @@ const TourCard = ({
 
           <div
             className='tour-image'
-            onClick={handleTourEdit}
+            onClick={tour?.private_statuses?.name !== 'archive' ? handleTourEdit : handleTourPreview}
             style={{
               backgroundImage: 'url(' + tour.tmb_wallpaper + ')',
               cursor: 'pointer'
@@ -122,20 +128,22 @@ const TourCard = ({
               backgroundColor: '#fff',
               display: active ? 'block' : 'none',
             }}
-          >
-            <div
-              className='tour-item-top'
-              style={{
-                padding: 10,
-                borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
-                lineHeight: '15px',
-                textAlign: 'right',
-                cursor: 'pointer',
-              }}
-              onClick={handleTourEdit}
-            >
-              Редактировать
-            </div>
+          > 
+          { tour.private_statuses.name !== 'archive' &&
+              <div
+                className='tour-item-top'
+                style={{
+                  padding: 10,
+                  borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
+                  lineHeight: '15px',
+                  textAlign: 'right',
+                  cursor: 'pointer',
+                }}
+                onClick={tour?.private_statuses?.name !== 'archive' ? handleTourEdit : handleTourPreview}
+              >
+                Редактировать
+              </div>
+            }
             <div
               className='tour-item-top'
               style={{
@@ -168,20 +176,23 @@ const TourCard = ({
                                  action={() => setActivePopUp(false)}
                                  second_action={handleDelete}/>}
           <div
-            className={`tour-label tour-label${cssClass ? '-' + cssClass : ''}`}
+            className={`tour-label`}
+            style={{
+              backgroundColor: tour?.private_statuses?.display_color
+            }}
           >
-            {label}
+            {tour?.private_statuses?.display_str}
           </div>
         </div>
         <div
           className='tour-header'
-          onClick={handleTourEdit}
+          onClick={tour?.private_statuses?.name !== 'archive' ? handleTourEdit : handleTourPreview}
           style={{cursor: 'pointer'}}
         >
           <div className='tour-region'>{tour && tour.start_country && tour.start_country.name}</div>
           <div
             className='tour-name'
-            onClick={handleTourEdit}
+            onClick={tour?.private_statuses?.name !== 'archive' ? handleTourEdit : handleTourPreview}
             // style={{ cursor: 'pointer' }}
           >
             {tour.name && (tour.name.length <= 23 ? tour.name : tour.name.substring(0, 23) + '...')}

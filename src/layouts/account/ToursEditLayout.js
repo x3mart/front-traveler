@@ -163,13 +163,6 @@ const ToursEditLayout = ({
     clearCurrentTour()
   }
 
-  const handleDraft = async () => {
-    await tourToServerUpdate({...tour, on_moderation: false, is_draft: true}, tour.id)
-      .then(() => history.push(`/${language}/account/tours/list`))
-      .then(() => clearCurrentTour())
-  }
-
-
   return (
     <MainLayout>
       <>
@@ -252,7 +245,6 @@ const ToursEditLayout = ({
                       <div onClick={handleTourPreview}>Предпросмотр</div>}
                   </div>
                   <div className='control-buttons-set'>
-                    <button onClick={handleDraft}>В черновик</button>
                     <button onClick={handleModeration}>На модерацию</button>
                     <button className='button-green' onClick={handleSave}>
                       Сохранить

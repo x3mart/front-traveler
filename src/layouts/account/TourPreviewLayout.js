@@ -53,6 +53,8 @@ const TourPreviewLayout = ({
 
   const [loading, setLoading] = useState(false)
 
+  const [activePopUp, setActivePopUp] = useState(false)
+
   if (!isAuthenticated) {
     return <Redirect to={`/${language}/login`}/>
   }
@@ -81,19 +83,21 @@ const TourPreviewLayout = ({
   }
 
   const handleTourDelete = async () => {
+    setActivePopUp(false)
     await deleteTour(tour.id)
       .then(() => history.push(`/${language}/account/tours/list`))
   }
 
-  const handleTourPreview = () => {
-    if (!preview) {
+  const handleTourEdit = () => {
+    console.log(preview)
+    // if (!preview) {
       tourToServerUpdate(tour, tour.id)
       setPage(history.location)
-      history.push(`/${language}/account/tours/${tour_id}/edit/preview`)
-    } else {
-      history.push(`/${language}/${page}`)
-      setPage('')
-    }
+      history.push(`/${language}/account/tours/${tour_id}/edit/main`)
+    //} } else {
+    //   history.push(`/${language}/${page}`)
+    //   setPage('')
+    // }
   }
 
   useEffect(() => {
@@ -113,13 +117,6 @@ const TourPreviewLayout = ({
       .then(() => history.push(`/${language}/account/tours/list`))
       .then(() => clearCurrentTour())
   }
-
-  const handleDraft = async () => {
-    await tourToServerUpdate({...tour, on_moderation: false, is_draft: true}, tour.id)
-      .then(() => history.push(`/${language}/account/tours/list`))
-      .then(() => clearCurrentTour())
-  }
-
 
   return (
     <MainLayout>
@@ -147,13 +144,19 @@ const TourPreviewLayout = ({
 
             <div className='control-buttons'>
               <div className='control-buttons-set'>
-                <button onClick={handleTourDelete}>Удалить</button>
+                <button onClick={() => setActivePopUp(true)}>Удалить</button>
+                {activePopUp && <PopUp status={'danger'}
+                                 title={'Уверены, что хотите удалить?'}
+                                 text={'Информация будет удалена навсегда.'}
+                                 button={'Отменить'}
+                                 button2={'Удалить'}
+                                 action={() => setActivePopUp(false)}
+                                 second_action={handleTourDelete}/>}
                 <button><Modal tour_id={tour.id} button_name='Создать копию' action={handleTourCopy}/></button>
-                <button onClick={handleTourPreview}>Редактировать</button>
+                <button onClick={handleTourEdit}>Редактировать</button>
               </div>
 
               <div className='control-buttons-set'>
-                <button onClick={handleDraft}>В черновик</button>
                 <button onClick={handleModeration}>На модерацию</button>
                 <button className='button-green' onClick={handleSave}>
                   Сохранить
