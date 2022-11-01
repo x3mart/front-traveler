@@ -101,10 +101,11 @@ export const tourTrimmed = (tour) => {
 
 export const getData = (tour, direction, section) => {
   if(direction == 'submit') {
+    tour.private_statuses.display_color = "#EF8F21"
+    tour.private_statuses.display_str = "На модерации"
+    tour.private_statuses.name = "on_moderation"
     return {
-      ...tour,
-      is_draft: false,
-      on_moderation: true,
+      tour
     }
   } else {
     return {

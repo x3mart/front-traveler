@@ -143,8 +143,10 @@ const TourPreviewLayout = ({
       tourToServerError(errData)
       errStatus >= 400 && errStatus < 500 ? setKey(Object.keys(errData)[0]) : setOnErrorPopUp(true)
     }
-
-    await tourToServerUpdate({...tour, on_moderation: true, is_draft: false}, tour.id)
+    tour.private_statuses.display_color = "#EF8F21"
+    tour.private_statuses.display_str = "На модерации"
+    tour.private_statuses.name = "on_moderation"
+    await tourToServerUpdate(tour, tour.id)
   }
 
   const handleSave = async () => {

@@ -127,9 +127,11 @@ const ToursEditLayout = ({
       tourToServerError(errData)
       errStatus >= 400 && errStatus < 500 ? setKey(Object.keys(errData)[0]) : setOnErrorPopUp(true)
     }
+    tour.private_statuses.display_color = "#EF8F21"
+    tour.private_statuses.display_str = "На модерации"
+    tour.private_statuses.name = "on_moderation"
 
-
-    await tourToServerUpdate({...tour, on_moderation: true, is_draft: false}, tour.id)
+    await tourToServerUpdate(tour, tour.id)
 
   }
 
