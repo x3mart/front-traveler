@@ -126,7 +126,15 @@ const TourPreviewLayout = ({
           <meta name='description' content=''/>
           <link rel='icon' href='/favicon.ico'/>
         </MetaTags>
-
+        <Section>
+        {activePopUp && <PopUp status={'danger'}
+                                 title={'Уверены, что хотите удалить?'}
+                                 text={'Информация будет удалена навсегда.'}
+                                 button={'Отменить'}
+                                 button2={'Удалить'}
+                                 action={() => setActivePopUp(false)}
+                                 second_action={handleTourDelete}/>}
+        </Section>
         <section>
           <div className='wrapper'>
             <div className='breadcrumbs breadcrumbs_margin'>
@@ -145,13 +153,6 @@ const TourPreviewLayout = ({
             <div className='control-buttons'>
               <div className='control-buttons-set'>
                 <button onClick={() => setActivePopUp(true)}>Удалить</button>
-                {activePopUp && <PopUp status={'danger'}
-                                 title={'Уверены, что хотите удалить?'}
-                                 text={'Информация будет удалена навсегда.'}
-                                 button={'Отменить'}
-                                 button2={'Удалить'}
-                                 action={() => setActivePopUp(false)}
-                                 second_action={handleTourDelete}/>}
                 <button><Modal tour_id={tour.id} button_name='Создать копию' action={handleTourCopy}/></button>
                 <button onClick={handleTourEdit}>Редактировать</button>
               </div>
