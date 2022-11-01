@@ -93,7 +93,7 @@ const TourPreviewLayout = ({
     // if (!preview) {
       tourToServerUpdate(tour, tour.id)
       setPage(history.location)
-      history.push(`/${language}/account/tours/${tour_id}/edit/main`)
+      history.push(`/${language}/account/tours/${tour.id}/edit/main`)
     //} } else {
     //   history.push(`/${language}/${page}`)
     //   setPage('')
