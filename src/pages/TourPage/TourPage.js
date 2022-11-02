@@ -205,7 +205,7 @@ const TourPage = ({
                       <h3>Дополнительные услуги</h3>
                       <div style={{marginTop: '20px'}}>
                         {tour_preview && tour_preview.tour_addetional_services && tour_preview.tour_addetional_services.map((item, index) => (
-                          <div style={{marginBottom: '10px'}}>
+                          <div key={index} style={{marginBottom: '10px'}}>
                             {item.extra_text}
                             {item.extra_service_price && (
                               <>

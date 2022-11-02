@@ -13,17 +13,20 @@ import {
   deleteTour,
   tourToServerUpdate,
   clearCurrentTour,
-  setPage
+  tourToServerError,
+  setPage,
+  setKey
 } from "../../redux/actions/toursActions";
 
 import CircularProgress from '@mui/material/CircularProgress'
 import Modal from "../../components/AccountTours/Components/Modal";
-
+import axios from "axios";
 import isNotEmptyObject from "../../helpers/isNotEmptyObject";
 import PopUp from "../../components/PopUp/PopUp";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
 import Section from "../../components/Section";
+import {getData, setConfig, tourTrimmed} from "../../functions";
 
 const TourPreviewLayout = ({
                              language,
@@ -54,6 +57,8 @@ const TourPreviewLayout = ({
   const [loading, setLoading] = useState(false)
 
   const [activePopUp, setActivePopUp] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [onErrorPopUp, setOnErrorPopUp] = useState(false)
 
   if (!isAuthenticated) {
     return <Redirect to={`/${language}/login`}/>
@@ -93,7 +98,7 @@ const TourPreviewLayout = ({
     // if (!preview) {
       tourToServerUpdate(tour, tour.id)
       setPage(history.location)
-      history.push(`/${language}/account/tours/${tour_id}/edit/main`)
+      history.push(`/${language}/account/tours/${tour.id}/edit/main`)
     //} } else {
     //   history.push(`/${language}/${page}`)
     //   setPage('')
@@ -106,10 +111,42 @@ const TourPreviewLayout = ({
     }
   }, [tour, loading])
 
+  // const handleModeration = async () => {
+  //   await tourToServerUpdate({...tour, on_moderation: true, is_draft: false}, tour.id)
+  //     .then(() => history.push(`/${language}/account/tours/list`))
+  //     .then(() => clearCurrentTour())
+  // }
   const handleModeration = async () => {
-    await tourToServerUpdate({...tour, on_moderation: true, is_draft: false}, tour.id)
-      .then(() => history.push(`/${language}/account/tours/list`))
-      .then(() => clearCurrentTour())
+
+    const config = setConfig(!!localStorage.getItem('access'))
+
+    let new_tour = tourTrimmed(tour)
+
+    const data = getData(new_tour, 'submit', '')
+
+    const body = JSON.stringify(data)
+
+    try {
+      await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${tour.id}/`, body, config)
+        .then(() => history.push(`/${language}/account/tours/list`))
+        .then(() => clearCurrentTour())
+
+    } catch (err) {
+      const errStatus = err.response.status
+      const errData = err.response.data
+      if(errData?.message) {
+        setErrorMessage(errData?.message)
+      }
+      if(errStatus === 403) {
+        setOnErrorPopUp(true)
+      }
+      tourToServerError(errData)
+      errStatus >= 400 && errStatus < 500 ? setKey(Object.keys(errData)[0]) : setOnErrorPopUp(true)
+    }
+    tour.private_statuses.display_color = "#EF8F21"
+    tour.private_statuses.display_str = "На модерации"
+    tour.private_statuses.name = "on_moderation"
+    await tourToServerUpdate(tour, tour.id)
   }
 
   const handleSave = async () => {
@@ -126,7 +163,21 @@ const TourPreviewLayout = ({
           <meta name='description' content=''/>
           <link rel='icon' href='/favicon.ico'/>
         </MetaTags>
-
+        <Section>
+        {activePopUp && <PopUp status={'danger'}
+                                 title={'Уверены, что хотите удалить?'}
+                                 text={'Информация будет удалена навсегда.'}
+                                 button={'Отменить'}
+                                 button2={'Удалить'}
+                                 action={() => setActivePopUp(false)}
+                                 second_action={handleTourDelete}/>}
+        {onErrorPopUp && <PopUp status={'cancel'}
+                                title={errorMessage ? errorMessage : 'Упс... Что-то пошло не так'}
+                                text={'Попробуйте заново внести всю информацию и нажать "Продолжить"'}
+                                button={'Ок'}
+                                action={() => {setOnErrorPopUp(false)}}
+                                close_action={() => {setOnErrorPopUp(false)}}/>}
+        </Section>
         <section>
           <div className='wrapper'>
             <div className='breadcrumbs breadcrumbs_margin'>
@@ -145,13 +196,6 @@ const TourPreviewLayout = ({
             <div className='control-buttons'>
               <div className='control-buttons-set'>
                 <button onClick={() => setActivePopUp(true)}>Удалить</button>
-                {activePopUp && <PopUp status={'danger'}
-                                 title={'Уверены, что хотите удалить?'}
-                                 text={'Информация будет удалена навсегда.'}
-                                 button={'Отменить'}
-                                 button2={'Удалить'}
-                                 action={() => setActivePopUp(false)}
-                                 second_action={handleTourDelete}/>}
                 <button><Modal tour_id={tour.id} button_name='Создать копию' action={handleTourCopy}/></button>
                 <button onClick={handleTourEdit}>Редактировать</button>
               </div>

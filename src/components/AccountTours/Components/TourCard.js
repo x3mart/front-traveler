@@ -68,7 +68,7 @@ const TourCard = ({
   const handleTourPreview = () => {
     getTour(tour.id)
     setActive(false)
-    history.push(`/${language}/account/tours/${tour.id}/edit/preview`)
+    history.push(tour?.public_url)
   }
 
   const handleTourCopy = () => {
