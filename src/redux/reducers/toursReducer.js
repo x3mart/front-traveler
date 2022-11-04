@@ -594,11 +594,12 @@ const toursReducer = (state = initialState, action) => {
         key: '',
       }
     case COPY_TOUR_SUCCESS:
-      const tours_list = state.tours
       return {
         ...state,
-        tours: [payload, ...tours_list],
-      }
+        tours: {
+          ...state.tours,
+          results:[payload, ...state.tours.results]
+        }}
     case GET_TOURS_FAIL:
       return {
         ...state,
@@ -633,8 +634,10 @@ const toursReducer = (state = initialState, action) => {
     case DELETE_TOUR:
       return {
         ...state,
-        tours: state.tours.filter(item => item.id !== payload),
-      }
+        tours: {
+          ...state.tours,
+          results: state.tours.results.filter(item => item.id !== payload)
+        }}
 
     case GET_CITIES_SUCCESS:
       return {
@@ -646,7 +649,6 @@ const toursReducer = (state = initialState, action) => {
       return {
         ...state,
         current_tour: payload,
-        tours: state.tours?.results ? state.tours.results.map(item => (item.id === payload.id ? payload : item)) : state.tours.map(item => (item.id === payload.id ? payload : item)),
         error: {},
         secondary_nav: updateNav(state.secondary_nav, payload.completed_sections),
       }

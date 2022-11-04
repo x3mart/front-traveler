@@ -300,7 +300,6 @@ export const tourToServerUpdate = ( data, id ) => async dispatch => {
 
   try {
     const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${id}/`, body, config)
-    //console.log(res)
     dispatch({
       type: UPDATE_TOUR_SUCCESS,
       payload: res.data,

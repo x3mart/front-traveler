@@ -70,7 +70,7 @@ const ToursFormLayout = ({
     getTourPropertyTypes()
     getTourAccomodations()
     getLanguages()
-    return () => clearErrors()
+    // return () => clearErrors()
   }, [])
 
   useEffect(() => {
