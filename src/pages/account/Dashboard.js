@@ -7,6 +7,7 @@ import {
   CheckCircleFilled,
 } from '@ant-design/icons'
 
+import {useHistory} from "react-router-dom";
 
 import Exit from '../../assets/img/get_out.svg'
 import Close from '../../assets/img/close.svg'
@@ -25,6 +26,8 @@ import UserSmallAvatar from '../../components/UserSmallAvatar/UserSmallAvatar'
 import UserNameAndMail from '../../components/UserSmallAvatar/UserNameAndMail'
 
 const Dashboard = ({ status, user, logout, setPage, getDashboard, dashboard }) => {
+  
+  const history = useHistory()
 
   useEffect(() => {
     setPage('account')
@@ -99,6 +102,10 @@ const Dashboard = ({ status, user, logout, setPage, getDashboard, dashboard }) =
       text: 'Подключите удобный канал получения уведомлений. Уведомления приходят, когда автор тура написал в чат',
     },
   ]
+
+  const handleButton = ()=>{
+    history.push(`/faqs`)
+  }
 
   const PlatesSection = () => (
     <div className='plates-section'>
@@ -214,7 +221,7 @@ const Dashboard = ({ status, user, logout, setPage, getDashboard, dashboard }) =
                   YouTravel.me может помочь вам собирать полные группы на каждое
                   путешествие.
                 </h4>
-                <div className='button_expierense'>Перейти в базу знаний</div>
+                <div className='button_expierense' onClick={handleButton}>Перейти в базу знаний</div>
               </div>
             </div>
           </div>

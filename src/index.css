@@ -1924,7 +1924,7 @@ a.paragraph_content_underline {
 .button_expierense {
   width: 330px;
   height: 60px;
-
+  cursor: pointer;
   background: #2aa2d6;
   border-radius: 8px;
   font-style: normal;
