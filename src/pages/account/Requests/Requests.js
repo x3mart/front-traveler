@@ -128,7 +128,7 @@ const Requests = ({
 
 
   if (status === 'customers') {
-    return <Redirect to={`/${language}/404`}/>
+    return <Redirect to={`/404`}/>
   }
 
   useEffect(() => {

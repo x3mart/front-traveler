@@ -44,7 +44,7 @@ const FavoriteComponent = ({
           <img src={active ? (color === 'light' ? favorite_light : favorite_dark) : (color === 'light' ? favorite_transparent : favorite_filled_dark)} alt=""/>
         </div>
         :
-        <Link to={`/${language}/login`} className={styles.favorite}>
+        <Link to={`/login`} className={styles.favorite}>
           <img src={active ? (color === 'light' ? favorite_light : favorite_dark) : (color === 'light' ? favorite_transparent : favorite_filled_dark)} alt=""/>
         </Link>
       }

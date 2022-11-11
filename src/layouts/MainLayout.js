@@ -23,7 +23,7 @@ const MainLayout = ({logout, current_language, isAuthenticated, children, page, 
 
     const deleteUser = () => {
       logout()
-      history.push(`/${current_language}/login`)
+      history.push(`/login`)
       window.location.reload()
       // return <Redirect to={'/login'}/>
     }

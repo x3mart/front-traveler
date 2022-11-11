@@ -95,7 +95,7 @@ const Regions = ({language, location, active_regions, getAllRegions }) => {
         <Section padding={'0px'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>

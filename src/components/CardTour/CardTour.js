@@ -27,7 +27,7 @@ const CardTour = ({
     >
       {children}
       <Tag size='b'>
-        <Link to={`/${language}/tour/detail-tour`}>
+        <Link to={`/tour/detail-tour`}>
           <div className={styles.card_tour_image}>
             <img src={likeIcon} alt=''/>
           </div>
@@ -35,7 +35,7 @@ const CardTour = ({
         <div className={styles.card_tour_content}>
           <div className={styles.card_tour_content_place_info}>
             <Htag tag='h4'>Вьетнам</Htag>
-            <Link to={`/${language}/tour/detail-tour`}>
+            <Link to={`/tour/detail-tour`}>
               <Htag className={styles.link_pointer} tag='h3'>
                 Неизведанные места и тропы
               </Htag>
@@ -43,12 +43,12 @@ const CardTour = ({
           </div>
           <div className={styles.card_tour_content_guide_info}>
             <div className={styles.card_tour_content_guide_info_name}>
-              <Link to={`/${language}/expert`}>
+              <Link to={`/expert`}>
                 <div className={styles.card_tour_content_guide_info_name_avatar}/>
               </Link>
               <div className={styles.card_tour_content_guide_info_name_raiting}>
                 <Htag tag='h4'>
-                  <Link to={`/${language}/expert`}>Мария</Link>
+                  <Link to={`/expert`}>Мария</Link>
                 </Htag>
                 <Htag tag='h4'>
                   <img src={starIcon} alt=''/>

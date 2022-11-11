@@ -76,11 +76,11 @@ const ToursFormLayout = ({
   useEffect(() => {
     if(status){
       if(direction == 'forward') {
-        history.push(`/${language}/account/tours/${tour_id}/edit/${forward_url}`)
+        history.push(`/account/tours/${tour_id}/edit/${forward_url}`)
       } else if(direction == 'backward') {
-        history.push(`/${language}/account/tours/${tour_id}/edit/${backward_url}`)
+        history.push(`/account/tours/${tour_id}/edit/${backward_url}`)
       } else if(direction == 'submit') {
-        history.push(`/${language}${submit_url}`)
+        history.push(`/${submit_url}`)
       }
     }
   }, [status])
@@ -125,7 +125,7 @@ const ToursFormLayout = ({
 
     try {
       await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${tour_id}/`, body, config)
-      history.push(`/${language}${submit_url}`)
+      history.push(`/${submit_url}`)
       clearCurrentTour()
 
     } catch (err) {

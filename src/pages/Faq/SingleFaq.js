@@ -11,12 +11,12 @@ const SingleFaq = ({data, language}) => {
         <div className={styles.card_body}>
           <ul>
             {data?.faqs?.map((item, index) => (
-              <li key={index}><Link to={`/${language}/faqs/${data.id}/${item.id}`}>{item?.question}</Link></li>
+              <li key={index}><Link to={`/faqs/${data.id}/${item.id}`}>{item?.question}</Link></li>
             ))}
           </ul>
         </div>
         <div className={styles.card_all}>
-          <Link to={`/${language}/faqs/${data.id}`}>Все вопросы</Link>
+          <Link to={`/faqs/${data.id}`}>Все вопросы</Link>
         </div>
       </div>
     </>

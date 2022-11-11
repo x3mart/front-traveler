@@ -50,7 +50,7 @@ const SingleFaq = ({match, getFaqCategories, getFaqCategory, faq_categories, lan
         <Section padding={'0px'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>

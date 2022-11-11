@@ -125,7 +125,7 @@ const CardCollection = ({language, name_block, data, children}) => {
       return <div
         className={styles.tour_page}
       >
-        <Link to={`/${language}/tour/detail-tour/`}>
+        <Link to={`/tour/detail-tour/`}>
           <CardTour block_width="block_width_travel_page" block_style='card_tour_border'
                     className={styles.tour_page_card}/>
         </Link>

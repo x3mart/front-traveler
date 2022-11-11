@@ -33,7 +33,7 @@ const LeaderSection = ({language, expert, add_chat_room, isAuthenticated}) => {
 
   const handleExpertChat = () => {
     add_chat_room(id)
-    history.push(isAuthenticated ? '/' + language + '/account/chat' : '/' + language + '/login/chat')
+    history.push(isAuthenticated ? '/account/chat' : '/login/chat')
   }
 
   return (

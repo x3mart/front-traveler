@@ -62,7 +62,7 @@ const TourCard = ({
   const handleTourEdit = () => {
     getTour(tour.id)
     setActive(false)
-    history.push(`/${language}/account/tours/${tour.id}/edit/main`)
+    history.push(`/account/tours/${tour.id}/edit/main`)
   }
 
   const handleTourPreview = () => {

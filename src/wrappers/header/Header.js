@@ -115,13 +115,13 @@ const Header = ({ getIdent, isAuthenticated, load_user, user, page, set_users_on
                 {languages?.map((item, index) => <div className='buttons_block_country_name' key={index}>{item}</div>)}
               </div>
               <div className='buttons_block_currency'>&#8381; (Rub)</div>
-              <Link to={`/${language}/favorite`} className='buttons_block_liked'/>
+              <Link to={`/favorite`} className='buttons_block_liked'/>
             </div>
 
             {isAuthenticated ? (
               <div className='margin-left'>
                 <div className='user-account-name-wrapper'>
-                  <Link to={`/${language}/account`}>
+                  <Link to={`/account`}>
                     <div className='user-account-avatar'>
                       <UserSmallAvatar />
                       {/* <UserAvatar user={user} /> */}
@@ -130,7 +130,7 @@ const Header = ({ getIdent, isAuthenticated, load_user, user, page, set_users_on
                 </div>
               </div>
             ) : (
-              <Link to={`/${language}/login`} className='login_block'>
+              <Link to={`/login`} className='login_block'>
                 Вход
               </Link>
             )}

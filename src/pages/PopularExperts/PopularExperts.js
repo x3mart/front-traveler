@@ -93,7 +93,7 @@ const PopularExperts = ({location, language, get_popular_experts, popular_expert
         <Section padding={'0px'} background={'var(--background-grey)'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>

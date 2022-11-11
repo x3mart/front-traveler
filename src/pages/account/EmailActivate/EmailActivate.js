@@ -20,7 +20,7 @@ const EmailActivate = ({match, email_confirm, status, language}) => {
   useEffect(() => {
     const redirector = () => {
       setVerified(false)
-      history.push(`/${language}`)
+      history.push(`/`)
     }
     if(verified) {
       let timer = setTimeout(() => redirector(), 5000)

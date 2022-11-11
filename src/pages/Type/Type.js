@@ -101,12 +101,12 @@ const Type = ({
         <Section padding={'0px'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>
             <Breadcrumb
-              link={`/${language}/types`}
+              link={`/types`}
             >
               Типы туров
             </Breadcrumb>

@@ -88,7 +88,7 @@ const TeamEdit = ({language, user, status, getLanguages, languages, member, upda
     updateTeamMember({
       ...profile,
     }, member.id)
-    history.push(`/${language}/account/team`)
+    history.push(`/account/team`)
   }
 
   const handleModalClose = () => {

@@ -24,7 +24,7 @@ const Account = ({
 
 
   if (!isAuthenticated) {
-    return <Redirect to={`/${language}/login`}/>
+    return <Redirect to={`/login`}/>
   }
 
   if (tour.secondary) {
@@ -48,9 +48,9 @@ const Account = ({
         <section>
           <div className='wrapper'>
             <div className='breadcrumbs breadcrumbs_margin'>
-              <span><Link to={`/${language}`}>Главная</Link></span> - <span><Link
-              to={`/${language}/account`}>Личный кабинет</Link></span>{subtitle && ' - '}{subtitle && <span><Link
-              to={`/${language}/account/${menu_item}`}>{subtitle}</Link></span>}{title && ' - '}<span
+              <span><Link to={`/`}>Главная</Link></span> - <span><Link
+              to={`/account`}>Личный кабинет</Link></span>{subtitle && ' - '}{subtitle && <span><Link
+              to={`/account/${menu_item}`}>{subtitle}</Link></span>}{title && ' - '}<span
               style={{textDecoration: 'none', pointerEvents: 'none'}}>{title}</span>
             </div>
           </div>

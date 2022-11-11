@@ -21,7 +21,7 @@ const Login = ({ language, isAuthenticated, login, checkAuthenticated, error, cl
 
   if (isAuthenticated) {
     // setData({})
-    return <Redirect to={redirect ? `/${language}/account/` + redirect : `/${language}/account/`} />
+    return <Redirect to={redirect ? `/account/` + redirect : `/account/`} />
   }
 
   const handleCheckbox = (e) => {
@@ -56,7 +56,7 @@ const Login = ({ language, isAuthenticated, login, checkAuthenticated, error, cl
         <Section padding={'0px'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>
@@ -72,7 +72,7 @@ const Login = ({ language, isAuthenticated, login, checkAuthenticated, error, cl
               <div className='login_block_left'>
                 <div className='info_block_text_login'>
                   <div className='info_block_text_left'>Войти на сайт</div>
-                  <Link to={`/${language}/reset`} className='info_block_text_right'>Забыли пароль?</Link>
+                  <Link to={`/reset`} className='info_block_text_right'>Забыли пароль?</Link>
                 </div>
                 <div className='auth_form'>
                   <form onSubmit={handleAction}>
@@ -130,7 +130,7 @@ const Login = ({ language, isAuthenticated, login, checkAuthenticated, error, cl
                 <div className='social_links_block_info'>
                   Если вы впервые на сайте, заполните, пожалуйста,
                   регистрационную форму:{' '}
-                  <Link to={`/${language}/register`}>
+                  <Link to={`/register`}>
                     Зарегистрироваться
                   </Link>
                 </div>

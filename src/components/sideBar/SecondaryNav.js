@@ -32,7 +32,7 @@ const SecondaryNav = ({ language, setCurrentSection, secondary_nav, secondary, s
 
     try {
       await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${tour.id}/`, body, config)
-      history.push(`/${language}${url}`)
+      history.push(`/${url}`)
 
     } catch (err) {
       console.error(err)
@@ -59,7 +59,7 @@ const SecondaryNav = ({ language, setCurrentSection, secondary_nav, secondary, s
                 key={index}
                 // onClick={() => handleClick(item)}
               >
-                <Link to={`/${language}/account/tours/${tour_id}/edit/${item.value}`} style={{width: '100%'}} onClick={e => handleNavigate(e, `/account/tours/${tour_id}/edit/${item.value}`)}>
+                <Link to={`/account/tours/${tour_id}/edit/${item.value}`} style={{width: '100%'}} onClick={e => handleNavigate(e, `/account/tours/${tour_id}/edit/${item.value}`)}>
                 <div
                   className={`tours-submenu-name-wrap ${
                     secondary_item === item.value ? 'item-active' : 'item-inactive'

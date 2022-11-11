@@ -18,7 +18,7 @@ const PasswordReset = ({ language, isAuthenticated, login, checkAuthenticated, e
 
   if (isAuthenticated) {
     // setData({})
-    return <Redirect to={`${language}/account`} />
+    return <Redirect to={`/account`} />
   }
 
   const handleData = (name, value) => {
@@ -30,7 +30,7 @@ const PasswordReset = ({ language, isAuthenticated, login, checkAuthenticated, e
 
   const handleLoginRedirect = e => {
     e.preventDefault()
-    history.push(`${language}/login`)
+    history.push(`/login`)
   }
 
   const handleAction = async e => {

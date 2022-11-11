@@ -42,7 +42,7 @@ const BlogCard = ({language, data, big = false, index, clear_single_article}) =>
 
   const handleRedirect = () => {
     clear_single_article()
-    history.push(`/${language}/article/${slug}`)
+    history.push(`/article/${slug}`)
   }
 
 

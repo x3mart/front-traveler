@@ -13,7 +13,7 @@ const Category = ({data, language, active, action}) => {
   return (
     <>
       <div className={styles.faq_page_category}>
-        <Link to={`/${language}/faqs/${data?.id}`} className={styles.faq_page_category_title}>
+        <Link to={`/faqs/${data?.id}`} className={styles.faq_page_category_title}>
           <div className={styles.faq_page_category_title_title}>
             {data.title}
           </div>
@@ -25,7 +25,7 @@ const Category = ({data, language, active, action}) => {
               <ul>
                 {data?.faqs?.map((item, index) => (
                   <li key={index}>
-                    <Link to={`/${language}/faqs/${data?.id}/${item.id}`} onClick={() => action(item)}>
+                    <Link to={`/faqs/${data?.id}/${item.id}`} onClick={() => action(item)}>
                       {item?.question}
                     </Link>
                   </li>

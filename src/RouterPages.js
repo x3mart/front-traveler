@@ -16,7 +16,7 @@ const RouterPages = ({match, language}) => {
   return (
     <Router>
       <Switch>
-        <Route path={`/${language}`} component={Home} />
+        <Route path={`/`} component={Home} />
       </Switch>
     </Router>
   )

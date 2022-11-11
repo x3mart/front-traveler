@@ -97,7 +97,7 @@ const Destinations = ({language, location, active_destinations, getAllDestinatio
         <Section padding={'0px'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>

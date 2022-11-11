@@ -45,7 +45,7 @@ const Faq = ({language, getFaqCategories, faq_categories}) => {
         <Section padding={'0'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>

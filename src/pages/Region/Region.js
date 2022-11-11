@@ -35,12 +35,12 @@ const Region = ({match, getRegionData, current_region, language,}) => {
         <Section padding={'0px'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>
             <Breadcrumb
-              link={`/${language}/regions`}
+              link={`/regions`}
             >
               Регионы
             </Breadcrumb>

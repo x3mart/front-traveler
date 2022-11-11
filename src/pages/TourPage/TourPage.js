@@ -79,7 +79,7 @@ const TourPage = ({
     try {
       const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/orders/`, body, config)
       if(res){
-        history.push(`/${language}/account/orders/${res.data.id}/payment`)
+        history.push(`/account/orders/${res.data.id}/payment`)
       }
     } catch (err) {
       console.error(err)
@@ -244,7 +244,7 @@ const TourPage = ({
                   style={{position: 'sticky', top: '30px'}}
                 >
                   <div className={styles.tour_sidebar_header}>
-                    <Link to={`/${language}/register`}>
+                    <Link to={`/register`}>
                       Зарегистрируйтесь!
                     </Link>
                     <span>
