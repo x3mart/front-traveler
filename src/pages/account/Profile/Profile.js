@@ -2,7 +2,18 @@ import React, { useEffect, useState } from 'react'
 import Account from '../../../layouts/account/account'
 
 import { connect } from 'react-redux'
-import {setPage, update_user, clear_errors, update_avatar, update_local_user} from '../../../redux/actions/authActions'
+import {
+  setPage, 
+  update_user, 
+  clear_errors, 
+  update_avatar, 
+  delete_avatar,
+  update_local_user,
+  email_confirm_request,
+  phone_confirm_request,
+  phone_confirm, 
+  clear_confirm_status
+} from '../../../redux/actions/authActions'
 import {getLanguages} from '../../../redux/actions/toursActions'
 import {Link, useHistory} from "react-router-dom";
 import Input from "../../../components/AccountTours/FormFields/Input";
@@ -15,9 +26,32 @@ import TextEditor from "../../../components/AccountTours/FormFields/TextEditor";
 import PopUp from "../../../components/PopUp/PopUp";
 import DoubleWrapper from "../../../components/AccountTours/Wrappers/DoubleWrapper";
 import FileInput from "../../../components/AccountTours/FormFields/FileInput";
+import {isNotEmptyObject, setConfig} from "../../../functions";
+import axios from "axios";
 import AvatarInput from "../../../components/AccountTours/FormFields/AvatarInput";
+import PhoneInput from '../../../components/AccountTours/Components/PhoneInput';
+import cross from '../../../assets/img/x.svg'
 
-const MyProfile = ({ language, error, reg_status, user, status, setPage, update_user, getLanguages, languages, clear_errors, update_avatar, update_local_user }) => {
+const MyProfile = ({ 
+                    language, 
+                    reg_status, 
+                    user, 
+                    status, 
+                    setPage, 
+                    update_user, 
+                    getLanguages,
+                    languages,
+                    email_confirm_request,
+                    clear_confirm_status,
+                    clear_errors, 
+                    update_avatar, 
+                    update_local_user, 
+                    request_status,
+                    phone_confirm,
+                    confirm,
+                    phone_error,
+                    error
+                  }) => {
   useEffect(() => {
     setPage('profile')
     getLanguages()
@@ -30,14 +64,79 @@ const MyProfile = ({ language, error, reg_status, user, status, setPage, update_
   const [submitted, setSubmitted] = useState(false)
   const [activePopUp, setActivePopUp] = useState(false)
   const [action, setAction] = useState(false)
+  const [profile, setProfile] = useState({})
+  const [activePhonePopUp, setActivePhonePopUp] = useState(false)
+  const [requestActive, setRequestActive] = useState(false)
+  const [err, setErr] = useState(null)
+  const [phoneConfirmed, setPhoneConfirmed] = useState(null)
+  const [requestSuccess, setRequestSuccess] = useState(true)
+  const [phoneRequestError, setPhoneRequestError] = useState(null)
 
   const history = useHistory()
+
+  useEffect(() => {
+    if(phoneRequestError) {
+      setErr(phoneRequestError)
+    } else if(error) {
+      setErr(error)
+    } else {
+      setErr(null)
+    }
+  }, [phoneRequestError, error])
 
   useEffect(() => {
     if(submitted && reg_status >= 200 && reg_status < 300) {
       setActivePopUp(true)
     }
   }, [submitted, reg_status])
+
+  useEffect(() => {
+    if (request_status !== 'error' && request_status >= 200 && request_status < 300) {
+      setRequestSuccess(true)
+    } else {
+      setRequestSuccess(false)
+    }
+  }, [request_status])
+
+  const handleModalClose = () => {
+    setRequestActive(false)
+    clear_confirm_status()
+  }
+
+  useEffect(() => {
+    if (user) {
+      setProfile({
+        ...profile,
+        video: user.video,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        phone: user.phone,
+        phone_code: user.phone_code,
+        email: user.email,
+        old_phone: user.phone,
+        old_email: user.email,
+        phone_confirmed: user.phone_confirmed,
+        email_confirmed: user.email_confirmed,
+      })
+      setPhoneConfirmed(user.phone_confirmed)
+    }
+  }, [user])
+
+  // const handleChange = (name, value) => {
+  //   // if(name === 'phone') {
+  //   //   setPhoneChanged(true)
+  //   // }
+  //   setProfile({
+  //     ...profile, [name]: value,
+  //   })
+  // }
+
+  // const handleSubmit = () => {
+  //   setSubmitted(true)
+  //   update_user({
+  //     ...profile,
+  //   })
+  // }
 
   const handleChange = (name, value) => {
     update_local_user({
@@ -62,12 +161,136 @@ const MyProfile = ({ language, error, reg_status, user, status, setPage, update_
       ...user,
     })
   }
+  
+  const handlePopUp = () => {
+    setActivePopUp(false)
+    setSubmitted(false)
+  }
+
+  const handleEmailConfirm = () => {
+    setRequestActive(true)
+    email_confirm_request()
+    setTimeout(() => handleModalClose(), 3000)
+  }
+
+  const handlePhoneConfirm = async() => {
+    const config = setConfig(!!localStorage.getItem('access'))
+
+    const body = JSON.stringify({phone: profile.phone})
+
+    try {
+      await axios.patch(
+        `${process.env.REACT_APP_API_URL}/api/experts/${user.id}/send_confirmation_call/`,
+        body,
+        config
+      )
+      setActivePhonePopUp(true)
+    } catch (err) {
+      setPhoneRequestError(err.response.data)
+    }
+  }
+
+  
+  const PhoneForm = () => {
+    const numOfFields = 4;
+    const [val, setValue] = React.useState('');
+
+    const useSSNFields = () => {
+
+      return {
+        handleChange: e => {
+          const {maxLength, value, name} = e.target;
+          const [fieldName, fieldIndex] = name.split("-");
+
+          // Check if they hit the max character length
+          if (value.length >= maxLength) {
+            // Check if it's not the last input field
+            if (parseInt(fieldIndex, 10) < numOfFields) {
+              // Get the next input field
+              const nextSibling = document.querySelector(
+                `input[name=ssn-${parseInt(fieldIndex, 10) + 1}]`
+              );
+
+              // If found, focus the next field
+              if (nextSibling !== null) {
+                nextSibling.focus();
+              }
+            }
+          }
+
+          setValue(val + value);
+        }
+      };
+    };
+
+    const {handleChange} = useSSNFields();
+
+    const handlePhoneSubmit = () => {
+      phone_confirm(user.id, {code: val})
+    }
+
+
+    return (
+      <>
+        <div className={styles.popup_text}>Вам позвонит наш робот. Не отвечайте на звонок, а введите последние четыре
+          цифры входящего номера.
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className={'phone-form'}>
+            <input name="ssn-1" maxLength={1} onChange={handleChange} autoFocus type="text"/>
+            <input name="ssn-2" maxLength={1} onChange={handleChange} type="text"/>
+            <input name="ssn-3" maxLength={1} onChange={handleChange} type="text"/>
+            <input name="ssn-4" maxLength={1} onChange={handleChange} type="text"/>
+            {confirm >= 300 && phone_error && isNotEmptyObject(phone_error) && phone_error.code.map((item, index) => (
+                <div key={index} className="phone-error">
+                  {item}
+                </div>
+              )
+            )
+            }
+          </div>
+
+        </form>
+        <div className="phone-confirm-buttons">
+          <Button text={'Подтвердить'} action={handlePhoneSubmit} color={'button-primary'} width={'100%'} margin={'0'}/>
+          <Button text={'Отменить'} action={() => setActivePhonePopUp(false)} color={'button-danger'} width={'100%'} margin={'0'}/>
+        </div>
+      </>
+    )
+  }
 
   return (
     <Account title='Мой профиль' menu_item='profile'>
-      {activePopUp && <PopUp status={'ok'} title={'Успешно обновлено'}
-                             text={''} button={'Ок'} action={() => setActivePopUp(false)}/>}
-      <>
+      <>      
+        {activePopUp && <PopUp status={'ok'} title={'Успешно обновлено'}
+                              text={''} button={'Ок'} action={handlePopUp}/>}
+        {activePhonePopUp && <PopUp status={null} title={'Верификация номера'}
+                                    text={<PhoneForm/>} button={null}/>}
+        {requestActive && (
+          <div className={`modal-request-confirm`}>
+            {request_status && (<div className="modal-request-body">
+              <div className="modal-request-close" onClick={handleModalClose}><img src={cross} alt="cross"/></div>
+              {requestSuccess ? (
+                <div className={`modal-request-text green`}>
+                  Запрос успешно отправлен
+                </div>
+              ) : (
+                <div className={`modal-request-text red`}>
+                  Ошибка отправки запроса
+                </div>
+              )}
+              {requestSuccess ? (
+                <div className="modal-request-subtext">
+                  Проверьте вашу почту
+                </div>
+              ) : (
+                <div className="modal-request-subtext">
+                  Попробуйте еще раз позже
+                </div>
+              )}
+            </div>)}
+          </div>
+        )}
         {/*{status === 'experts' && ()}*/}
         <main>
           <div className='global-h2-heading'>
@@ -99,6 +322,43 @@ const MyProfile = ({ language, error, reg_status, user, status, setPage, update_
               </div>}
             </aside>
             <div className="profile-page-content">
+              <SingleWrapper label='Телефон' full={true} margin_bottom='0' margin='0' margin_bottom_label='20px'>
+                <PhoneInput
+                  label={'Номер телефона (в международном формате)'}
+                  action={handleChange}
+                  name='phone'
+                  value={profile.phone}
+                  region_code={profile.phone_code}
+                  error={err}
+                />
+                </SingleWrapper>
+                <SingleWrapper label='' full={true} margin_bottom='0'>
+                {(phoneConfirmed || (confirm >= 200 && confirm < 300)) ? (<div className="verified-note">
+                    <span className="confirmed-green">Телефон подтвержден и скрыт от других пользователей</span>
+                  </div>
+
+                ) : (<div className="verified-note">
+                  Телефон не подтвержден! <span onClick={handlePhoneConfirm}
+                                                style={{cursor: 'pointer'}}>Подтвердить?</span>
+                </div>)}
+                </SingleWrapper>
+                <SingleWrapper label='E-mail' full={true} margin_bottom='0' margin='0' margin_bottom_label='20px'>
+                <Input
+                  label={'Email'}
+                  action={handleChange}
+                  name='email'
+                  value={profile.email}
+                  error={error}
+                />
+              </SingleWrapper>
+                <SingleWrapper full={true} label='' margin_bottom='0'>
+                {profile.email_confirmed ? (<div className="verified-note">
+                  <span className="confirmed-green">Email подтвержден</span>
+                </div>) : (<div className="verified-note">
+                  Email не подтвержден! <span onClick={handleEmailConfirm} style={{cursor: 'pointer'}}>Подтвердить?</span>
+                </div>)}
+                </SingleWrapper>
+
               <DoubleWrapper full={true}>
                 <Input
                   label={'Имя'}
@@ -157,23 +417,52 @@ const MyProfile = ({ language, error, reg_status, user, status, setPage, update_
               {/*    action={handleChange}*/}
               {/*  />*/}
               {/*</SingleWrapper>*/}
-
-              <SingleWrapper label='Расскажите о себе (это всем интересно)' width={'100%'} margin={'0'}>
-                <TextEditor
-                  name='about'
-                  label='Расскажите о себе'
-                  rows='7'
-                  value={user && user.about}
-                  action={handleChange}
-                />
-              </SingleWrapper>
-              <Button
-                text='Сохранить'
-                action={handleSubmit}
-              />
-
             </div>
           </div>
+          <SingleWrapper label='Расскажите о себе (это всем интересно)' width={'100%'} margin={'0'}>
+            <TextEditor
+              name='about'
+              label='Расскажите о себе'
+              rows='7'
+              value={user && user.about}
+              action={handleChange}
+            />
+          </SingleWrapper>
+          <Button
+            text='Сохранить'
+            action={handleSubmit}
+          />
+          <div className="profile-settings-subheading">
+            <h4>
+              Пароль
+            </h4>
+          </div>
+
+          <ProfileInputWrapper label='Для смены учетных данных, введите в поле новый пароль и его подтверждение:'/>
+
+          <DoubleWrapper full={true}>
+            <Input
+              type='password'
+              label={'Новый пароль'}
+              action={handleChange}
+              name='password'
+              value={profile.password}
+              error={error}
+            />
+            <Input
+              type='password'
+              label={'Подтверждение пароля'}
+              action={handleChange}
+              name='re_password'
+              value={profile.re_password}
+              error={error}
+            />
+          </DoubleWrapper>
+
+          <Button
+            text='Изменить пароль'
+            action={handleSubmit}
+          />
         </main>
         {/*{status === 'customers' && <div>Страница профиля клиента</div>}*/}
       </>
@@ -184,10 +473,16 @@ const MyProfile = ({ language, error, reg_status, user, status, setPage, update_
 const mapStateToProps = state => ({
   language: state.languages.language,
   user: state.auth.user,
-  status: state.auth.status,
-  languages: state.tours.languages,
   error: state.auth.error,
-  reg_status: state.auth.reg_status
+  status: state.auth.status,
+  confirm: state.auth.confirm,
+  phone_error: state.auth.phone_error,
+  languages: state.tours.languages,
+  reg_status: state.auth.reg_status,
+  request_status: state.auth.confirm_request
 })
 
-export default connect(mapStateToProps, { setPage, update_user, getLanguages, clear_errors, update_avatar, update_local_user })(MyProfile)
+export default connect(mapStateToProps, { 
+  setPage, update_user, getLanguages, update_avatar, update_local_user, email_confirm_request, 
+  delete_avatar, clear_confirm_status, clear_errors, phone_confirm_request, phone_confirm
+})(MyProfile)

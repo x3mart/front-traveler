@@ -141,7 +141,7 @@ export const update_user = data => async dispatch => {
       const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/${current_user}/me/`, body, config)
       const data = {
         data: res.data,
-        status: user,
+        status: current_user,
         reg_status: res.status,
       }
 
@@ -150,6 +150,7 @@ export const update_user = data => async dispatch => {
         payload: data,
       })
     } catch (err) {
+      console.log(err)
       dispatch({
         type: t.USER_UPDATE_FAIL,
         payload: err.response.data,
