@@ -47,7 +47,7 @@ const MyProfile = ({ language, error, reg_status, user, status, setPage, update_
   }
 
   const handleRedirect = () => {
-    history.push(`/${language}/account/requests`)
+    history.push(`/account/requests`)
   }
 
   const handleImageChange = (image) => {

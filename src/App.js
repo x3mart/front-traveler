@@ -87,65 +87,65 @@ const App = () => {
           <YMaps query={{ apikey: '7276fdc3-5ca1-4286-bdd3-76d17cce9e38' }}>
             <Switch>
               {/*<Route exact path='/' component={RouterPages} />*/}
-              <Route exact path='/:language' component={Home} />
-              <Route exact path='/:language/puteshestviia' component={Tours} />
-              <Route exact path='/:language/regiony-mira' component={Regions} />
-              <Route exact path='/:language/napravleniia' component={Destinations} />
-              <Route exact path='/:language/napravleniia/populiarnye-napravleniia' component={Popular} />
-              <Route exact path='/:language/puteshestviia/nedavno-prosmotrennye-tury' component={Recent} />
-              <Route exact path='/:language/puteshestviia/tury-so-skidkami' component={Discount} />
-              <Route exact path='/:language/puteshestviia/populiarnye-tury' component={Rated} />
-              <Route exact path='/:language/puteshestviia/novinki' component={New} />
-              <Route exact path='/:language/puteshestviia/:region/:destination/:slug' component={Tour} />
-              <Route exact path='/:language/puteshestviia/:region/:destination' component={Destination} />
-              <Route exact path='/:language/puteshestviia/:region' component={Region} />
-              <Route exact path='/:language/otzyvy' component={Reviews} />
-              <Route exact path='/:language/articles' component={Blog} />
-              <Route exact path='/:language/article/:slug' component={SingleBlog} />
-              <Route exact path='/:language/tipy-turov' component={Types} />
-              <Route exact path='/:language/tipy-turov/:type' component={Type} />
-              <Route exact path='/:language/faqs' component={Faq} />
-              <Route exact path='/:language/faqs/:category_id/:question_id?' component={SingleFaq} />
-              <Route exact path='/:language/eksperty/populiarnye-eksperty' component={PopularExperts} />
-              <Route exact path='/:language/eksperty/:id' component={Leader} />
-              <Route exact path='/:language/favorite' component={Favorite} />
-              <Route path='/:language/login/:redirect?' component={Login} />
+              <Route exact path='/' component={Home} />
+              <Route exact path='/puteshestviia' component={Tours} />
+              <Route exact path='/regiony-mira' component={Regions} />
+              <Route exact path='/napravleniia' component={Destinations} />
+              <Route exact path='/napravleniia/populiarnye-napravleniia' component={Popular} />
+              <Route exact path='/puteshestviia/nedavno-prosmotrennye-tury' component={Recent} />
+              <Route exact path='/puteshestviia/tury-so-skidkami' component={Discount} />
+              <Route exact path='/puteshestviia/populiarnye-tury' component={Rated} />
+              <Route exact path='/puteshestviia/novinki' component={New} />
+              <Route exact path='/puteshestviia/:region/:destination/:slug' component={Tour} />
+              <Route exact path='/puteshestviia/:region/:destination' component={Destination} />
+              <Route exact path='/puteshestviia/:region' component={Region} />
+              <Route exact path='/otzyvy' component={Reviews} />
+              <Route exact path='/articles' component={Blog} />
+              <Route exact path='/article/:slug' component={SingleBlog} />
+              <Route exact path='/tipy-turov' component={Types} />
+              <Route exact path='/tipy-turov/:type' component={Type} />
+              <Route exact path='/faqs' component={Faq} />
+              <Route exact path='/faqs/:category_id/:question_id?' component={SingleFaq} />
+              <Route exact path='/eksperty/populiarnye-eksperty' component={PopularExperts} />
+              <Route exact path='/eksperty/:id' component={Leader} />
+              <Route exact path='/favorite' component={Favorite} />
+              <Route path='/login/:redirect?' component={Login} />
 
-              <Route exact path='/:language/reset' component={Reset} />
-              <Route exact path='/:language/reset/confirm/:uid/:token' component={ResetConfirm} />
+              <Route exact path='/reset' component={Reset} />
+              <Route exact path='/reset/confirm/:uid/:token' component={ResetConfirm} />
 
-              <Route path='/:language/register' component={Register} />
+              <Route path='/register' component={Register} />
 
-              <Route path='/:language/legal-documents/:slug' component={PrivacyPolicy} />
+              <Route path='/legal-documents/:slug' component={PrivacyPolicy} />
 
-              <Route exact path='/:language/account' component={Dashboard} />
-              <Route exact path='/:language/account/chat' component={Chat} />
-              <Route exact path='/:language/account/support' component={Support} />
-              <Route exact path='/:language/account/profile' component={Profile} />
-              <Route exact path='/:language/account/orders' component={Orders} />
-              <Route exact path='/:language/account/orders/:id/payment' component={Payment} />
-              <Route exact path='/:language/account/orders/:id/success' component={Success} />
-              <Route exact path='/:language/account/settings' component={Settings} />
-              <Route exact path='/:language/account/props' component={Props} />
-              <Route exact path='/:language/account/requests' component={Requests} />
-              <Route exact path='/:language/account/history' component={History} />
-              <Route exact path='/:language/account/team' component={Team} />
-              <Route exact path='/:language/account/team/:id/edit' component={TeamEdit} />
-              <Route exact path='/:language/account/tours/list' component={MyTours} />
+              <Route exact path='/account' component={Dashboard} />
+              <Route exact path='/account/chat' component={Chat} />
+              <Route exact path='/account/support' component={Support} />
+              <Route exact path='/account/profile' component={Profile} />
+              <Route exact path='/account/orders' component={Orders} />
+              <Route exact path='/account/orders/:id/payment' component={Payment} />
+              <Route exact path='/account/orders/:id/success' component={Success} />
+              <Route exact path='/account/settings' component={Settings} />
+              <Route exact path='/account/props' component={Props} />
+              <Route exact path='/account/requests' component={Requests} />
+              <Route exact path='/account/history' component={History} />
+              <Route exact path='/account/team' component={Team} />
+              <Route exact path='/account/team/:id/edit' component={TeamEdit} />
+              <Route exact path='/account/tours/list' component={MyTours} />
 
-              <Route exact path='/:language/account/tours/:id/edit/main' component={Main} />
-              <Route exact path='/:language/account/tours/:id/edit/review' component={Review} />
-              <Route exact path='/:language/account/tours/:id/edit/prices' component={Prices} />
-              <Route exact path='/:language/account/tours/:id/edit/gallery' component={Gallery} />
-              <Route exact path='/:language/account/tours/:id/edit/route' component={TourRoute} />
-              <Route exact path='/:language/account/tours/:id/edit/accommodation' component={Accommodation} />
-              <Route exact path='/:language/account/tours/:id/edit/details' component={Details} />
-              <Route exact path='/:language/account/tours/:id/edit/important' component={Important} />
+              <Route exact path='/account/tours/:id/edit/main' component={Main} />
+              <Route exact path='/account/tours/:id/edit/review' component={Review} />
+              <Route exact path='/account/tours/:id/edit/prices' component={Prices} />
+              <Route exact path='/account/tours/:id/edit/gallery' component={Gallery} />
+              <Route exact path='/account/tours/:id/edit/route' component={TourRoute} />
+              <Route exact path='/account/tours/:id/edit/accommodation' component={Accommodation} />
+              <Route exact path='/account/tours/:id/edit/details' component={Details} />
+              <Route exact path='/account/tours/:id/edit/important' component={Important} />
 
-              <Route exact path='/:language/account/tours/:id/edit/preview' component={TourPage} />
+              <Route exact path='/account/tours/:id/edit/preview' component={TourPage} />
 
-              <Route exact path='/:language/moderation/:id' component={TourModerationPage} />
-              <Route exact path='/:language/activate/:uid/:token' component={EmailActivate} />
+              <Route exact path='/moderation/:id' component={TourModerationPage} />
+              <Route exact path='/activate/:uid/:token' component={EmailActivate} />
               <Route path='*' component={Page404} />
             </Switch>
           </YMaps>

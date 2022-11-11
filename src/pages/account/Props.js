@@ -9,7 +9,7 @@ import { setPage } from '../../redux/actions/authActions'
 const Props = ({ status, setPage, language }) => {
 
   if (status === 'customers') {
-    return <Redirect to={`/${language}/404`}/>
+    return <Redirect to={`/404`}/>
   }
 
   useEffect(() => {

@@ -14,13 +14,13 @@ const Page404 = ({languages, language, match}) => {
     if (match.params[0]) {
       const lang = match.params[0].split('/')[1]
       if (lang && !lang_arr.includes(lang) && !languages.includes(lang)) {
-        history.push(`/${language}${match.params[0]}`)
+        history.push(`/${match.params[0]}`)
       } else if(!lang) {
-        history.push(`/${language}`)
+        history.push(`/`)
       }
     } else if(match.params.language){
       if (!lang_arr.includes(match.params.language) && !languages.includes(match.params.language)) {
-        history.push(`/${language}/${match.params.language}`)
+        history.push(`/${match.params.language}`)
       }
     }
   }, [match])

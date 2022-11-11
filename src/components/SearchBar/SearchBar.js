@@ -47,8 +47,6 @@ const SearchBar = ({
 
   const [searchStr, setSearchStr] = useState('')
 
-  console.log(searchStr)
-
   useEffect(() => {
     if(current_filters?.length > 0){
       setSearchStr(`${current_filters?.length > 0 && current_filters?.map(item => {
@@ -115,6 +113,7 @@ const SearchBar = ({
       resetRegion()
     }
   }
+  console.log(path)
 
   const handleSubmit = () => {
     let filter = ''
@@ -125,7 +124,7 @@ const SearchBar = ({
       // getCurrentFilterSet(filter)
       // getToursByFilters(filter)
     }
-    history.push(`/${language}/${path ? path : 'puteshestviia'}?${filter}`)
+    history.push(`/${path ? path : 'puteshestviia'}?${filter}`)
   }
 
   return (

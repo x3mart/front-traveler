@@ -56,7 +56,7 @@ const Register = ({ language, signUp, error, reg_status, clear_errors }) => {
     signUp(status, data)
   }
   const handleRedirect = () => {
-    history.push(`/${language}/login`)
+    history.push(`/login`)
   }
 
   return (
@@ -67,7 +67,7 @@ const Register = ({ language, signUp, error, reg_status, clear_errors }) => {
         <Section padding={'0px'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>
@@ -84,7 +84,7 @@ const Register = ({ language, signUp, error, reg_status, clear_errors }) => {
                 <div className='info_block_text_login'>
                   <div className='info_block_text_left'>Регистрация</div>
                   <div className='info_block_text_right'>
-                    <Link to={`/${language}/login`}>Войти на сайт</Link>
+                    <Link to={`/login`}>Войти на сайт</Link>
                   </div>
                 </div>
 
@@ -152,11 +152,11 @@ const Register = ({ language, signUp, error, reg_status, clear_errors }) => {
 
                     <div className='social_links_block_info social_links_block_info_registration'>
                       Отправляя форму вы соглашаетесь с{' '}
-                      <Link to={`/${language}/legal-documents/oferta-dlia-avtora-tura`}>
+                      <Link to={`/legal-documents/oferta-dlia-avtora-tura`}>
                         условиями публичной оферты
                       </Link>{' '}
                       и выражаете свое согласие на обработку{' '}
-                      <Link to={`/${language}/legal-documents/politika-konfidentsialnosti`}>
+                      <Link to={`/legal-documents/politika-konfidentsialnosti`}>
                         персональных данных
                       </Link>
                       .

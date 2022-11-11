@@ -104,7 +104,7 @@ const MyTours = ({
   useEffect(() => {
     if (isNotEmptyObject(tour) && edit) {
       setEdit(false)
-      history.push(`/${language}/account/tours/${tour.id}/edit/main`)
+      history.push(`/account/tours/${tour.id}/edit/main`)
     }
   }, [tour])
 
@@ -117,7 +117,7 @@ const MyTours = ({
   }, [tour])
 
   if (!isAuthenticated) {
-    return <Redirect to={`/${language}/login`}/>
+    return <Redirect to={`/login`}/>
   }
 
   const handleEditingButton = () => {
@@ -126,7 +126,7 @@ const MyTours = ({
   }
 
   const handlePaginate = n => {
-    history.push(`/${language}/account/tours/list?${current ? `filter=${current}` : ``}${current ? `&` : ``}page=${n}`)
+    history.push(`/account/tours/list?${current ? `filter=${current}` : ``}${current ? `&` : ``}page=${n}`)
   }
 
   return (

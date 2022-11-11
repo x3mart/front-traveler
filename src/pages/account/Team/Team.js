@@ -52,7 +52,7 @@ const Team = ({language, user, status, addTeamMember, members, member, clearTeam
 
     try {
       const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/teammembers/`, body, config)
-      history.push(`/${language}/account/team/${res.data.id}/edit`)
+      history.push(`/account/team/${res.data.id}/edit`)
 
     } catch (err) {
      console.error(err)

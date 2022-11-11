@@ -44,7 +44,7 @@ const TeamCard = ({
   }
 
   const handleMemberEdit = () => {
-    history.push(`${language}/account/team/${member.id}/edit`)
+    history.push(`/account/team/${member.id}/edit`)
   }
 
   const handleMenu = () => {

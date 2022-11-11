@@ -10,10 +10,14 @@ import Page404 from "./404";
 const HomeHandler = ({match, languages}) => {
 
   const {language} = match.params
-
+  console.log(match)
+  console.log(languages)
+  console.log(language)
+  console.log(languages.includes(language))
   return (
     <>
-      {languages.includes(language) ? <Home/> : <Page404 match={match}/>}
+      <Home/>
+      {/* {languages.includes(language) ? <Home/> : <Page404 match={match}/>} */}
     </>
   )
 }

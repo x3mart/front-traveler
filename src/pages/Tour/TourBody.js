@@ -63,9 +63,9 @@ const TourBody = ({
   const handleExpertChat = () => {
     if (isAuthenticated) {
       add_chat_room(tour_preview.expert.id)
-      history.push(`/${language}/account/chat`)
+      history.push(`/account/chat`)
     } else {
-      history.push(`/${language}/login/chat`)
+      history.push(`/login/chat`)
     }
   }
 
@@ -77,13 +77,13 @@ const TourBody = ({
       try {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/orders/`, body, config)
         if (res) {
-          history.push(`/${language}/account/orders/${res.data.id}/payment`)
+          history.push(`/account/orders/${res.data.id}/payment`)
         }
       } catch (err) {
         console.error(err)
       }
     } else {
-      history.push(`/${language}/login/chat`)
+      history.push(`/login/chat`)
     }
   }
 
@@ -147,22 +147,22 @@ const TourBody = ({
               <div className={styles.tour_body}>
                 <Breadcrumbs>
                   <Breadcrumb
-                    link={`/${language}`}
+                    link={`/`}
                   >
                     Главная
                   </Breadcrumb>
                   <Breadcrumb
-                    link={`/${language}/puteshestviia`}
+                    link={`/puteshestviia`}
                   >
                     Путешествия
                   </Breadcrumb>
                   {tour_preview.start_region_slug && <Breadcrumb
-                    link={`/${language}/puteshestviia/${tour_preview.start_region_slug}`}
+                    link={`/puteshestviia/${tour_preview.start_region_slug}`}
                   >
                     {tour_preview.start_region}
                   </Breadcrumb>}
                   {tour_preview.start_destination_slug && <Breadcrumb
-                    link={`/${language}/puteshestviia/${tour_preview.start_region_slug}/${tour_preview.start_destination_slug}`}
+                    link={`/puteshestviia/${tour_preview.start_region_slug}/${tour_preview.start_destination_slug}`}
                   >
                     {tour_preview.start_destination}
                   </Breadcrumb>}

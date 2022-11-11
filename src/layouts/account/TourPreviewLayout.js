@@ -61,7 +61,7 @@ const TourPreviewLayout = ({
   const [onErrorPopUp, setOnErrorPopUp] = useState(false)
 
   if (!isAuthenticated) {
-    return <Redirect to={`/${language}/login`}/>
+    return <Redirect to={`/login`}/>
   }
 
   // useEffect(() => {
@@ -84,13 +84,13 @@ const TourPreviewLayout = ({
   }, [tour])
 
   const handleTourCopy = () => {
-    history.push(`/${language}/account/tours/list`)
+    history.push(`/account/tours/list`)
   }
 
   const handleTourDelete = async () => {
     setActivePopUp(false)
     await deleteTour(tour.id)
-      .then(() => history.push(`/${language}/account/tours/list`))
+      .then(() => history.push(`/account/tours/list`))
   }
 
   const handleTourEdit = () => {
@@ -98,7 +98,7 @@ const TourPreviewLayout = ({
     // if (!preview) {
       tourToServerUpdate(tour, tour.id)
       setPage(history.location)
-      history.push(`/${language}/account/tours/${tour.id}/edit/main`)
+      history.push(`/account/tours/${tour.id}/edit/main`)
     //} } else {
     //   history.push(`/${language}/${page}`)
     //   setPage('')
@@ -128,7 +128,7 @@ const TourPreviewLayout = ({
 
     try {
       await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${tour.id}/`, body, config)
-        .then(() => history.push(`/${language}/account/tours/list`))
+        .then(() => history.push(`/account/tours/list`))
         .then(() => clearCurrentTour())
 
     } catch (err) {
@@ -149,7 +149,7 @@ const TourPreviewLayout = ({
 
   const handleSave = async () => {
     await tourToServerUpdate(tour, tour.id)
-      .then(() => history.push(`/${language}/account/tours/list`))
+      .then(() => history.push(`/account/tours/list`))
       .then(() => clearCurrentTour())
   }
 
@@ -179,8 +179,8 @@ const TourPreviewLayout = ({
         <section>
           <div className='wrapper'>
             <div className='breadcrumbs breadcrumbs_margin'>
-              <span><Link to={`/${language}`}>Главная</Link></span> - <span><Link
-              to={`/${language}/account`}>Личный кабинет</Link></span> - <span>Просмотр тура</span>
+              <span><Link to={`/`}>Главная</Link></span> - <span><Link
+              to={`/account`}>Личный кабинет</Link></span> - <span>Просмотр тура</span>
             </div>
           </div>
         </section>

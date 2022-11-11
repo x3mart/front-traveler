@@ -25,7 +25,7 @@ const OrderSuccess = ({
 
   useEffect(() => {
     get_single_order(match.params.id)
-    const timer = setTimeout(() => history.push(`/${language}/account/orders`), 3000)
+    const timer = setTimeout(() => history.push(`/account/orders`), 3000)
     return () => {
       clear_single_order()
       clearTimeout(timer)
@@ -61,7 +61,7 @@ const OrderSuccess = ({
             <div className={styles.success_page_title}>
               Транзакция успешно завершена
             </div>
-            <Link to={`/${language}/account/orders`} className={styles.success_page_button}>
+            <Link to={`/account/orders`} className={styles.success_page_button}>
               Перейти в заказы
             </Link>
           </div>

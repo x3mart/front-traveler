@@ -79,7 +79,7 @@ const Blog = ({
         <Section padding={'0px'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>

@@ -49,7 +49,7 @@ const PasswordResetConfirm = ({ language, match, reset_password_confirm }) => {
       timeout = setTimeout(() => {
         if(activePopUp){
           setActivePopUp(false)
-          history.push(`/${language}/login`)
+          history.push(`/login`)
         }
       }, 2000)
     }

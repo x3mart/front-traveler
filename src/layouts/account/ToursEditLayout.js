@@ -57,7 +57,7 @@ const ToursEditLayout = ({
   const [errorMessage, setErrorMessage] = useState('')
 
   if (!isAuthenticated) {
-    return <Redirect to={`/${language}/login`}/>
+    return <Redirect to={`/login`}/>
   }
 
 
@@ -75,21 +75,21 @@ const ToursEditLayout = ({
   }, [tour])
 
   const handleTourCopy = () => {
-    history.push(`/${language}/account/tours/list`)
+    history.push(`/account/tours/list`)
   }
 
   const handleTourDelete = async () => {
     await deleteTour(tour.id)
-      .then(() => history.push(`/${language}/account/tours/list`))
+      .then(() => history.push(`/account/tours/list`))
   }
 
   const handleTourPreview = () => {
     if (!preview) {
       tourToServerUpdate(tour, tour.id)
       setPage(history.location)
-      history.push(`/${language}/account/tours/${tour_id}/edit/preview`)
+      history.push(`/account/tours/${tour_id}/edit/preview`)
     } else {
-      history.push(`/${language}${page}`)
+      history.push(`/${page}`)
       setPage('')
     }
   }
@@ -112,7 +112,7 @@ const ToursEditLayout = ({
 
     try {
       await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${tour_id}/`, body, config)
-        .then(() => history.push(`/${language}/account/tours/list`))
+        .then(() => history.push(`/account/tours/list`))
         .then(() => clearCurrentTour())
 
     } catch (err) {
@@ -158,7 +158,7 @@ const ToursEditLayout = ({
   }
 
   const handleRedirectToMenu = () => {
-    history.push(`/${language}/account/tours/list`)
+    history.push(`/account/tours/list`)
     clearCurrentTour()
   }
 
@@ -200,17 +200,17 @@ const ToursEditLayout = ({
           />}
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>
             <Breadcrumb
-              link={`/${language}/account`}
+              link={`/account`}
             >
               Личный кабинет
             </Breadcrumb>
             {secondary_name !== 'Основное' && <Breadcrumb
-              link={`/${language}/account/tours/${tour_id}/edit/main`}
+              link={`/account/tours/${tour_id}/edit/main`}
             >
               Редактирование тура
             </Breadcrumb>}

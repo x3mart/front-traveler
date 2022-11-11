@@ -54,7 +54,7 @@ const Tours = ({language, location, all_tours, getToursByFilters, tours_page_dat
           <div className='breadcrumbs breadcrumbs_margin'>
             <Breadcrumbs>
               <Breadcrumb
-                link={`/${language}`}
+                link={`/`}
               >
                 Главная
               </Breadcrumb>

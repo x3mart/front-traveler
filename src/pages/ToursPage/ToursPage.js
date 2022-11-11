@@ -141,7 +141,7 @@ const ToursPage = ({
         <Section>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>

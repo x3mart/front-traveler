@@ -10,7 +10,7 @@ const Logo = ({ text_color, language }) => {
     text_color === 'white' ? setLogoStyle(LogoWhite) : setLogoStyle(Logo2)
   }, [text_color])
   return (
-    <Link to={`/${language}`} className='header_logo_block'>
+    <Link to={`/`} className='header_logo_block'>
         <div className='header_logo_block_main_icon'>
           <img src={Logo1} alt='logo' />
         </div>

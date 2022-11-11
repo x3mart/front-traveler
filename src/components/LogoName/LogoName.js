@@ -16,7 +16,7 @@ const LogoName = ({ color, children, href, className, ...props }) => {
       {...props}
     >
       {href ? <a href={href}>{children}</a> : <>{children}</>}
-      <Link to={`/${language}`}>
+      <Link to={`/`}>
         <LogoNameIcon />
       </Link>
     </div>

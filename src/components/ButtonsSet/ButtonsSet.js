@@ -89,12 +89,12 @@ const ButtonsSet = ({
 
   const handleSubmitAll = () => {
     // getCurrentFilterSet(pageParamsStr)
-    history.push(`/${language}/${path}?${searchStr}`)
+    history.push(`/${path}?${searchStr}`)
   }
 
   const handleResetAll = async () => {
     await resetAllFilters()
-    history.push(`/${language}/${path}`)
+    history.push(`/${path}`)
     history.go(0)
   }
 

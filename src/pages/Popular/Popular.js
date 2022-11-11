@@ -96,11 +96,11 @@ const Popular = ({language, location, popular_destinations, getPopularDestinatio
         <Section padding={'0px'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={`/`}
             >
               Главная
             </Breadcrumb>
-            <Breadcrumb link={`/${language}/napravleniia`}>
+            <Breadcrumb link={`/napravleniia`}>
               Направления
             </Breadcrumb>
             <Breadcrumb>

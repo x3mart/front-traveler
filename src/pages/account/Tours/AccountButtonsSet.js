@@ -12,9 +12,9 @@ const AccountButtonsSet = ({filterset, current, language, getExpertToursFilterse
 
   const handleActive = (n) => {
     if(n) {
-      history.push(`/${language}/account/tours/list?filter=${n}`)
+      history.push(`/account/tours/list?filter=${n}`)
     } else {
-      history.push(`/${language}/account/tours/list`)
+      history.push(`/account/tours/list`)
     }
   }
 

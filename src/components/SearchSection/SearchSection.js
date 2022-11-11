@@ -26,7 +26,7 @@ const SearchSection = ({
 
   const handleSubmitAll = () => {
     // getCurrentFilterSet(pageParamsStr)
-    history.push(`/${language}/${path}?${searchStr}`)
+    history.push(`/${path}?${searchStr}`)
   }
 
   return (
