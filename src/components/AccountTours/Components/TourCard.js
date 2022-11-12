@@ -47,6 +47,7 @@ const TourCard = ({
 
   const [active, setActive] = useState(false)
   const [activePopUp, setActivePopUp] = useState(false)
+  const [activeItem, setActiveItem] = useState(null)
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside)
@@ -132,13 +133,19 @@ const TourCard = ({
           { tour.private_statuses.name !== 'archive' &&
               <div
                 className='tour-item-top'
-                style={{
-                  padding: 10,
-                  borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
+                style={activeItem === "edit"?
+                {backgroundColor: '#84BB59',
+                color: '#fff',
+                padding: 10,
+                lineHeight: '15px',
+                textAlign: 'right',
+                cursor: 'pointer'} :
+                {padding: 10,
                   lineHeight: '15px',
                   textAlign: 'right',
-                  cursor: 'pointer',
-                }}
+                  cursor: 'pointer'}}
+                onMouseEnter={() => setActiveItem("edit")}
+                onMouseOut={() => setActiveItem(null)}
                 onClick={tour?.private_statuses?.name !== 'archive' ? handleTourEdit : handleTourPreview}
               >
                 Редактировать
@@ -146,23 +153,44 @@ const TourCard = ({
             }
             <div
               className='tour-item-top'
-              style={{
-                padding: 10,
-                borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
+              style={activeItem === "copy"?
+              {backgroundColor: '#84BB59',
+              color: '#fff',
+              padding: 10,
+              lineHeight: '15px',
+              textAlign: 'right',
+              cursor: 'pointer'} :
+              {padding: 10,
                 lineHeight: '15px',
-                textAlign: 'right'
-              }}
+                textAlign: 'right',
+                cursor: 'pointer'}}
+              onMouseEnter={() => setActiveItem("copy")}
+              onMouseOut={() => setActiveItem(null)}
             >
-              <Modal tour_id={tour.id} button_name='Копировать' action={() => setActive(false)}/>
+              <Modal
+                onMouseSet={setActiveItem}
+                tour_id={tour.id} 
+                button_name='Копировать' 
+                action={() => setActive(false)}/>
+
             </div>
             <div
               className='tour-item-bottom'
-              style={{
+              style={
+                activeItem === "delete"?
+                {backgroundColor: '#84BB59',
+                color: '#fff',
                 padding: 10,
                 lineHeight: '15px',
                 textAlign: 'right',
-                cursor: 'pointer',
-              }}
+                cursor: 'pointer'} :
+                {padding: 10,
+                  lineHeight: '15px',
+                  textAlign: 'right',
+                  cursor: 'pointer'}
+              }
+              onMouseEnter={() => setActiveItem("delete")}
+              onMouseOut={() => setActiveItem(null)}
               onClick={() => setActivePopUp(true)}
             >
               Удалить

@@ -12,6 +12,7 @@ import {
 import Input from "../FormFields/Input";
 import SelectInput from "../FormFields/SelectInput";
 import Button from "./Button";
+import { CodeSandboxSquareFilled } from '@ant-design/icons'
 
 
 const Modal = ({
@@ -20,12 +21,14 @@ const Modal = ({
                  tour_id,
                  button_name,
                  action,
+                 onMouseSet
                }) => {
 
 
   const [active, setActive] = useState(false)
   const [date, setDate] = useState('')
   const [dataType, setDataType] = useState('')
+  const [mouseOn, setMouseOn] = useState(null)
 
   const handleSubmit = () => {
     const date_obj = {start_date: date}
@@ -48,12 +51,19 @@ const Modal = ({
   const handleInput = (name, value) => {
     setDate(value)
   }
-
   return (
     <>
-      <div onClick={handleOpen} style={{
-        cursor: 'pointer',
-      }}>
+      <div onClick={handleOpen} style={
+      //   mouseOn==="copy"?{
+      //   cursor: 'pointer',
+      //   backgroundColor: '#84BB59',
+      //   color: '#fff',
+      // }:
+      {
+        cursor: 'pointer'
+      }}                
+      onMouseEnter={() => onMouseSet("copy")}
+      onMouseOut={() => onMouseSet(null)}>
         {button_name}
       </div>
 
