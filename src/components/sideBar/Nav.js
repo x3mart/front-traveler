@@ -27,10 +27,10 @@ const Nav = ({ status, menu_item, secondary_item, tour_id }) => {
       name: 'orders',
       title: 'Заказы',
     },
-    {
-      name: 'settings',
-      title: 'Настройка',
-    },
+    // {
+    //   name: 'settings',
+    //   title: 'Настройка',
+    // },
     {
       name: 'props',
       title: 'Реквизиты',

@@ -433,9 +433,9 @@ const mapStateToProps = state => ({
   status: state.auth.status,
   confirm: state.auth.confirm,
   phone_error: state.auth.phone_error,
-  request_status: state.auth.confirm_request,
   languages: state.tours.languages,
-  reg_status: state.auth.reg_status
+  reg_status: state.auth.reg_status,
+  request_status: state.auth.confirm_request,
 })
 
 export default connect(mapStateToProps, {

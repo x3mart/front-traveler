@@ -1683,7 +1683,7 @@ a.paragraph_content_underline {
   height: 465px;
   left: 165px;
   top: 1347px;
-
+  margin-bottom: 30px;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
@@ -1924,7 +1924,7 @@ a.paragraph_content_underline {
 .button_expierense {
   width: 330px;
   height: 60px;
-
+  cursor: pointer;
   background: #2aa2d6;
   border-radius: 8px;
   font-style: normal;

@@ -1,10 +1,10 @@
 import React from 'react'
 
-const SingleWrapper = ({children, label, comment, margin='0 30px 0 0', full, width, padding, name, tour, margin_bottom = '20px'}) => {
+const SingleWrapper = ({children, label, comment, margin='0 30px 0 0', full, width, padding, name, tour, margin_bottom = '20px', margin_bottom_label = '0px'}) => {
 
   return (
     <>
-      <div className='single-input-label'>{`${label} ${tour && tour.required_fields && tour.required_fields.includes(name) ? '*' : ''}`}</div>
+      <div className='single-input-label' style={{marginBottom: margin_bottom_label}}>{`${label} ${tour && tour.required_fields && tour.required_fields.includes(name) ? '*' : ''}`}</div>
       <div className='tour-input-wrapper' style={{marginBottom: margin_bottom}}>
         <div className={`single-input-input ${full ? 'full' : ''}`} style={{margin: margin, width: width, padding: padding}}>
           {children}

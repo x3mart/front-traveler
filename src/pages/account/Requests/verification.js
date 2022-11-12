@@ -224,6 +224,17 @@ const Verification = ({
           </RadioGroup>
         </FormControl>
       </div>
+      {verifications?.license === 'yes' && (<>        
+      <SingleWrapper label='Реестровый номер' width={'100%'} margin={'0'}>
+        <Input
+          error={error}
+          label={'Реестровый номер'}
+          action={handleChange}
+          name='lisence_number'
+          value={verifications?.lisence_number}
+        />
+      </SingleWrapper>
+      </>)}
       <div className="team-subtitle">
         Вы уже проводили туры на коммерческой основе?
       </div>
