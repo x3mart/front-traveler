@@ -189,12 +189,6 @@ const Requests = ({
 
     }
 
-
-
-
-
-
-
     // if (active === 1) {
     //   updateVerificationData(user.id, user.individual_verification)
     // } else if (active === 2) {
