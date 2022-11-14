@@ -53,13 +53,7 @@ const Modal = ({
   }
   return (
     <>
-      <div onClick={handleOpen} style={
-      //   mouseOn==="copy"?{
-      //   cursor: 'pointer',
-      //   backgroundColor: '#84BB59',
-      //   color: '#fff',
-      // }:
-      {
+      <div onClick={handleOpen} style={{
         cursor: 'pointer'
       }}                
       onMouseEnter={() => onMouseSet("copy")}

@@ -65,6 +65,7 @@ const MyProfile = ({
   const [activePopUp, setActivePopUp] = useState(false)
   const [action, setAction] = useState(false)
   const [profile, setProfile] = useState({})
+  const [pass, setPass] = useState({})
   const [activePhonePopUp, setActivePhonePopUp] = useState(false)
   const [requestActive, setRequestActive] = useState(false)
   const [err, setErr] = useState(null)
@@ -107,7 +108,6 @@ const MyProfile = ({
     if (user) {
       setProfile({
         ...profile,
-        video: user.video,
         first_name: user.first_name,
         last_name: user.last_name,
         phone: user.phone,
@@ -117,6 +117,7 @@ const MyProfile = ({
         old_email: user.email,
         phone_confirmed: user.phone_confirmed,
         email_confirmed: user.email_confirmed,
+        avatar:user.avatar
       })
       setPhoneConfirmed(user.phone_confirmed)
     }
@@ -139,9 +140,16 @@ const MyProfile = ({
   // }
 
   const handleChange = (name, value) => {
-    update_local_user({
-      ...user,
-      [name]: value,
+    console.log(name)
+    console.log(value)
+    setProfile({
+      ...profile, [name]: value,
+    })
+  }
+  const handleChangePass = (name,value) =>{
+    setPass({
+      ...pass,
+      [name]:value
     })
   }
 
@@ -158,7 +166,15 @@ const MyProfile = ({
   const handleSubmit = () => {
     setSubmitted(true)
     update_user({
-      ...user,
+      ...profile,
+    })
+  }
+
+  const handleSubmitPass = () => {
+    setSubmitted(true)
+    update_user({
+      password:pass.password,
+      re_password:pass.re_password
     })
   }
   
@@ -258,7 +274,7 @@ const MyProfile = ({
       </>
     )
   }
-
+  
   return (
     <Account title='Мой профиль' menu_item='profile'>
       <>      
@@ -313,7 +329,7 @@ const MyProfile = ({
                 max={1}
                 action={handleImageChange}
                 name='avatar'
-                value={user && user.avatar}
+                value={profile.avatar}
                 type='file'
               />
               {status === 'experts' && <div className="user-profile-aside-text">
@@ -364,13 +380,13 @@ const MyProfile = ({
                   label={'Имя'}
                   action={handleChange}
                   name='first_name'
-                  value={user && user.first_name}
+                  value={profile.first_name}
                 />
                 <Input
                   label={'Фамилия'}
                   action={handleChange}
                   name='last_name'
-                  value={user && user.last_name}
+                  value={profile.last_name}
                 />
               </DoubleWrapper>
               {/*<SingleWrapper label='Страна' width={'100%'} margin={'0'}>*/}
@@ -395,7 +411,7 @@ const MyProfile = ({
                   label='Языки, которыми вы владеете'
                   action={handleChange}
                   options={languages}
-                  val={user && user.languages}
+                  val={profile.languages}
                   multiple={true}
                 />
               </SingleWrapper>}
@@ -405,7 +421,7 @@ const MyProfile = ({
                   label={'Email'}
                   action={handleChange}
                   name='email'
-                  value={user && user.email}
+                  value={profile.email}
                   error={error}
                 />
               </SingleWrapper>}
@@ -424,7 +440,7 @@ const MyProfile = ({
               name='about'
               label='Расскажите о себе'
               rows='7'
-              value={user && user.about}
+              value={profile.about}
               action={handleChange}
             />
           </SingleWrapper>
@@ -444,24 +460,24 @@ const MyProfile = ({
             <Input
               type='password'
               label={'Новый пароль'}
-              action={handleChange}
+              action={handleChangePass}
               name='password'
-              value={profile.password}
+              value={pass.password}
               error={error}
             />
             <Input
               type='password'
               label={'Подтверждение пароля'}
-              action={handleChange}
+              action={handleChangePass}
               name='re_password'
-              value={profile.re_password}
+              value={pass.re_password}
               error={error}
             />
           </DoubleWrapper>
 
           <Button
             text='Изменить пароль'
-            action={handleSubmit}
+            action={handleSubmitPass}
           />
         </main>
         {/*{status === 'customers' && <div>Страница профиля клиента</div>}*/}
