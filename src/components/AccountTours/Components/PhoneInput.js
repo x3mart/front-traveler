@@ -80,6 +80,10 @@ const PhoneInput = ({
     setData(e.target.value)
     action(name, e.target.value)
   }
+  
+  const setPhoneCode = (value) => {
+    action('phone_code', value)
+  }
 
   const RegionSelectModal = () => {
     return (
@@ -95,6 +99,7 @@ const PhoneInput = ({
                     setRegionCode(item.code)
                     setData('')
                     setActiveModal(false)
+                    setPhoneCode(item.code)
                   }}>
                     <div className="region-select-modal-body-element-name">
                       {item.native_name}
