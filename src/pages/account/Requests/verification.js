@@ -127,6 +127,7 @@ const Verification = ({
           action={handleChange}
           name='passport_last_name'
           value={verifications?.passport_last_name}
+          error={error}
         />
       </SingleWrapper>
       <DoubleWrapper full={true} margin={0}>
@@ -135,12 +136,14 @@ const Verification = ({
           action={handleChange}
           name='passport_first_name'
           value={verifications?.passport_first_name}
+          error={error}
         />
         <Input
           label={'Отчество'}
           action={handleChange}
           name='passport_patronymic'
           value={verifications?.passport_patronymic}
+          error={error}
         />
       </DoubleWrapper>
       <DoubleWrapper full={true} margin={0}>

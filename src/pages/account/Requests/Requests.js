@@ -13,7 +13,7 @@ import {
   update_local_user, setPage, getRecipientInnData, resetRecipientInnData, updateLegalVerificationData,
   updateVerificationData, clear_verification_status, update_user, load_user, clear_errors,
 } from "../../../redux/actions/authActions";
-import {getCountries} from "../../../redux/actions/toursActions";
+import {getCountries, setKey} from "../../../redux/actions/toursActions";
 import PopUp from "../../../components/PopUp/PopUp";
 import Verification from "./verification";
 import axios from "axios";
@@ -59,25 +59,6 @@ const BpCheckedIcon = styled(BpIcon)({
   },
 });
 
-// Inspired by blueprintjs
-function BpRadio(props) {
-  return (<Radio
-      sx={{
-        '&:hover': {
-          bgcolor: 'transparent',
-        }, '&.MuiRadio-root': {
-          paddingRight: '20px', marginLeft: '8px',
-        },
-      }}
-      disableRipple
-      color="default"
-      checkedIcon={<BpCheckedIcon/>}
-      icon={<BpIcon/>}
-      {...props}
-    />);
-}
-
-
 const Requests = ({
                     language,
                     user,
@@ -91,7 +72,7 @@ const Requests = ({
                     clear_verification_status,
                     load_user,
                     clear_errors,
-                    update_user,
+                    update_user
                   }) => {
 
   if(!user) {
@@ -102,30 +83,6 @@ const Requests = ({
   const [activePopUp, setActivePopUp] = useState(false)
   const [activeErrorPopUp, setActiveErrorPopUp] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
-
-  // const Card = ({title, subtitle, list, id, available}) => (
-  //   <div className={`card-body ${active === id ? 'active' : ''}`}>
-  //     <div className="card-data">
-  //       <div className="card-title">
-  //         {title}
-  //       </div>
-  //       <div className="card-subtitle">
-  //         {subtitle}
-  //       </div>
-  //       <div className="card-list">
-  //         <ul>
-  //           {list.map((item, index) => <li key={index}>{item}</li>)}
-  //         </ul>
-  //       </div>
-  //     </div>
-  //     <Button text={`${active === id ? 'Выбрано' : 'Выбрать'}`} width={'100%'}
-  //             color={`${active === id ? 'button-success' : 'button-primary'}`} active={available}
-  //             action={() => {
-  //               clear_errors()
-  //               setActive(id)
-  //             }}/>
-  //   </div>)
-
 
   if (status === 'customers') {
     return <Redirect to={`/404`}/>
@@ -175,6 +132,7 @@ const Requests = ({
 
       updateVerificationData(result)
     } catch (err) {
+      console.log(err)
       const errStatus = err.response.status
       const errData = err.response.data
       if(errData?.message) {
@@ -186,15 +144,8 @@ const Requests = ({
       errStatus >= 400 && errStatus < 500 ? setKey(Object.keys(errData)[0]) : setActivePopUp(true)
       const result = err.response.data
       updateVerificationData(result)
-
     }
 
-    // if (active === 1) {
-    //   updateVerificationData(user.id, user.individual_verification)
-    // } else if (active === 2) {
-    //   update_user(user)
-    //   updateLegalVerificationData(user.id, user.legal_verification)
-    // }
   }
 
   useEffect(() => {
@@ -219,7 +170,6 @@ const Requests = ({
             <div className='global-h2-heading'>
               <h2>Запросы на проверку</h2>
             </div>
-
 
             {/*<div className="team-subtitle">*/}
             {/*  Вы оказываете услуги как:*/}
