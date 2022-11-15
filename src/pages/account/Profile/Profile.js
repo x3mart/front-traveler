@@ -30,6 +30,7 @@ import {isNotEmptyObject, setConfig} from "../../../functions";
 import axios from "axios";
 import AvatarInput from "../../../components/AccountTours/FormFields/AvatarInput";
 import PhoneInput from '../../../components/AccountTours/Components/PhoneInput';
+import styles from "../../../components/PopUp/PopUp.module.css";
 import cross from '../../../assets/img/x.svg'
 
 const MyProfile = ({ 
@@ -140,8 +141,6 @@ const MyProfile = ({
   // }
 
   const handleChange = (name, value) => {
-    console.log(name)
-    console.log(value)
     setProfile({
       ...profile, [name]: value,
     })
@@ -192,7 +191,7 @@ const MyProfile = ({
   const handlePhoneConfirm = async() => {
     const config = setConfig(!!localStorage.getItem('access'))
 
-    const body = JSON.stringify({phone: profile.phone})
+    const body = JSON.stringify({phone: profile.phone, phone_code:profile.phone_code})
 
     try {
       await axios.patch(
@@ -274,7 +273,7 @@ const MyProfile = ({
       </>
     )
   }
-  
+
   return (
     <Account title='Мой профиль' menu_item='profile'>
       <>      
