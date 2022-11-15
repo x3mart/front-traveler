@@ -91,6 +91,10 @@ const Props = ({update_local_user, user, status, updateCardData, updateTransacti
   const handleCardChange = id => {
     if(empty) {
       setActive(id)
+      update_local_user({
+        ...user,
+        preferred_payment_method: id
+      })
     } else {
       setChangeCardPopUp(true)
     }
