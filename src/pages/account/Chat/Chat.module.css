@@ -9,6 +9,7 @@
 .chat_contacts {
     min-width: 255px;
     border-right: 1px solid #EBEBEB;
+    overflow-y: scroll;
 }
 
 .chat_contact_card {
