@@ -38,7 +38,7 @@ const NavItem = ({
           name === active && secondary_nav && secondary && 'with-submenu'
         }`}
       >
-        <Link to={`/${name === 'account' ?  + name : 'account/' + name}`}>
+        <Link to={`/${name === 'account' ? '' + name : 'account/' + name}`}>
           <div
             className={`account-sidebar-menu-icon ${
               name === active ? 'active' : ''
