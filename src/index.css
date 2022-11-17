@@ -1550,7 +1550,7 @@ a.paragraph_content_underline {
 
 .stock_block {
   width: 255px;
-  height: 564px;
+  height: 460px;
   padding: 20px;
   background: linear-gradient(
     0deg,
@@ -1692,7 +1692,7 @@ a.paragraph_content_underline {
 
 .social_block_head {
   width: 255px;
-  height: 240px;
+  height: 200px;
 
   background: #f6f7f9;
   border: 1px solid rgba(0, 0, 0, 0.1);
