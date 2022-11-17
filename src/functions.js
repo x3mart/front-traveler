@@ -182,7 +182,6 @@ export const parseQs = querystring => {
 }
 
 export const setConfig = (auth) => {
-  console.log(auth)
   if(auth) {
     return {
       headers: {

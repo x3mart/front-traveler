@@ -138,8 +138,7 @@ const MyTours = ({
           </div>
           <div className='tours-list-add-button-wrapper'>
             <div className='tours-list-add-button-text'>
-              Вам доступно безлимитное добавление туров и путешествий, более 2
-              000 000 человек ждут их.
+              Разместите свои уникальные путешествия, более 2 000 000 человек ждут их.
             </div>
             <div className='tours-list-add-button-button green' onClick={handleEditingButton}>
               <div>

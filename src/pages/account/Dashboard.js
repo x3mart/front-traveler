@@ -7,7 +7,7 @@ import {
   CheckCircleFilled,
 } from '@ant-design/icons'
 
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 import Exit from '../../assets/img/get_out.svg'
 import Close from '../../assets/img/close.svg'
@@ -106,7 +106,7 @@ const Dashboard = ({ status, user, logout, setPage, getDashboard, dashboard }) =
   const handleButton = ()=>{
     history.push(`/faqs`)
   }
-
+console.log(dashboard)
   const PlatesSection = () => (
     <div className='plates-section'>
       <ul className='plates-wrapper'>
@@ -182,7 +182,7 @@ const Dashboard = ({ status, user, logout, setPage, getDashboard, dashboard }) =
           <div className='blocks-title'>
             Остались вопросы? Напишите в чат-поддержки
           </div>
-          <div className='blocks-text'>Написать в чат</div>
+          <Link to={'/account/support'} className='blocks-text'>Написать в чат</Link>
         </li>
       </ul>
     </div>
@@ -217,9 +217,8 @@ const Dashboard = ({ status, user, logout, setPage, getDashboard, dashboard }) =
                 <CloseOutlined />
                 <h3>Начало работы на Traveler.market</h3>
                 <h4>
-                  Прочитайте статьи по работе с сервисом и узнайте, как
-                  YouTravel.me может помочь вам собирать полные группы на каждое
-                  путешествие.
+                  Здесь вы можете узнать, как Traveler Market может 
+                  помочь вам собирать полные группы на каждое путешествие.
                 </h4>
                 <div className='button_expierense' onClick={handleButton}>Перейти в базу знаний</div>
               </div>
