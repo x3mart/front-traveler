@@ -19,7 +19,7 @@ import TourIncluded from "../../components/TourPageComponents/TourIncluded/TourI
 import AirTickets from "../../components/TourPageComponents/TourRoute/AirTickets";
 import TourLeader from "../../components/TourPageComponents/TourLeader/TourLeader";
 import TourImportantToKnow from "../../components/TourPageComponents/TourImportantToKnow";
-import {Link, useHistory} from "react-router-dom";
+import {Link, useHistory, useLocation} from "react-router-dom";
 import ok from "../../assets/img/ok2.svg";
 import heart from "../../assets/img/heart.svg";
 import stopwatch from "../../assets/img/stopwatch.svg";
@@ -51,11 +51,15 @@ const TourBody = ({
   }
 
   const history = useHistory()
+  const curLocation = useLocation()
 
   const [places, setPlaces] = useState(1)
 
   const handleDateChange = (name, value) => {
-    history.push(`${url}?date_id=${value.id}`)
+		const dateId = new URLSearchParams(curLocation.search).get('date_id')
+		if (String(dateId) !== String(value.id)) {
+			history.push(`${url}?date_id=${value.id}`)
+		}
     console.log(value)
   }
 
