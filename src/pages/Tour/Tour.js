@@ -39,8 +39,10 @@ const Tour = ({
   },[search])
 
   useEffect(() => {
-    getTourReview(match.params.slug, id)
-    return () => getTourReview(match.params.slug, id, 'reset')
+    if (id) {
+      getTourReview(match.params.slug, id)
+      return () => getTourReview(match.params.slug, id, 'reset')
+    }
   }, [id])
 
 
