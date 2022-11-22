@@ -14,13 +14,12 @@ const Tour = ({
                 getTourReview,
 }) => {
 
-
   const {pathname, search} = location
   const page = pathname[0] === '/' ? pathname.substring(1) : pathname
 
   console.log(location)
 
-  const [id, setId] = useState(null)
+  const [id, setId] = useState(new URLSearchParams(search).get('date_id'))
 
   useScript(`
     (window["rrApiOnReady"] = window["rrApiOnReady"] || [])
@@ -39,10 +38,8 @@ const Tour = ({
   },[search])
 
   useEffect(() => {
-    if (id) {
-      getTourReview(match.params.slug, id)
-      return () => getTourReview(match.params.slug, id, 'reset')
-    }
+    getTourReview(match.params.slug, id)
+    return () => getTourReview(match.params.slug, id, 'reset')
   }, [id])
 
 
