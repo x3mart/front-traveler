@@ -284,19 +284,48 @@ const authReducer = (state = initialState, action) => {
             bank_kpp: '',
           }
           return {
-            ...user,
-            bank_transaction: {
-              ...bank_transaction,
-              ...data
-            },
-          }
-        }
-
-      }
-      return {
-        ...state,
-        user: updateUserDataByBik(state.user, payload.data, payload.source),
-      }
+            ...user,		case t.GET_DATA_BY_BIK_SUCCESS:
+			const updateUserDataByBik = (user, data, source) => {
+				if (source === 'card') {
+					let { debet_card } = user
+					debet_card = {
+						...debet_card,
+						debet_card_bank_bik: '',
+						debet_card_bank_name: '',
+						debet_card_bank_account: '',
+						debet_card_bank_inn: '',
+						debet_card_bank_kpp: '',
+					}
+					return {
+						...user,
+						debet_card: {
+							...debet_card,
+							...data,
+						},
+					}
+				} else if (source === 'transaction') {
+					let { bank_transaction } = user
+					bank_transaction = {
+						...bank_transaction,
+						transaction_bank_bik: '',
+						transaction_bank_name: '',
+						transaction_bank_account: '',
+						transaction_bank_inn: '',
+						transaction_bank_kpp: '',
+					}
+					return {
+						...user,
+						bank_transaction: {
+							...bank_transaction,
+							...data,
+						},
+					}
+				}
+			}
+			return {
+				...state,
+				user: updateUserDataByBik(state.user, payload.data, payload.source),
+			}
 
       case t.GET_DATA_BY_INN_SUCCESS:
       const updateUserDataByInn = (user, data) => {
@@ -345,41 +374,43 @@ const authReducer = (state = initialState, action) => {
         user: resetInnData(state.user),
       }
 
-    case t.RESET_BIK_DATA:
-      let resetData = (user, source) => {
-        if(source === 'card') {
-          let {debet_card} = user
-          return {
-            ...user,
-            debet_card: {
-              ...debet_card,
-              bank_bik: '',
-              bank_name: '',
-              bank_account: '',
-              bank_inn: '',
-              bank_kpp: '',
-            },
-          }
-        } else if(source === 'transaction') {
-          let {bank_transaction} = user
-          return {
-            ...user,
-            bank_transaction: {
-              ...bank_transaction,
-              bank_bik: '',
-              bank_name: '',
-              bank_account: '',
-              bank_inn: '',
-              bank_kpp: '',
-            },
-          }
-        }
-    }
+		case t.RESET_BIK_DATA:
+			let resetData = (user, source) => {
+				console.log('RESET_BIK_DATA: user', user)
+				if (source === 'card') {
+					let { debet_card } = user
+					return {
+						...user,
+						debet_card: {
+							...debet_card,
+							debet_card_bank_bik: '',
+							debet_card_bank_name: '',
+							debet_card_bank_account: '',
+							debet_card_bank_inn: '',
+							debet_card_bank_kpp: '',
+							debet_card_recipient_account: '',
+						},
+					}
+				} else if (source === 'transaction') {
+					let { bank_transaction } = user
+					return {
+						...user,
+						bank_transaction: {
+							...bank_transaction,
+							transaction_bank_bik: '',
+							transaction_bank_name: '',
+							transaction_bank_account: '',
+							transaction_bank_inn: '',
+							transaction_bank_kpp: '',
+						},
+					}
+				}
+			}
 
-      return {
-        ...state,
-        user: resetData(state.user, payload),
-      }
+			return {
+				...state,
+				user: resetData(state.user, payload),
+			}
     case t.USER_UPDATE_SUCCESS:
       return {
         ...state,
