@@ -256,35 +256,6 @@ const authReducer = (state = initialState, action) => {
       }
 
     case t.GET_DATA_BY_BIK_SUCCESS:
-      const updateUserDataByBik = (user, data, source) => {
-        if(source === 'card'){
-          let debet_card = {
-            bank_bik: '',
-            bank_name: '',
-            bank_account: '',
-            bank_inn: '',
-            bank_kpp: '',
-          }
-          return {
-            ...user,
-            debet_card: {
-              ...debet_card,
-              ...data
-            },
-          }
-        } else if(source === 'transaction') {
-
-          let {bank_transaction} = user
-          bank_transaction = {
-            ...bank_transaction,
-            bank_bik: '',
-            bank_name: '',
-            bank_account: '',
-            bank_inn: '',
-            bank_kpp: '',
-          }
-          return {
-            ...user,		case t.GET_DATA_BY_BIK_SUCCESS:
 			const updateUserDataByBik = (user, data, source) => {
 				if (source === 'card') {
 					let { debet_card } = user
@@ -327,7 +298,7 @@ const authReducer = (state = initialState, action) => {
 				user: updateUserDataByBik(state.user, payload.data, payload.source),
 			}
 
-      case t.GET_DATA_BY_INN_SUCCESS:
+    case t.GET_DATA_BY_INN_SUCCESS:
       const updateUserDataByInn = (user, data) => {
         let {bank_transaction} = user
         bank_transaction = {
