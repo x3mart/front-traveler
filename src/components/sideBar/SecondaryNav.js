@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react'
 
 import { connect } from 'react-redux'
 
-import {setCurrentSection, setKey, tourToServerError, } from '../../redux/actions/toursActions'
+import {setCurrentSection, setKey, tourToServer, tourToServerError} from '../../redux/actions/toursActions'
 import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
 import isNotEmptyObject from "../../helpers/isNotEmptyObject";
 import PopUp from "../PopUp/PopUp";
 import {APPLICATION_CONFIG, application_config} from "../../data";
-import {setConfig, tourTrimmed} from "../../functions";
+import {getData, setConfig, tourTrimmed} from "../../functions";
 
-const SecondaryNav = ({ language, setCurrentSection, secondary_nav, secondary, secondary_item, tour_id, tour, tourToServerError, setKey }) => {
+const SecondaryNav = ({ language, setCurrentSection, secondary_nav, secondary, secondary_item, tour_id, tour, tourToServer, tourToServerError, setKey }) => {
 
   const history = useHistory()
 
@@ -21,18 +21,26 @@ const SecondaryNav = ({ language, setCurrentSection, secondary_nav, secondary, s
     }
   }
   const [activePopUp, setActivePopUp] = useState(false)
+  const [sectionChecked, setSectionChecked] = useState(false)
+  const [sectionUrl, setSectionUrl] = useState('')
 
   const handleNavigate = async (e, url) => {
     e.preventDefault()
+
+    setSectionChecked(false)
+    setSectionUrl(url)
+    console.log('secondary_item', secondary_item)
     const config = setConfig(!!localStorage.getItem('access'))
 
     let new_tour = tourTrimmed(tour)
 
-    const body = JSON.stringify(new_tour)
+    const data = getData(new_tour, '', secondary_item)
+    const body = JSON.stringify(data)
 
     try {
-      await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${tour.id}/`, body, config)
-      history.push(`/${url}`)
+      const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${tour.id}/`, body, config)
+      tourToServer(res.data)
+      setSectionChecked(true)      
 
     } catch (err) {
       console.error(err)
@@ -42,6 +50,13 @@ const SecondaryNav = ({ language, setCurrentSection, secondary_nav, secondary, s
       errStatus >= 400 && errStatus < 500 ? setKey(Object.keys(errData)[0]) : setActivePopUp(true)
       }
   }
+
+  useEffect(() => {
+		if (sectionChecked && sectionUrl) {
+			history.push(`${sectionUrl}`)
+		}
+	}, [sectionChecked])
+
 
   return (
     secondary && (
@@ -103,4 +118,4 @@ const mapStateToProps = state => ({
   language: state.languages.language,
 })
 
-export default connect(mapStateToProps, { setCurrentSection, tourToServerError, setKey })(SecondaryNav)
+export default connect(mapStateToProps, { setCurrentSection, tourToServerError, tourToServer, setKey })(SecondaryNav)

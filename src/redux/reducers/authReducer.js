@@ -334,6 +334,7 @@ const authReducer = (state = initialState, action) => {
 						transaction_recipient_status: '',
 						transaction_recipient_registration_date: '',
 						transaction_recipient_legal_address: '',
+						transaction_recipient_account: '',
 					},
 				}
 			}
@@ -370,6 +371,7 @@ const authReducer = (state = initialState, action) => {
 							transaction_bank_account: '',
 							transaction_bank_inn: '',
 							transaction_bank_kpp: '',
+							transaction_recipient_account: '',
 						},
 					}
 				}

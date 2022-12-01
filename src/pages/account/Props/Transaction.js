@@ -225,6 +225,8 @@ const Transaction = ({
 					error={error}
 				/>
 				<Input
+					clear={clear || innClear}
+					spinner={spinner || innSpinner}
 					label={'Р/С Получателя'}
 					action={handleChange}
 					name="transaction_recipient_account"
