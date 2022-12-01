@@ -32,11 +32,25 @@ const MyTours = ({
 
   const [toursList, setToursList] = useState(null)
 
-  const [current, setCurrent] = useState(null)
-
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(2);
+
+  const constgetCurrentFormLocation = (location) => {
+		if (location?.search) {
+			let cur = null
+			parseQs(location?.search)?.map((item) => {
+				if (item?.type === 'filter') {
+					cur = item?.data[0]
+				}
+			})
+			return cur
+		} else {
+			return null
+		}
+	}
+
+  const [current, setCurrent] = useState(constgetCurrentFormLocation(location))
 
   console.log('current', current)
   console.log('page', page)
