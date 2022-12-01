@@ -34,8 +34,8 @@ const SecondaryNav = ({ language, setCurrentSection, secondary_nav, secondary, s
 
     let new_tour = tourTrimmed(tour)
 
-    const data = getData(new_tour, '', secondary_item)
-    const body = JSON.stringify(data)
+    //const data = getData(new_tour, '', secondary_item)
+    const body = JSON.stringify(new_tour)
 
     try {
       const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${tour.id}/`, body, config)
