@@ -753,12 +753,14 @@ export const phone_confirm = (id, data) => async dispatch => {
       type: t.PHONE_CONFIRM_SUCCESS,
       payload: res.status
     })
+    return true
   } catch (err) {
     dispatch({
       type: t.PHONE_CONFIRM_FAIL,
       payload: {data: err.response.data, status: err.response.status},
     })
   }
+  return false
 }
 
 export const setFavorite = (id) => async dispatch => {

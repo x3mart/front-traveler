@@ -38,8 +38,8 @@ const MyTours = ({
   const [page, setPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(2);
 
-  console.log(current)
-  console.log(page)
+  console.log('current', current)
+  console.log('page', page)
 
   useEffect(() => {
     if(location?.search) {
