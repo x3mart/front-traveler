@@ -431,7 +431,10 @@ const toursReducer = (state = initialState, action) => {
           active: true,
         }
       } else {
-        return item
+        return {
+					...item,
+					active: false,
+				}
       }
     })
   }
@@ -646,6 +649,7 @@ const toursReducer = (state = initialState, action) => {
       }
 
     case UPDATE_TOUR_SUCCESS:
+      console.log('payload.completed_sections', payload.completed_sections)
       return {
         ...state,
         current_tour: payload,

@@ -8,14 +8,17 @@ import SideBar from '../../components/sideBar/SideBar'
 
 import {load_user} from '../../redux/actions/authActions'
 import {
-  openSecondaryMenu,
-  addTour,
-  deleteTour,
-  tourToServerUpdate,
-  clearCurrentTour,
-  setPage,
-  getTour, tourToServerError, setKey
-} from "../../redux/actions/toursActions";
+	openSecondaryMenu,
+	addTour,
+	deleteTour,
+	tourToServerUpdate,
+	clearCurrentTour,
+	setPage,
+	getTour,
+	tourToServerError,
+	setKey,
+	tourToServer,
+} from '../../redux/actions/toursActions'
 
 import Modal from "../../components/AccountTours/Components/Modal";
 import PopUp from "../../components/PopUp/PopUp";
@@ -36,6 +39,7 @@ const ToursEditLayout = ({
                            children,
                            openSecondaryMenu,
                            deleteTour,
+                           tourToServer,
                            tourToServerUpdate,
                            clearCurrentTour,
                            setPage,
@@ -145,7 +149,8 @@ const ToursEditLayout = ({
     const body = JSON.stringify(new_tour)
 
     try {
-      await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${tour.id}/`, body, config)
+      const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${tour.id}/`, body, config)
+      tourToServer(res.data)
       setOnSavePopUp(true)
 
     } catch (err) {
@@ -282,6 +287,7 @@ export default connect(mapStateToProps, {
   clearCurrentTour,
   setPage,
   getTour,
+  tourToServer,
   tourToServerError,
   setKey,
 })(ToursEditLayout)

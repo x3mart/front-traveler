@@ -263,6 +263,7 @@ export const tourToServer = (
   //   const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/tours/${id}/`, body, config)
   //
   //   const payload = {data: res.data, id: id, status: res.status}
+    console.log('payload.completed_sections', payload.completed_sections)
 
     dispatch({
       type: UPDATE_TOUR_SUCCESS,
