@@ -241,7 +241,11 @@ const MyProfile = ({
     const {handleChange} = useSSNFields();
 
     const handlePhoneSubmit = () => {
-      phone_confirm(user.id, {code: val})
+      phone_confirm(user.id, { code: val }).then(value => {
+        if (value) {
+					setActivePhonePopUp(false)
+				}
+      })
     }
 
 

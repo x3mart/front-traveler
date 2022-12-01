@@ -444,6 +444,10 @@ const authReducer = (state = initialState, action) => {
 				...state,
 				confirm: payload,
 				phone_error: null,
+				user: {
+					...state.user,
+					phone_confirmed: true,
+				},
 			}
 
 		case t.PHONE_CONFIRM_FAIL:
