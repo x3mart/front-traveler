@@ -38,7 +38,7 @@ const NameInput = ({ action, name, type = 'text', value, error = {}, margin = '0
       <div className="with-errors-wrapper" style={{margin: margin}} id={name}>
         <div>
           <input
-            className={`custom-input-style ${Array.isArray(currentError) && currentError.length > 0 ? 'error' : 'ok'}`}
+            className={`custom-input-style not-phone-input ${Array.isArray(currentError) && currentError.length > 0 ? 'error' : 'ok'}`}
             name={name}
             value={data}
             type={type}

@@ -431,8 +431,10 @@ const toursReducer = (state = initialState, action) => {
           active: true,
         }
       } else {
-        return item
-      }
+        return {
+          ...item,
+          active: false,
+        }      }
     })
   }
 
