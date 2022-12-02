@@ -55,15 +55,17 @@ const ExpertOrders = ({
     <>
       <OrderFilters filters={filters} />
       <table className={styles.orders_table}>
-        <tr>
-          <th>ID заказа</th>
-          <th>Действия</th>
-          <th>Дата и ID транзакции</th>
-          <th>Название тура и даты</th>
-          <th>Ф.И.О (кол-во)</th>
-          <th>Сумма</th>
-          <th>Статус</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>ID заказа</th>
+            <th>Действия</th>
+            <th>Дата и ID транзакции</th>
+            <th>Название тура и даты</th>
+            <th>Ф.И.О (кол-во)</th>
+            <th>Сумма</th>
+            <th>Статус</th>
+          </tr>
+        </thead>
         <tbody>
         {orders?.results?.map((item, index) => <ExpertOrder key={index} order={item} action={handleSubmit}/>)}
         </tbody>
