@@ -47,6 +47,7 @@ const DebetCard = ({user, getBikData, resetBikData, update_local_user, error, cl
       setClear(true)
       resetBikData('card')
     }
+    clear_errors()
   }
 
   const handleChange = (name, value) => {

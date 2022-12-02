@@ -42,6 +42,8 @@ const Input = ({
       setCurrentError(error['phone'])
     } else if (error && error[name]) {
       setCurrentError(error[name])
+    } else {
+      setCurrentError([])
     }
   }, [error, name])
 
