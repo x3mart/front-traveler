@@ -13,25 +13,24 @@ import MessagesField from "./MessagesField";
 import TicketButton from "./TicketButton";
 
 const Messages = ({
-                    current_ticket,
+                    user_id,
                     set_current_support_messages,
                     clear_current_support_messages,
                     set_all_support_messages_read,
                     set_all_support_messages_unread,
                     current_status,
-                    set_new_ticket,
-                    close_ticket,
-                    clear_current_ticket_status,
-                    clear_current_ticket,
-                    set_archive_ticket,
 }) => {
 
+  const [ticketId, setTicketId] = useState(0)
   const [newTicket, setNewTicket] = useState(false)
 
-  const client = current_ticket ?
-    new W3CWebSocket(`wss://traveler.market/ws/support_chat/${current_ticket}/?token=${localStorage.getItem('access')}`)
-    :
-    null
+  const client = user_id
+		? new W3CWebSocket(
+				`wss://traveler.market/ws/support_chat/${user_id}/?token=${localStorage.getItem(
+					'access'
+				)}`
+		  )
+		: null
   ;
 
   useEffect(() => {
@@ -62,63 +61,37 @@ const Messages = ({
         if (dataFromServer) {
           if (dataFromServer?.command === 'close_ticket') {
             client?.close()
-            set_archive_ticket()
-            clear_current_ticket_status()
-            clear_current_ticket()
             clear_current_support_messages()
           } else if (dataFromServer?.command === 'set_read') {
             set_all_support_messages_read()
           } else if (dataFromServer?.command === 'set_unread') {
             set_all_support_messages_unread()
-          } else {
-            set_current_support_messages(dataFromServer)
-          }
+          } else if (dataFromServer?.command === 'set_ticket') {
+            console.log('ticket_id', dataFromServer?.ticket_id)
+						setTicketId(dataFromServer?.ticket_id)
+					} else {
+						set_current_support_messages(dataFromServer)
+					}
         }
       };
     }
   }, [client])
 
   const handleSend = (message) => {
-    if(newTicket){
-      setNewTicket(false)
-      set_new_ticket({
-        text: message
-      })
-    } else {
-      client.send(JSON.stringify({
-        message: message
-      }));
-    }
-  }
-
-  useEffect(() => {
-    if(newTicket) {
-      clear_current_ticket_status()
-      clear_current_ticket()
-      clear_current_support_messages()
-    }
-  }, [newTicket])
-
-  const handleTicketButton = () => {
-    if(current_status && current_status !== 3){
-      setNewTicket(false)
-      close_ticket(current_ticket)
-      clear_current_ticket_status()
-      clear_current_ticket()
-      clear_current_support_messages()
-    } else {
-      setNewTicket((newTicket) => !newTicket)
-    }
+    client.send(
+			JSON.stringify({
+				message,
+				ticket_id: ticketId,
+			})
+		)
   }
 
   return (
     <>
       <div className={styles.chat_messages}>
-        <TicketButton active_ticket={current_status && current_status !== 3}
-                       action={handleTicketButton}/>
         <MessagesField/>
         <div className={styles.send_button}>
-          {((current_status && current_status !== 3) || newTicket) && <MessagesForm action={handleSend} new_ticket={newTicket}/>}
+          {user_id && <MessagesForm action={handleSend} new_ticket={newTicket}/>}
         </div>
       </div>
     </>
@@ -126,19 +99,14 @@ const Messages = ({
 };
 
 const mapStateToProps = state => ({
-  current_ticket: state.support.current_ticket,
   current_status: state.support.current_status,
+  user_id: state.auth.user?.id
 })
 const mapDispatchToProps = {
   set_current_support_messages,
   clear_current_support_messages,
   set_all_support_messages_read,
   set_all_support_messages_unread,
-  set_new_ticket,
-  close_ticket,
-  clear_current_ticket_status,
-  clear_current_ticket,
-  set_archive_ticket,
 }
 
 export default connect(
