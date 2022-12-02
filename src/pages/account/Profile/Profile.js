@@ -195,10 +195,10 @@ const MyProfile = ({
 
     try {
       await axios.patch(
-        `${process.env.REACT_APP_API_URL}/api/experts/${user.id}/send_confirmation_call/`,
-        body,
-        config
-      )
+				`${process.env.REACT_APP_API_URL}/api/${status}/${user.id}/send_confirmation_call/`,
+				body,
+				config
+			)
       setActivePhonePopUp(true)
     } catch (err) {
       setPhoneRequestError(err.response.data)

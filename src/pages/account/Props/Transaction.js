@@ -67,6 +67,7 @@ const Transaction = ({
       setClear(true)
       resetBikData('transaction')
     }
+    clear_errors()
   }
 
   const handleInnDataGet = (name, value) => {
@@ -78,6 +79,7 @@ const Transaction = ({
       setInnClear(true)
       resetInnData()
     }
+    clear_errors()
   }
 
   const handleChange = (name, value) => {
