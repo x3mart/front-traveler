@@ -95,14 +95,16 @@ const supportReducer = (state = initialState, action) => {
 
     case t.SET_ALL_SUPPORT_MESSAGES_READ:
       return {
-        ...state,
-        all_support_messages_read: true,
-      }
+				...state,
+				current_support_messages: state.current_support_messages.map((msg) => ({...msg, is_read: true})),
+				all_support_messages_read: true,
+			}
     case t.SET_ALL_SUPPORT_MESSAGES_UNREAD:
       return {
-        ...state,
-        all_support_messages_read: false,
-      }
+				...state,
+				current_support_messages: state.current_support_messages.map((msg) => ({...msg, is_read: false})),
+				all_support_messages_read: false,
+			}
     case t.SET_CURRENT_SUPPORT_MESSAGES:
       return {
         ...state,
