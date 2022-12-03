@@ -59,8 +59,7 @@ const Messages = ({
         console.log(dataFromServer)
         if (dataFromServer) {
           if (dataFromServer?.command === 'close_ticket') {
-            client?.close()
-            clear_current_support_messages()
+            //
           } else if (dataFromServer?.command === 'set_read') {
             console.log('messages read!')
             set_all_support_messages_read()
