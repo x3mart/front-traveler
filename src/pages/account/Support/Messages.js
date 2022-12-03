@@ -21,7 +21,6 @@ const Messages = ({
                     current_status,
 }) => {
 
-  const [ticketId, setTicketId] = useState(0)
   const [newTicket, setNewTicket] = useState(false)
 
   const client = user_id
@@ -57,18 +56,18 @@ const Messages = ({
 
       client.onmessage = (e) => {
         const dataFromServer = JSON.parse(e.data);
-        // console.log('got reply!');
+        console.log(dataFromServer)
         if (dataFromServer) {
           if (dataFromServer?.command === 'close_ticket') {
             client?.close()
             clear_current_support_messages()
           } else if (dataFromServer?.command === 'set_read') {
+            console.log('messages read!')
             set_all_support_messages_read()
           } else if (dataFromServer?.command === 'set_unread') {
             set_all_support_messages_unread()
           } else if (dataFromServer?.command === 'set_ticket') {
             console.log('ticket_id', dataFromServer?.ticket_id)
-						setTicketId(dataFromServer?.ticket_id)
 					} else {
 						set_current_support_messages(dataFromServer)
 					}
@@ -81,7 +80,6 @@ const Messages = ({
     client.send(
 			JSON.stringify({
 				message,
-				ticket_id: ticketId,
 			})
 		)
   }
