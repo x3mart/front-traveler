@@ -196,7 +196,7 @@ const TourBody = ({
                 <div className={styles.divider}/>
                 {tour_preview.main_impressions && tour_preview.main_impressions.length > 0 &&
                   <TourImpressions impressions={tour_preview.main_impressions}/>}
-                {((tour_preview.plan && tour_preview.plan.length > 0) || tour_preview.media_link) &&
+                {((tour_preview.plan && tour_preview.plan.length > 0) || tour_preview.media_link || tour_preview.description) &&
                   <TourReview text={tour_preview.description} activities={tour_preview.plan}
                               video={tour_preview && tour_preview.media_link ? tour_preview.media_link : ''}/>}
                 {tour_preview.tour_images && tour_preview.tour_images.length > 0 &&
