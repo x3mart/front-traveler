@@ -48,6 +48,7 @@ const MyProfile = ({
                     update_avatar, 
                     update_local_user, 
                     request_status,
+                    phone_confirm_request,
                     phone_confirm,
                     confirm,
                     phone_error,
