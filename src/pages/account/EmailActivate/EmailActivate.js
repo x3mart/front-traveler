@@ -5,8 +5,9 @@ import {Redirect, useHistory} from "react-router-dom";
 import Button from "../../../components/AccountTours/Components/Button";
 import MainLayout from "../../../layouts/MainLayout";
 import CircularProgress from '@mui/material/CircularProgress'
+import {clear_confirm_status} from '../../../redux/actions/authActions'
 
-const EmailActivate = ({match, email_confirm, status, language}) => {
+const EmailActivate = ({match, email_confirm, clear_confirm_status, status, language}) => {
 
   const history = useHistory()
 
