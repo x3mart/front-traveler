@@ -100,7 +100,7 @@ const Types = ({language, location, active_types, getAllTypes }) => {
         <Section padding={'0px'}>
           <Breadcrumbs>
             <Breadcrumb
-              link={`/${language}`}
+              link={'/'}
             >
               Главная
             </Breadcrumb>
