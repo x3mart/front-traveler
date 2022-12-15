@@ -11,10 +11,10 @@ import Section from "../components/Section";
 
 
 const Login = ({ language, isAuthenticated, login, checkAuthenticated, error, clear_errors,
-                 reg_status, match }) => {
+                 reg_status, match,}) => {
 
   const {redirect} = match.params
-
+  const [checked, setChecked] = React.useState(localStorage.getItem('remember_me') ? true : false)
 
   const [data, setData] = useState({})
   // const [check, setCheck] = useState(null)
@@ -31,6 +31,7 @@ const Login = ({ language, isAuthenticated, login, checkAuthenticated, error, cl
     } else {
       localStorage.removeItem('remember_me')
     }
+    setChecked(e.target.checked)
   }
 
   const handleData = (name, value) => {
@@ -103,7 +104,7 @@ const Login = ({ language, isAuthenticated, login, checkAuthenticated, error, cl
 
                     <input
                       type='checkbox'
-                      // checked={check}
+                      checked={checked}
                       className='remember_checkbox'
                       name='remember_me'
                       onChange={handleCheckbox}
@@ -150,7 +151,7 @@ const mapStateToProps = state => ({
   language: state.languages.language,
   isAuthenticated: state.auth.isAuthenticated,
   error: state.auth.error,
-  reg_status: state.auth.reg_status
+  reg_status: state.auth.reg_status,
 })
 
 export default connect(mapStateToProps, { login, checkAuthenticated, clear_errors })(Login)
