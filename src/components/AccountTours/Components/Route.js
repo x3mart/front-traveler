@@ -37,7 +37,7 @@ const TourRoute = ({
   }, [field_key])
 
   const handleInput = (name, value) => {
-    updateTour({...tour, [name]: value})
+    updateTour({...tour, [name]: value ? value : null})
   }
 
   return (

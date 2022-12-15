@@ -47,7 +47,7 @@ const Prices = ({
   }, [field_key])
 
   const handleInput = (name, value) => {
-    updateTour({...tour, [name]: value})
+    updateTour({...tour, [name]: value ? value : null})
   }
 
   const handlePrcInput = (name, value) => {
