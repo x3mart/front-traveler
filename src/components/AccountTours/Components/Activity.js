@@ -21,7 +21,7 @@ const Activity = ({
   activity,
   updateActivity,
   setActivityImage,
-                    error,
+  error,
 }) => {
   const [data, setData] = useState({})
   const [loading, setLoading] = useState(false)
