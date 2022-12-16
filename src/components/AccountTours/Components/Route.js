@@ -37,6 +37,10 @@ const TourRoute = ({
   }, [field_key])
 
   const handleInput = (name, value) => {
+    updateTour({...tour, [name]: value})
+  }
+
+  const handleDateInput = (name, value) => {
     updateTour({...tour, [name]: value ? value : null})
   }
 
@@ -52,7 +56,7 @@ const TourRoute = ({
       >
         <DoubleWrapper ratio='1-2' tour={tour}>
           <Input
-            action={handleInput}
+            action={handleDateInput}
             name='start_date'
             label='Дата начала тура'
             value={tour && tour.start_date}
@@ -60,7 +64,7 @@ const TourRoute = ({
             error={error}
           />
           <Input
-            action={handleInput}
+            action={handleDateInput}
             name='finish_date'
             label='Дата завершения тура'
             value={tour && tour.finish_date}

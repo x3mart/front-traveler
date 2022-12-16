@@ -47,6 +47,10 @@ const Prices = ({
   }, [field_key])
 
   const handleInput = (name, value) => {
+    updateTour({...tour, [name]: value})
+  }
+
+  const handleDateInput = (name, value) => {
     updateTour({...tour, [name]: value ? value : null})
   }
 
@@ -112,7 +116,7 @@ const Prices = ({
 
         <DoubleWrapper ratio='1-2' tour={tour}>
           <Input
-            action={handleInput}
+            action={handleDateInput}
             name='discount_starts'
             label='Скидка действует с:'
             value={tour && tour.discount_starts}
@@ -120,7 +124,7 @@ const Prices = ({
             error={error}
           />
           <Input
-            action={handleInput}
+            action={handleDateInput}
             name='discount_finish'
             label='Скидка действует до:'
             value={tour && tour.discount_finish}

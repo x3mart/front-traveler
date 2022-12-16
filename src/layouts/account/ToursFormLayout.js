@@ -106,7 +106,6 @@ const ToursFormLayout = ({
 
 
     } catch (err) {
-
       const errStatus = err.response.status
       const errData = err.response.data
       tourToServerError(errData)
@@ -177,7 +176,7 @@ const ToursFormLayout = ({
               {backward_url && <SubmitButton
                 text={'Назад'}
                 color={'button-primary'}
-                section={section_slug}
+                section={null}
                 direction={'backward'}
                 action={toServer}
                 action2={setDirection}
