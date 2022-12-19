@@ -15,9 +15,11 @@ const NameInput = ({ action, name, type = 'text', value, error = {}, margin = '0
       setCurrentError(error['password'])
     } else if(error[name]) {
       setCurrentError(error[name])
-    } else {
-      setCurrentError([])
-    }
+    } 
+    // else {
+    //   setCurrentError([])
+    // }
+    console.log(currentError)
   }, [error, name])
 
   useEffect(() => {

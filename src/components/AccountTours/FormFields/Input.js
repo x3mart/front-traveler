@@ -42,9 +42,10 @@ const Input = ({
       setCurrentError(error['phone'])
     } else if (error && error[name]) {
       setCurrentError(error[name])
-    } else {
-      setCurrentError([])
-    }
+    } 
+    // else {
+      // setCurrentError([])
+    // }
   }, [error, name])
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const Input = ({
       <div className="with-errors-wrapper" style={{margin: margin}} id={name}>
         {type === 'date' && <input
           required={required}
-          className={`custom-input-style not-phone-input ${currentError?.length > 0 ? 'error' : 'ok'}`}
+          className={`custom-input-style not-phone-input ${Array.isArray(currentError) && currentError?.length > 0 ? 'error' : 'ok'}`}
           placeholder={label}
           name={name}
           value={data}
@@ -81,7 +82,7 @@ const Input = ({
           {icon && !spinner && <div className={`with-icon`}>
             <input
               required={required}
-              className={`custom-input-style not-phone-input ${currentError?.length > 0 ? 'error' : 'ok'}`}
+              className={`custom-input-style not-phone-input ${Array.isArray(currentError) && currentError?.length > 0 ? 'error' : 'ok'}`}
               placeholder={label}
               name={name}
               value={data}
@@ -96,7 +97,7 @@ const Input = ({
           {!icon && !spinner && <div>
             <input
               required={required}
-              className={`custom-input-style not-phone-input ${currentError?.length > 0 ? 'error' : 'ok'}`}
+              className={`custom-input-style not-phone-input ${Array.isArray(currentError) && currentError?.length > 0 ? 'error' : 'ok'}`}
               placeholder={label}
               name={name}
               value={data}

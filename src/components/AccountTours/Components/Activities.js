@@ -54,9 +54,7 @@ const Activities = ({
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    console.log(tour.plan)
     if (tour && (!tour.plan || !tour.plan.length)) {
-      console.log(tour.plan)
       addActivity({id: 1, image: {}, description: ''})
       setLoading(true)
     } else {
