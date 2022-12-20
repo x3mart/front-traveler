@@ -39,6 +39,7 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
     } else {
       action(name, values)
     }
+    setCurrentError([])
   }
 
   const handleAddNew = (values) => {
@@ -49,6 +50,7 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
         full_name: values.full_name,
       }
     }, tour.id)
+    setCurrentError([])
   }
 
   useEffect(() => {

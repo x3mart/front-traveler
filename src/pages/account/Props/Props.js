@@ -68,7 +68,7 @@ const Props = ({update_local_user, user, status, updateCardData, updateTransacti
 
   useEffect(() => {
     setPage('profile')
-    getCountries()
+    // getCountries()
     return () => setActivePopUp(false)
   }, [])
 

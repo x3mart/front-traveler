@@ -123,7 +123,7 @@ const SelectInput = ({action, name, label, val, options, multiple, margin, basic
       <div className="errors-list">
         {/*{currentError}*/}
         <ul>
-          { Array.isArray(currentError) && currentError.length > 0 && currentError.map((item, index) => (
+          {Array.isArray(currentError) && currentError.length > 0 && currentError.map((item, index) => (
             <li key={index} >{item}</li>
           ))
           }

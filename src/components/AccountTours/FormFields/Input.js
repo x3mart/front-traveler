@@ -51,11 +51,12 @@ const Input = ({
   useEffect(() => {
     if (value) {
       setData(value)
+      setCurrentError([])
     }
   }, [value])
 
   const handleData = e => {
-    setCurrentError([])
+    // setCurrentError([])
     setData(e.target.value)
     action(name, e.target.value)
   }
@@ -104,6 +105,7 @@ const Input = ({
               type={type}
               onChange={handleData}
               disabled={disabled}
+              autocomplete="off"
             />
           </div>}
 
@@ -116,6 +118,7 @@ const Input = ({
         <div className="errors-list">
           {/*{currentError}*/}
           <ul>
+          {Array.isArray(currentError) && currentError.length > 0}
             {Array.isArray(currentError) && currentError.length > 0 && currentError.map((item, index) => (
               <li key={index}>{item}</li>))}
           </ul>

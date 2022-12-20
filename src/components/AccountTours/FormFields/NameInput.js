@@ -47,6 +47,7 @@ const NameInput = ({ action, name, type = 'text', value, error = {}, margin = '0
             value={data}
             type={type}
             onChange={handleData}
+            autocomplete="off"
           />
         </div>
         <div className="errors-list">

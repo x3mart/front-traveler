@@ -43,6 +43,10 @@ const Details = ({
     updateTour({...tour, [name]: value})
   }
 
+  const handleCantBlancInput = (name, value) => {
+    updateTour({...tour, [name]: value ? value : null})
+  }
+
   return (
     <>
       <ToursFormLayout
@@ -98,14 +102,14 @@ const Details = ({
         />
         <DoubleWrapper ratio='1-2' tour={tour}>
           <Input
-            action={handleInput}
+            action={handleCantBlancInput}
             name='age_starts'
             label='Возраст участников от:'
             value={tour && tour.age_starts}
             error={error}
           />
           <Input
-            action={handleInput}
+            action={handleCantBlancInput}
             name='age_ends'
             label='Возраст участников до:'
             value={tour && tour.age_ends}

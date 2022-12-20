@@ -54,6 +54,10 @@ const Main = ({
     updateTourWallpaper(value, tour.id)
   }
 
+  const handleCantBlancInput = (name, value) => {
+    updateTour({...tour, [name]: value ? value : null})
+  }
+
   return (
     <>
       <ToursFormLayout
@@ -84,14 +88,14 @@ const Main = ({
         </SingleWrapper>
         <DoubleWrapper ratio='1-2' tour={tour}>
           <Input
-            action={handleInput}
+            action={handleCantBlancInput}
             name='members_number'
             label='Всего мест'
             value={tour && tour.members_number}
             error={error}
           />
           <Input
-            action={handleInput}
+            action={handleCantBlancInput}
             name='vacants_number'
             label='Осталось мест'
             value={tour && tour.vacants_number}
