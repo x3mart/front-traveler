@@ -87,7 +87,7 @@ const TourBody = ({
         console.error(err)
       }
     } else {
-      history.push(`/login/chat`)
+      history.push(`/login/orders`)
     }
   }
 
