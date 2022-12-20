@@ -385,7 +385,7 @@ const TourBody = ({
                     </div>
                   </div>
                   <div id='book_button' className={styles.inputs_row_button} onClick={handleBook}>
-                    {tour_preview.is_guaranteed ? 'Забронировать' : 'Хочу поехать'}
+                    {tour_preview.instant_booking ? 'Забронировать' : 'Хочу поехать'}
                   </div>
 
                   <div className={styles.inputs_row_text}>
