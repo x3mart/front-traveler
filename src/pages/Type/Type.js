@@ -106,7 +106,7 @@ const Type = ({
               Главная
             </Breadcrumb>
             <Breadcrumb
-              link={`/types`}
+              link={`/tipy-turov`}
             >
               Типы туров
             </Breadcrumb>

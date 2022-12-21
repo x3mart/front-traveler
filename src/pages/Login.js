@@ -21,6 +21,7 @@ const Login = ({ language, isAuthenticated, login, checkAuthenticated, error, cl
 
   if (isAuthenticated) {
     // setData({})
+    console.log(match)
     return <Redirect to={redirect ? `/account/` + redirect : `/account/`} />
   }
 
