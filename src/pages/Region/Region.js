@@ -40,7 +40,7 @@ const Region = ({match, getRegionData, current_region, language,}) => {
               Главная
             </Breadcrumb>
             <Breadcrumb
-              link={`/regions`}
+              link={`/regiony-mira`}
             >
               Регионы
             </Breadcrumb>
