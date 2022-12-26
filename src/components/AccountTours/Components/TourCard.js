@@ -2,7 +2,9 @@ import React, {useState, useEffect, useRef} from 'react'
 import cart from '../../../assets/img/shopping-cart.svg'
 import view from '../../../assets/img/view.svg'
 import menu from '../../../assets/img/menu-dots.svg'
+import styles from '../../../pages/Tours/Tours.module.css';
 import dateFormat, {masks} from 'dateformat'
+// src/components/AccountTours/Components/TourCard.js
 
 import {
   deleteTour,
@@ -232,7 +234,8 @@ const TourCard = ({
               {tour.duration} дн. (с{' '}
               {dateFormat(new Date(tour.start_date), 'dd.mm.yyyy')})
             </div>
-            <div className='tour-footer-price'>{tour.price} <span className='rub-sign'>₽</span></div>
+            <div className='tour-footer-price'>{tour.discounted_price && <span className={styles.tour_discounted_price} style={{marginRight: '5px'}}>{tour && tour.price ? tour.price : ''}<span className='rub-sign'>{tour.currency.sign}</span></span>}
+                {tour && tour.discounted_price ? tour.discounted_price : tour.price}<span className='rub-sign'>₽</span></div>
           </div>
           <div className='tour-footer-right'>
             <div className='tour-footer-sold'>
@@ -244,7 +247,7 @@ const TourCard = ({
             </div>
             <div className='tour-footer-watched'>
               <div className='tour-footer-value'>
-                {tour.watched ? tour.watched : '0'}
+                {tour.views_count ? tour.views_count : '0'}
               </div>
               {' '}
               <img src={view} alt='view'/>
