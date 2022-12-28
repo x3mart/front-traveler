@@ -39,6 +39,7 @@ import SelectInput from "../../components/AccountTours/FormFields/SelectInput";
 const TourBody = ({
                     id,
                     language,
+                    user,
                     tour_preview,
                     add_chat_room,
                     isAuthenticated,
@@ -65,16 +66,19 @@ const TourBody = ({
 
 
   const handleExpertChat = () => {
-    if (isAuthenticated) {
+    if (isAuthenticated && tour_preview.expert.id != user.id) {
       add_chat_room(tour_preview.expert.id)
       history.push(`/account/chat`)
-    } else {
+    } else if (isAuthenticated && tour_preview.expert.id == user.id) {
+      // добавить всплываху что себе писать в чат не надо
+    }
+     else {
       history.push(`/login/chat`)
     }
   }
 
   const handleBook = async () => {
-    if (isAuthenticated) {
+    if (isAuthenticated && tour_preview.expert.id != user.id) {
       const config = setConfig(!!localStorage.getItem('access'))
 
       const body = JSON.stringify({travelers_number: places, tour: tour_preview.id})
@@ -86,7 +90,10 @@ const TourBody = ({
       } catch (err) {
         console.error(err)
       }
-    } else {
+    } else if (isAuthenticated && tour_preview.expert.id == user.id) {
+      // добавить всплываху что свои туры не покупают
+    }
+     else {
       history.push(`/login/orders`)
     }
   }
@@ -451,6 +458,7 @@ const mapStateToProps = state => ({
   language: state.languages.language,
   tour_preview: state.tours.tour_preview,
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
 })
 
 const mapDispatchToProps = {getTourReview, add_chat_room}

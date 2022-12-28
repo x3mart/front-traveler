@@ -42,8 +42,8 @@ export const add_chat_room = id => async dispatch => {
   const body = JSON.stringify({chat_with: id})
 
   try {
-    const rooms = await axios.get(`${process.env.REACT_APP_API_URL}/api/chats/`, config)
     const room = await axios.post(`${process.env.REACT_APP_API_URL}/api/chats/`, body, config)
+    const rooms = await axios.get(`${process.env.REACT_APP_API_URL}/api/chats/`, config)
 
     const data = rooms.data.filter(item => item.id !== room.data.id)
 
