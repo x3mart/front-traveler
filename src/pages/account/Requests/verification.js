@@ -79,14 +79,19 @@ const Verification = ({
                       clear_errors,
                     }) => {
 
-  const {verifications} = user
+//   const {verifications} = user
+  const [cant_edit, setCantEdit] = useState(['aproved', 'waiting_aprove'].includes(user?.verifications?.status))
 
-  const [individualVerification, setIndividualVerification] = useState({
-    last_name: user.last_name,
-    first_name: user.first_name,
+  const [verifications, setIndividualVerification] = useState(
+	user.verifications ? { ...user.verifications,} :
+	{
+    commercial_tours: 'yes',
+	commercial_tours_yearly: 'до 5',
     license: 'yes',
+	conflicts: 'no',
+	legal_restrictions: 'no',
   })
-
+  
 
   useEffect(() => {
     const scrollTo = (el) => {
@@ -105,15 +110,14 @@ const Verification = ({
     update_local_user({
       ...user,
       verifications: {
-        ...user.verifications,
-        ...individualVerification,
+        ...verifications,
       }
     })
-  }, [individualVerification])
+  }, [verifications])
 
   const handleChange = (name, value) => {
     setIndividualVerification({
-      ...individualVerification,
+      ...verifications,
       [name]: value,
     })
   }
@@ -128,6 +132,7 @@ const Verification = ({
 					name="passport_last_name"
 					value={verifications?.passport_last_name}
 					error={error}
+					disabled = {cant_edit}
 				/>
 			</SingleWrapper>
 			<DoubleWrapper full={true} margin={0}>
@@ -137,6 +142,7 @@ const Verification = ({
 					name="passport_first_name"
 					value={verifications?.passport_first_name}
 					error={error}
+					disabled = {cant_edit}
 				/>
 				<Input
 					label={'Отчество'}
@@ -144,6 +150,7 @@ const Verification = ({
 					name="passport_patronymic"
 					value={verifications?.passport_patronymic}
 					error={error}
+					disabled = {cant_edit}
 				/>
 			</DoubleWrapper>
 			<DoubleWrapper full={true} margin={0}>
@@ -153,6 +160,7 @@ const Verification = ({
 					action={handleChange}
 					name="passport_series"
 					value={verifications?.passport_series}
+					disabled = {cant_edit}
 				/>
 				<Input
 					error={error}
@@ -160,6 +168,7 @@ const Verification = ({
 					action={handleChange}
 					name="passport_number"
 					value={verifications?.passport_number}
+					disabled = {cant_edit}
 				/>
 			</DoubleWrapper>
 			<SingleWrapper label="Кем выдан" width={'100%'} margin={'0'}>
@@ -169,6 +178,7 @@ const Verification = ({
 					action={handleChange}
 					name="passport_issued_by"
 					value={verifications?.passport_issued_by}
+					disabled = {cant_edit}
 				/>
 			</SingleWrapper>
 			<DoubleWrapper full={true} margin={0}>
@@ -178,6 +188,7 @@ const Verification = ({
 					action={handleChange}
 					name="passport_code_issued_by"
 					value={verifications?.passport_code_issued_by}
+					disabled = {cant_edit}
 				/>
 				<Input
 					error={error}
@@ -186,6 +197,7 @@ const Verification = ({
 					name="passport_date"
 					value={verifications?.passport_date}
 					type={'date'}
+					disabled = {cant_edit}
 				/>
 			</DoubleWrapper>
 
@@ -201,6 +213,7 @@ const Verification = ({
 					name="residency"
 					val={verifications?.residency}
 					options={countries}
+					disabled = {cant_edit}
 				/>
 			</SingleWrapper>
 			<div className="team-subtitle">Есть ли у вас лицензия туроператора?</div>
@@ -217,17 +230,19 @@ const Verification = ({
 							value={'yes'}
 							control={<BpRadio />}
 							label="Да"
+							disabled = {cant_edit}
 						/>
 						<FormControlLabel
 							checked={verifications?.license === 'no'}
 							value={'no'}
 							control={<BpRadio />}
 							label="Нет"
+							disabled = {cant_edit}
 						/>
 					</RadioGroup>
 				</FormControl>
 			</div>
-			{verifications?.license === 'yes' && (
+			{(verifications?.license === 'yes') && (
 				<>
 					<SingleWrapper label="Реестровый номер" width={'100%'} margin={'0'}>
 						<Input
@@ -236,6 +251,7 @@ const Verification = ({
 							action={handleChange}
 							name="license_number"
 							value={verifications?.license_number}
+							disabled = {cant_edit}
 						/>
 					</SingleWrapper>
 				</>
@@ -256,12 +272,14 @@ const Verification = ({
 							value={'yes'}
 							control={<BpRadio />}
 							label="Да"
+							disabled = {cant_edit}
 						/>
 						<FormControlLabel
 							checked={verifications?.commercial_tours === 'no'}
 							value={'no'}
 							control={<BpRadio />}
 							label="Нет"
+							disabled = {cant_edit}
 						/>
 					</RadioGroup>
 				</FormControl>
@@ -282,30 +300,35 @@ const Verification = ({
 									value="до 5"
 									control={<BpRadio />}
 									label="до 5"
+									disabled = {cant_edit}
 								/>
 								<FormControlLabel
 									checked={verifications?.commercial_tours_yearly === '5-12'}
 									value="5-12"
 									control={<BpRadio />}
 									label="5-12"
+									disabled = {cant_edit}
 								/>
 								<FormControlLabel
 									checked={verifications?.commercial_tours_yearly === '13-20'}
 									value="13-20"
 									control={<BpRadio />}
 									label="13-20"
+									disabled = {cant_edit}
 								/>
 								<FormControlLabel
 									checked={verifications?.commercial_tours_yearly === '21-30'}
 									value="21-30"
 									control={<BpRadio />}
 									label="21-30"
+									disabled = {cant_edit}
 								/>
 								<FormControlLabel
 									checked={verifications?.commercial_tours_yearly === '30+'}
 									value="30+"
 									control={<BpRadio />}
 									label="30+"
+									disabled = {cant_edit}
 								/>
 							</RadioGroup>
 						</FormControl>
@@ -322,6 +345,7 @@ const Verification = ({
 							value={verifications?.reviews_links}
 							rows="7"
 							error={error}
+							disabled = {cant_edit}
 						/>
 					</SingleWrapper>
 				</>
@@ -340,6 +364,7 @@ const Verification = ({
 					val={verifications?.tours_countries}
 					options={countries}
 					multiple={true}
+					disabled = {cant_edit}
 				/>
 			</SingleWrapper>
 			<SingleWrapper
@@ -354,6 +379,7 @@ const Verification = ({
 					value={verifications?.tours_links}
 					rows="7"
 					error={error}
+					disabled = {cant_edit}
 				/>
 			</SingleWrapper>
 			<div className="team-subtitle">
@@ -372,12 +398,14 @@ const Verification = ({
 							value={'yes'}
 							control={<BpRadio />}
 							label="Да"
+							disabled = {cant_edit}
 						/>
 						<FormControlLabel
 							checked={verifications?.conflicts === 'no'}
 							value={'no'}
 							control={<BpRadio />}
 							label="Нет"
+							disabled = {cant_edit}
 						/>
 					</RadioGroup>
 				</FormControl>
@@ -395,6 +423,7 @@ const Verification = ({
 						value={verifications?.conflicts_review}
 						rows="7"
 						error={error}
+						disabled = {cant_edit}
 					/>
 				</SingleWrapper>
 			)}
@@ -414,12 +443,14 @@ const Verification = ({
 							value={'yes'}
 							control={<BpRadio />}
 							label="Да"
+							disabled = {cant_edit}
 						/>
 						<FormControlLabel
 							checked={verifications?.legal_restrictions === 'no'}
 							value={'no'}
 							control={<BpRadio />}
 							label="Нет"
+							disabled = {cant_edit}
 						/>
 					</RadioGroup>
 				</FormControl>
@@ -437,6 +468,7 @@ const Verification = ({
 						value={verifications?.legal_restrictions_review}
 						rows="7"
 						error={error}
+						disabled = {cant_edit}
 					/>
 				</SingleWrapper>
 			)}

@@ -83,6 +83,7 @@ const Requests = ({
   const [activePopUp, setActivePopUp] = useState(false)
   const [activeErrorPopUp, setActiveErrorPopUp] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const [can_edit, setCanEdit] = useState(!['aproved', 'waiting_aprove'].includes(user?.verifications?.status))
 
   if (status === 'customers') {
     return <Redirect to={`/404`}/>
@@ -131,6 +132,7 @@ const Requests = ({
       const result = 'ok'
 
       updateVerificationData(result)
+      setCanEdit(false)
     } catch (err) {
       console.log(err)
       const errStatus = err.response.status
@@ -155,8 +157,8 @@ const Requests = ({
   return (<Account menu_item='requests' title='Запросы на проверку'>
 
       <>
-        {activePopUp && <PopUp status={'ok'} title={'Данные успешно обновлены'}
-                               text={''}
+        {activePopUp && <PopUp status={'ok'} title={'Запрос на проверку отправлен'}
+                               text={'Результаты проверки будут направлены на Ваш email.'}
                                button={'Ок'} action={() => {
           setActivePopUp(false)
           clear_verification_status()
@@ -188,7 +190,7 @@ const Requests = ({
             {/*  </>*/}
             {/*)}*/}
 
-            <Button text={'ОТПРАВИТЬ ЗАПРОС НА ПРОВЕРКУ'} action={handleSubmit}/>
+            <Button text={'ОТПРАВИТЬ ЗАПРОС НА ПРОВЕРКУ'} action={handleSubmit} active = {can_edit}/>
           </main>)}
       </>
 
