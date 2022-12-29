@@ -67,7 +67,7 @@ const DaysComponent = ({ tour, addDay, removeDay }) => {
   }, [scroll])
 
   useEffect(() => {
-    if (tour && tour.tour_days == null) {
+    if (tour && (tour.tour_days == null || !tour.tour_days.length)) {
       addDay({ id: 1, image: [], description: '', location: '', day_title: '' })
       setLoading(true)
     } else if (tour && tour.tour_days && tour.tour_days.length > 0) {
