@@ -4912,6 +4912,7 @@ li.select-list:hover {
 .pagination ul li.disabled a {
   color: rgba(0, 0, 0, 0.1);
   cursor: default;
+  opacity: 0;
 }
 
 .pagination ul li.disabled a:hover {
