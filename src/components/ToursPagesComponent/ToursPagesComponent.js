@@ -8,11 +8,6 @@ import EmptyCard from "./EmptyCard";
 
 const ToursPagesComponent = ({tours, clearTours, type}) => {
 
-
-  useEffect(() => {
-    return () => clearTours()
-  }, [])
-
   return (
     <>
       <div className={styles.tours_wrapper}>

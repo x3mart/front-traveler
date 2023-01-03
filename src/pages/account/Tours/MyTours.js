@@ -187,6 +187,7 @@ const MyTours = ({
               nextLabel=">"
               onPageChange={e => {
                 handlePaginate(e.selected + 1)
+                window.scrollTo(0, 0)
               }}
               pageRangeDisplayed={5}
               pageCount={pageCount}

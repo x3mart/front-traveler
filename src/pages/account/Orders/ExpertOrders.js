@@ -76,6 +76,7 @@ const ExpertOrders = ({
           nextLabel=">"
           onPageChange={e => {
             get_all_orders(`page=${e.selected + 1}`)
+            window.scrollTo(0, 0)
           }}
           pageRangeDisplayed={5}
           pageCount={pageCount}

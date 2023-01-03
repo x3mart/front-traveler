@@ -27,6 +27,7 @@ const Type = ({
   const [page, setPage] = useState('')
   const [item, setItem] = useState('')
 
+
   useEffect(() => {
     setPage('tipy-turov')
     setItem(match?.params?.type)

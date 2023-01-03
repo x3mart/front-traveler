@@ -175,6 +175,7 @@ const ToursPage = ({
               // onPageChange={e => console.log(e)}
               onPageChange={e => {
                 handlePaginate(e.selected + 1)
+                window.scrollTo(0, 0)
               }}
               // onPageChange={e => {
               //   getToursByFilters(`page=${e.selected + 1}`)
