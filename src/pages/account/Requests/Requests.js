@@ -70,8 +70,8 @@ const Requests = ({
                     updateLegalVerificationData,
                     update_verification_status,
                     clear_verification_status,
-                    verifications_status,
                     load_user,
+                    update_local_user,
                     clear_errors,
                     update_user
                   }) => {
@@ -84,7 +84,8 @@ const Requests = ({
   const [activePopUp, setActivePopUp] = useState(false)
   const [activeErrorPopUp, setActiveErrorPopUp] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
-  const [can_edit, setCanEdit] = useState(!['aproved', 'waiting_aprove'].includes(verifications_status))
+  const [can_edit, setCanEdit] = useState(!['aproved', 'waiting_aprove'].includes(user?.verifications.status))
+  console.log(can_edit) 
 
   if (status === 'customers') {
     return <Redirect to={`/404`}/>
@@ -207,7 +208,6 @@ const mapStateToProps = state => ({
   status: state.auth.status,
   error: state.auth.error,
   countries: state.tours.countries,
-  verifications_status: state.auth.user?.verifications?.status
 })
 
 export default connect(mapStateToProps, {
