@@ -9,7 +9,7 @@ const Breadcrumbs = ({children}) => {
 
   return (
     <>
-      <ul
+      <div
         className={styles.breadcrumbs_list}
       >
         {Children.map(arrayChildren, (child, index) => {
@@ -28,28 +28,28 @@ const Breadcrumbs = ({children}) => {
                 <Link
                   to={child.props.link}
                 >
-                  <div style={{ marginRight: "5px" }}>
+                  <span style={{ marginRight: "5px" }}>
                     {cloneElement(child, {
                       isLast,
                     })}
-                  </div>
+                  </span>
                 </Link>
               ) : (
-                <div style={{ marginRight: "5px" }}>
+                <span style={{ marginRight: "5px" }}>
                   {cloneElement(child, {
                     isLast,
                   })}
-                </div>
+                </span>
               )}
               {!isLast && (
-                <div style={{ marginRight: "5px" }}>
+                <span style={{ marginRight: "5px" }}>
                   -
-                </div>
+                </span>
               )}
             </>
           );
         })}
-      </ul>
+      </div>
     </>
   )
 }

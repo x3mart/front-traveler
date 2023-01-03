@@ -5,9 +5,9 @@ import {connect} from 'react-redux';
 const Breadcrumb = ({ isLast, children }) => {
   return (
     <>
-      <li>
+      <span>
         {children}
-      </li>
+      </span>
     </>
   );
 };
