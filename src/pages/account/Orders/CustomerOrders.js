@@ -25,6 +25,8 @@ const CustomerOrders = ({
   const [pageCount, setPageCount] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(2);
 
+  
+
   useEffect(() => {
     if (orders?.count > itemsPerPage) {
       setPageCount(Math.ceil(orders?.count / itemsPerPage))
@@ -49,7 +51,10 @@ const CustomerOrders = ({
       update_orders_actions('fail', err)
     }
   }
-
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [orders])
 
   useEffect(() => {
     get_all_orders()
@@ -81,7 +86,6 @@ const CustomerOrders = ({
           nextLabel=">"
           onPageChange={e => {
             get_all_orders(`page=${e.selected + 1}`)
-            window.scrollTo(0, 0)
           }}
           pageRangeDisplayed={5}
           pageCount={pageCount}

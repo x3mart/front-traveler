@@ -66,8 +66,9 @@ const MyTours = ({
   const [page, setPage] = useState(getCurrentPage(location))
   const [current, setCurrent] = useState(getCurrentFilter(location))
 
-  console.log('current', current)
-  console.log('page', page)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [tours])
 
   useEffect(() => {
     if(location?.search) {
@@ -187,7 +188,6 @@ const MyTours = ({
               nextLabel=">"
               onPageChange={e => {
                 handlePaginate(e.selected + 1)
-                window.scrollTo(0, 0)
               }}
               pageRangeDisplayed={5}
               pageCount={pageCount}

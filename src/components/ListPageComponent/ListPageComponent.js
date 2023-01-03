@@ -48,6 +48,10 @@ const ListPageComponent = ({
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [all_tours])
+
+  useEffect(() => {
     let querystring
     if (location?.search) {
       if (location?.search[0] === '?') {
@@ -197,7 +201,6 @@ const ListPageComponent = ({
                   nextLabel=">"
                   onPageChange={e => {
                     handlePaginate(e.selected + 1)
-                    window.scrollTo(0, 0)
                   }}
                   // onPageChange={e => {
                   //   getToursByFilters(`ident=${ident}&page_slug=${page}&item_slug=${item}&page=${e.selected + 1}`)

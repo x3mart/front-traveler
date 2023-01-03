@@ -123,7 +123,6 @@ const Regions = ({language, location, active_regions, getAllRegions }) => {
                   nextLabel=">"
                   onPageChange={e => {
                     handlePaginate(e.selected + 1)
-                    window.scrollTo(0, 0)
                   }}
                   // onPageChange={e => {
                   //   getToursByFilters(`ident=${ident}&page_slug=${page}&item_slug=${item}&page=${e.selected + 1}`)

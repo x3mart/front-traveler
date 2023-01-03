@@ -97,11 +97,16 @@ const ToursPage = ({
       getCurrentFilterSet(querystring)
     }
   }, [location])
+
   useEffect(() => {
     if(location?.search && current_filters?.some(item => item?.type && item?.data?.length === 0)) {
       history.go(0)
     }
   }, [location, current_filters])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [all_tours])
 
   // useEffect(() => {
   //
@@ -175,7 +180,6 @@ const ToursPage = ({
               // onPageChange={e => console.log(e)}
               onPageChange={e => {
                 handlePaginate(e.selected + 1)
-                window.scrollTo(0, 0)
               }}
               // onPageChange={e => {
               //   getToursByFilters(`page=${e.selected + 1}`)

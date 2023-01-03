@@ -78,6 +78,10 @@ const Types = ({language, location, active_types, getAllTypes }) => {
       setLoading(false)
     }
   }, [active_types, loading])
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [active_types])
 
   // useEffect(() => {
   //   getAllTypes()
@@ -128,7 +132,6 @@ const Types = ({language, location, active_types, getAllTypes }) => {
                   nextLabel=">"
                   onPageChange={e => {
                     handlePaginate(e.selected + 1)
-                    window.scrollTo(0, 0)
                   }}
                   // onPageChange={e => {
                   //   getToursByFilters(`ident=${ident}&page_slug=${page}&item_slug=${item}&page=${e.selected + 1}`)

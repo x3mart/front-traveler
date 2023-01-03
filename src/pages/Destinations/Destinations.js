@@ -62,6 +62,12 @@ const Destinations = ({language, location, active_destinations, getAllDestinatio
   const handlePaginate = n => {
     history.push(`${pathname}?${currentSearchParams}${currentSearchParams ? '&' : ''}page=${n}`)
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [active_destinations])
+
+
   useEffect(() => {
     if (allTours?.page_size) {
       setPageCount(Math.ceil(allTours?.count / allTours?.page_size))
@@ -124,7 +130,6 @@ const Destinations = ({language, location, active_destinations, getAllDestinatio
                   nextLabel=">"
                   onPageChange={e => {
                     handlePaginate(e.selected + 1)
-                    window.scrollTo(0, 0)
                   }}
                   // onPageChange={e => {
                   //   getToursByFilters(`ident=${ident}&page_slug=${page}&item_slug=${item}&page=${e.selected + 1}`)

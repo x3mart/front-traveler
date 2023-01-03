@@ -25,6 +25,11 @@ const Popular = ({language, location, popular_destinations, getPopularDestinatio
   const [currentPage, setCurrentPage] = useState(0);
   const [allTours, setAllTours] = useState(null);
   const [pageCount, setPageCount] = useState(0);
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [popular_destinations])
+
   useEffect(() => {
     if (popular_destinations) {
       setAllTours(popular_destinations)
@@ -127,7 +132,6 @@ const Popular = ({language, location, popular_destinations, getPopularDestinatio
                   nextLabel=">"
                   onPageChange={e => {
                     handlePaginate(e.selected + 1)
-                    window.scrollTo(0, 0)
                   }}
                   // onPageChange={e => {
                   //   getToursByFilters(`ident=${ident}&page_slug=${page}&item_slug=${item}&page=${e.selected + 1}`)
