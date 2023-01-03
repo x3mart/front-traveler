@@ -130,6 +130,7 @@ const TourCard = ({
               borderRadius: 8,
               backgroundColor: '#fff',
               display: active ? 'block' : 'none',
+              overflow: 'hidden',
             }}
           > 
           { tour.private_statuses.name !== 'archive' &&
