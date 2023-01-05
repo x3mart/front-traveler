@@ -8,6 +8,7 @@ import {
   SettingOutlined,
   CreditCardOutlined,
   CheckCircleOutlined,
+  PlusCircleOutlined,
   TeamOutlined,
 } from '@ant-design/icons'
 import {Link} from 'react-router-dom'
@@ -28,24 +29,20 @@ const NavItem = ({
                    secondary,
                    secondary_item,
                    tour_id,
-                   verifications_confirmed
+                   verifications_status
                  }) => {
   
   const [request_icon_default_color, setRequestIconDefaultColor] = useState('#000000')
 
   useEffect(() => {
     let color
-    if (verifications_confirmed == 'aproved') {
+    if (verifications_status == 'aproved') {
       color = '#84bb59'
-    } else if (verifications_confirmed == 'declined') {
-      color = '#ef2178'
     } else {
       color = '#000000'
     }
     setRequestIconDefaultColor(color)
-  }, [verifications_confirmed]) 
-  
-  console.log(request_icon_default_color)
+  }, [verifications_status]) 
 
   return (
     <>
@@ -123,10 +120,17 @@ const NavItem = ({
                 }}
               />
             )}
-            {name === 'requests' && (
+            {name === 'requests' && verifications_status != 'declined' && (
               <CheckCircleOutlined
                 style={{
                   color: `${name === active ? '#2898cd' : request_icon_default_color}`,
+                }}
+              />
+            )}
+            {name === 'requests' && verifications_status == 'declined' && (
+              <PlusCircleOutlined
+                style={{
+                  color: `${name === active ? '#2898cd' : '#ef2178'}`, transform: 'rotate(45deg)',
                 }}
               />
             )}
@@ -150,7 +154,7 @@ const mapStateToProps = state => ({
   page: state.auth.page,
   language: state.languages.language,
   secondary: state.tours.secondary,
-  verifications_confirmed: state.auth.user?.verifications.status,
+  verifications_status: state.auth.user?.verifications.status,
 })
 
 export default connect(mapStateToProps, {setPage})(NavItem)
