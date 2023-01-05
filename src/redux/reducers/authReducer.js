@@ -201,6 +201,7 @@ const authReducer = (state = initialState, action) => {
 
 		case t.UPDATE_LEGAL_VERIFICATION_DATA_SUCCESS:
 		case t.UPDATE_INDIVIDUAL_VERIFICATION_DATA_SUCCESS:
+			case t.UPDATE_VERIFICATION_DATA_SUCCESS:
 			return {
 				...state,
 				update_verification_status: payload,

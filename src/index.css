@@ -1680,7 +1680,6 @@ a.paragraph_content_underline {
 
 .social_block {
   width: 255px;
-  height: 465px;
   left: 165px;
   top: 1347px;
   margin-bottom: 30px;
@@ -3705,9 +3704,9 @@ input[type='file'] {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.tour-footer-sold img {
+/* .tour-footer-sold img {
   margin-left: 6px;
-}
+} */
 
 .tour-footer-watched {
   justify-content: flex-end;
@@ -4371,6 +4370,15 @@ input[type='file'] {
   color: #000000;
   margin-bottom: 30px;
 }
+
+.team-subtitle.error {
+  color: #EF2178;
+}
+
+.team-subtitle.success {
+  color: #84bb59;
+}
+
 
 .team-card {
   /* min-width: 31%; */

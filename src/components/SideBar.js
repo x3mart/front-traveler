@@ -7,7 +7,8 @@ import Inst from '../assets/img/ins.png'
 import Ii from '../assets/img/ii.png'
 import SideBarTours from './SideBarTours'
 
-const SideBar = ({ action, active }) => {
+const SideBar = ({ action, active, status_confirmed }) => {
+
   return (
     <>
       <aside className='aside'>
@@ -205,7 +206,7 @@ const SideBar = ({ action, active }) => {
                   width='20'
                   height='20'
                   viewBox='0 0 20 20'
-                  fill={active === 'requests' ? '#2AA2D6' : '#000000'}
+                  fill={active === 'requests' ? '#2AA2D6' : ''}
                   fillOpacity={active === 'requests' ? '1' : '0.25'}
                   xmlns='http://www.w3.org/2000/svg'
                 >

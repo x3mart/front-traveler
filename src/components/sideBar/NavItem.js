@@ -27,9 +27,15 @@ const NavItem = ({
                    secondary_nav,
                    secondary,
                    secondary_item,
-                   tour_id
+                   tour_id,
+                   status_confirmed
                  }) => {
+  
+  const [request_icon_default_color, setRequestIconDefaultColor] = useState(status_confirmed ? '#84bb59' : '#000000')
 
+  useEffect(() => {
+    setRequestIconDefaultColor(status_confirmed ? '#84bb59' : '#000000')
+  }, [request_icon_default_color])            
 
   return (
     <>
@@ -110,7 +116,7 @@ const NavItem = ({
             {name === 'requests' && (
               <CheckCircleOutlined
                 style={{
-                  color: `${name === active ? '#2898cd' : '#000'}`,
+                  color: `${name === active ? '#2898cd' : request_icon_default_color}`,
                 }}
               />
             )}
@@ -134,7 +140,7 @@ const mapStateToProps = state => ({
   page: state.auth.page,
   language: state.languages.language,
   secondary: state.tours.secondary,
-
+  status_confirmed: state.auth.user.status_confirmed,
 })
 
 export default connect(mapStateToProps, {setPage})(NavItem)

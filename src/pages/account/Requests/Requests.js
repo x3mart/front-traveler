@@ -75,17 +75,18 @@ const Requests = ({
                     clear_errors,
                     update_user
                   }) => {
+                    
 
-  if(!user) {
-    load_user()
-  }
+  // if(!user) {
+  //   load_user()
+  // }
 
   // const [active, setActive] = useState(1)
   const [activePopUp, setActivePopUp] = useState(false)
   const [activeErrorPopUp, setActiveErrorPopUp] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
-  const [can_edit, setCanEdit] = useState(!['aproved', 'waiting_aprove'].includes(user?.verifications.status))
-  console.log(can_edit) 
+  const [can_edit, setCanEdit] = useState(true)
+  const [verifications_status, setVerificationsStatus] = useState('draft')
 
   if (status === 'customers') {
     return <Redirect to={`/404`}/>
@@ -94,6 +95,11 @@ const Requests = ({
   useEffect(() => {
     getCountries()
   }, [])
+
+  useEffect(() => {
+    setVerificationsStatus(user?.verifications.status)
+    setCanEdit(!['aproved', 'waiting_aprove'].includes(user?.verifications.status))
+  }, [user])
 
   useEffect(() => {
   if(update_verification_status >= 200 && update_verification_status < 300) {
@@ -135,6 +141,8 @@ const Requests = ({
 
       updateVerificationData(result)
       setCanEdit(false)
+      setVerificationsStatus('waiting_aprove')
+      window.scrollTo(0,0)
     } catch (err) {
       console.log(err)
       const errStatus = err.response.status
@@ -151,6 +159,10 @@ const Requests = ({
     }
 
   }
+
+  useEffect(() => {
+    setPage('requests')
+  }, [])
 
   useEffect(() => {
     setPage('requests')
@@ -175,10 +187,19 @@ const Requests = ({
               <h2>Запросы на проверку</h2>
             </div>
 
-            {/*<div className="team-subtitle">*/}
-            {/*  Вы оказываете услуги как:*/}
-            {/*</div>*/}
+            {verifications_status=='declined' && (<div className="team-subtitle error" style={{whiteSpace: "pre-wrap"}}>
+             Отказано по причине:<br></br> 
+             {user?.verifications.decline_reason}
+            </div>)}
 
+            {verifications_status=='aproved' && (<div className="team-subtitle success" style={{whiteSpace: "pre-wrap"}}>
+             Статус подтвержден!
+            </div>)}
+
+            {verifications_status=='waiting_aprove' && (<div className="team-subtitle" style={{whiteSpace: "pre-wrap"}}>
+             Запрос отправлен. Ожидайте результатов проверки.
+            </div>)}
+            
             {/*<div className="cards-wrapper">*/}
             {/*  {data.map((item, index) => <Card key={index} id={item.id} list={item.list} subtitle={item.subtitle} title={item.title}*/}
             {/*                          available={item.available}/>)}*/}
