@@ -28,14 +28,24 @@ const NavItem = ({
                    secondary,
                    secondary_item,
                    tour_id,
-                   status_confirmed
+                   verifications_confirmed
                  }) => {
   
-  const [request_icon_default_color, setRequestIconDefaultColor] = useState(status_confirmed ? '#84bb59' : '#000000')
+  const [request_icon_default_color, setRequestIconDefaultColor] = useState('#000000')
 
   useEffect(() => {
-    setRequestIconDefaultColor(status_confirmed ? '#84bb59' : '#000000')
-  }, [request_icon_default_color])            
+    let color
+    if (verifications_confirmed == 'aproved') {
+      color = '#84bb59'
+    } else if (verifications_confirmed == 'declined') {
+      color = '#ef2178'
+    } else {
+      color = '#000000'
+    }
+    setRequestIconDefaultColor(color)
+  }, [verifications_confirmed]) 
+  
+  console.log(request_icon_default_color)
 
   return (
     <>
@@ -140,7 +150,7 @@ const mapStateToProps = state => ({
   page: state.auth.page,
   language: state.languages.language,
   secondary: state.tours.secondary,
-  status_confirmed: state.auth.user.status_confirmed,
+  verifications_confirmed: state.auth.user?.verifications.status,
 })
 
 export default connect(mapStateToProps, {setPage})(NavItem)
