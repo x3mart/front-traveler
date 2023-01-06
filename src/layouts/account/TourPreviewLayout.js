@@ -94,11 +94,10 @@ const TourPreviewLayout = ({
   }
 
   const handleTourEdit = () => {
-    console.log(preview)
     // if (!preview) {
       tourToServerUpdate(tour, tour.id)
       setPage(history.location)
-      history.push(`/account/tours/${tour.id}/edit/main`)
+      history.goBack()
     //} } else {
     //   history.push(`/${language}/${page}`)
     //   setPage('')
