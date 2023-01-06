@@ -97,7 +97,7 @@ const Details = ({
         />
         <SingleWrapper
           label='Кратко опишите в чем заключается сложность тура'
-          comment=''
+          comment='Будет показан в описании тура вместо стандартного текста'
           tour={tour} name='difficulty_description'
         >
           <TextArea
@@ -114,7 +114,7 @@ const Details = ({
           name='comfort_level'
           label='Как вы оцениваете уровень комфорта в путешествии?'
           value={tour && tour.comfort_level}
-          comment='Комфорт - один из главных критериев выбора путешествия. Градацию уровней комфорта можно посмотреть здесь'
+          comment='Комфорт - один из главных критериев выбора путешествия.'
           bubbles={comfort_level_bubbles}
         />
         <DoubleWrapper ratio='1-2' tour={tour}>
