@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import styles from './TourInfoBlocks.module.css';
+import {difficulty_level_bubbles} from '../../AccountTours/Components/Details'
 
-const TourInfoBlocks = ({comfort, difficulty = 5, language = [], age, difficulty_description}) => {
+
+const TourInfoBlocks = ({comfort, difficulty = 5, language = [], age, difficulty_description,}) => {
 
   const [bubbleActive, setBubbleActive] = useState(null)
-
-  console.log(bubbleActive)
 
   const DifficultyDots = ({difficulty}) => {
     const arr = [1, 2, 3, 4, 5]
@@ -35,7 +35,7 @@ const TourInfoBlocks = ({comfort, difficulty = 5, language = [], age, difficulty
         <div>
           <div className={styles.tour_info_block_value}><DifficultyDots difficulty={difficulty}/></div>
           <div className={styles.tour_info_block_name}>Сложность</div>
-          {bubbleActive == 'difficulty' && !!difficulty_description && (
+          {bubbleActive == 'difficulty' && (
               <div
                 className={styles.tour_info_block_language_name}
                 style={{
@@ -52,7 +52,7 @@ const TourInfoBlocks = ({comfort, difficulty = 5, language = [], age, difficulty
                 onMouseOut={() => setBubbleActive(null)}
               >
                 <div>
-                  {difficulty_description}
+                  {difficulty_description ? difficulty_description : difficulty_level_bubbles[difficulty - 1]}
                 </div>
               </div>
           )}
