@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import styles from './TourInfoBlocks.module.css';
 
-const TourInfoBlocks = ({comfort, difficulty = 5, language = [], age}) => {
+const TourInfoBlocks = ({comfort, difficulty = 5, language = [], age, difficulty_description}) => {
 
   const [bubbleActive, setBubbleActive] = useState(null)
+
+  console.log(bubbleActive)
 
   const DifficultyDots = ({difficulty}) => {
     const arr = [1, 2, 3, 4, 5]
@@ -26,10 +28,34 @@ const TourInfoBlocks = ({comfort, difficulty = 5, language = [], age}) => {
           <div className={styles.tour_info_block_name}>Комфорт</div>
         </div>
       </div>
-      <div className={styles.tour_info_block}>
+      <div 
+        className={styles.tour_info_block}
+        onMouseOver={() => setBubbleActive('difficulty')}
+        style={{position: 'relative'}}>
         <div>
           <div className={styles.tour_info_block_value}><DifficultyDots difficulty={difficulty}/></div>
           <div className={styles.tour_info_block_name}>Сложность</div>
+          {bubbleActive == 'difficulty' && !!difficulty_description && (
+              <div
+                className={styles.tour_info_block_language_name}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  right: 0,
+                  left: 0,
+                  minHeight: '100px',
+                  border: '1px solid rgba(0, 0, 0, 0.1)',
+                  boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.05)',
+                  borderRadius: 8,
+                  backgroundColor: '#fff',
+                }}
+                onMouseOut={() => setBubbleActive(null)}
+              >
+                <div>
+                  {difficulty_description}
+                </div>
+              </div>
+          )}
         </div>
       </div>
       <div className={styles.tour_info_block}>

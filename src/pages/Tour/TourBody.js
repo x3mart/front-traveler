@@ -196,7 +196,9 @@ const TourBody = ({
                   extra_types={tour_preview.additional_types}
                 />}
                 <TourInfoBlocks
-                  comfort={tour_preview.comfort_level} difficulty={tour_preview.difficulty_level}
+                  comfort={tour_preview.comfort_level} 
+                  difficulty={tour_preview.difficulty_level}
+                  difficulty_description={tour_preview.difficulty_description}
                   language={tour_preview.languages}
                   age={tour_preview.age_starts + '-' + tour_preview.age_ends}
                 />
