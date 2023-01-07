@@ -220,7 +220,7 @@ const TourCard = ({
           onClick={tour?.private_statuses?.name !== 'archive' ? handleTourEdit : handleTourPreview}
           style={{cursor: 'pointer'}}
         >
-          <div className='tour-region'>{tour && tour.start_country && tour.start_country.name}</div>
+          <div className='tour-region'>{tour?.start_destination ? tour.start_destination : ''}</div>
           <div
             className='tour-name'
             onClick={tour?.private_statuses?.name !== 'archive' ? handleTourEdit : handleTourPreview}
