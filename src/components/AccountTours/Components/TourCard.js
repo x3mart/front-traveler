@@ -96,7 +96,7 @@ const TourCard = ({
 
           <div
             className='tour-image'
-            onClick={tour?.private_statuses?.name !== 'archive' ? handleTourEdit : handleTourPreview}
+            onClick={!['archive', 'on_moderation'].includes(tour?.private_statuses?.name) ? handleTourEdit : handleTourPreview}
             style={{
               backgroundImage: 'url(' + tour.tmb_wallpaper + ')',
               cursor: 'pointer'
@@ -133,7 +133,7 @@ const TourCard = ({
               overflow: 'hidden',
             }}
           > 
-          { tour.private_statuses.name !== 'archive' &&
+          { !['archive', 'on_moderation'].includes(tour?.private_statuses?.name) &&
               <div
                 className='tour-item-top'
                 style={activeItem === "edit"?
@@ -149,7 +149,7 @@ const TourCard = ({
                   cursor: 'pointer'}}
                 onMouseEnter={() => setActiveItem("edit")}
                 onMouseOut={() => setActiveItem(null)}
-                onClick={tour?.private_statuses?.name !== 'archive' ? handleTourEdit : handleTourPreview}
+                onClick={!['archive', 'on_moderation'].includes(tour?.private_statuses?.name) ? handleTourEdit : handleTourPreview}
               >
                 Редактировать
               </div>
@@ -217,13 +217,13 @@ const TourCard = ({
         </div>
         <div
           className='tour-header'
-          onClick={tour?.private_statuses?.name !== 'archive' ? handleTourEdit : handleTourPreview}
+          onClick={!['archive', 'on_moderation'].includes(tour?.private_statuses?.name) ? handleTourEdit : handleTourPreview}
           style={{cursor: 'pointer'}}
         >
           <div className='tour-region'>{tour?.start_destination ? tour.start_destination : ''}</div>
           <div
             className='tour-name'
-            onClick={tour?.private_statuses?.name !== 'archive' ? handleTourEdit : handleTourPreview}
+            onClick={!['archive', 'on_moderation'].includes(tour?.private_statuses?.name) ? handleTourEdit : handleTourPreview}
             // style={{ cursor: 'pointer' }}
           >
             {tour.name && (tour.name.length <= 23 ? tour.name : tour.name.substring(0, 23) + '...')}
