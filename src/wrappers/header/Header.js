@@ -99,8 +99,8 @@ const Header = ({ getIdent, isAuthenticated, load_user, user, page, set_users_on
               <a href=''>Подберите мне тур</a>
               <a href=''>Путешествия</a>
               <a href=''>Поддержка</a>
-              <a href=''>Выбрать язык</a>
-              <a href=''>Выбрать валюту</a>
+              {/* <a href=''>Выбрать язык</a>
+              <a href=''>Выбрать валюту</a> */}
               <a href=''>Избранное</a>
             </div>
             <Logo language={language} />
@@ -110,11 +110,11 @@ const Header = ({ getIdent, isAuthenticated, load_user, user, page, set_users_on
               {/*<Link to={`/${language}/tours`} className={`buttons_block_travel ${active === 'tours' ? 'active' : ''}`} onClick={() => setActive('tours')}>Путешествия</Link>*/}
               {/*<Link to={`/${language}${isAuthenticated ? '/account/support' : '/login/support'}`} className={`buttons_block_travel ${active === 'support' ? 'active' : ''}`} onClick={() => setActive('support')}>Поддержка</Link>*/}
               {/*<div className={`buttons_block_travel ${active === 'support' ? 'active' : ''}`} onClick={() => setActive('поддержка')}>Поддержка</div>*/}
-              <div className='buttons_block_country'>
+              {/* <div className='buttons_block_country'> */}
                 {/*<img src='./img/Flag.svg' alt='' />*/}
-                {languages?.map((item, index) => <div className='buttons_block_country_name' key={index}>{item}</div>)}
-              </div>
-              <div className='buttons_block_currency'>&#8381; (Rub)</div>
+                {/* {languages?.map((item, index) => <div className='buttons_block_country_name' key={index}>{item}</div>)}
+              </div> */}
+              {/* <div className='buttons_block_currency'>&#8381; (Rub)</div> */}
               <Link to={`/favorite`} className='buttons_block_liked'/>
             </div>
 
@@ -144,8 +144,8 @@ const Header = ({ getIdent, isAuthenticated, load_user, user, page, set_users_on
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
-  languages: state.languages.languages,
-  language: state.languages.language,
+  // languages: state.languages.languages,
+  // language: state.languages.language,
 })
 
 export default connect(mapStateToProps, { getIdent, load_user, set_users_online, set_users_offline, update_chat_rooms, update_chat_room })(Header)
