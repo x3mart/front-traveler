@@ -176,7 +176,7 @@ const ToursPage = ({
           {pageCount > 1 && (<div className={'pagination'}>
             <ReactPaginate
               breakLabel="..."
-              nextLabel=">"
+              nextLabel="Вперёд"
               // onPageChange={e => console.log(e)}
               onPageChange={e => {
                 handlePaginate(e.selected + 1)
@@ -186,7 +186,7 @@ const ToursPage = ({
               // }}
               pageRangeDisplayed={5}
               pageCount={pageCount}
-              previousLabel="<"
+              previousLabel="Назад"
               renderOnZeroPageCount={null}
               forcePage={currentPage}
               // hrefAllControls={true}

@@ -198,7 +198,7 @@ const ListPageComponent = ({
               {pageCount > 1 && (<div className={'pagination'}>
                 <ReactPaginate
                   breakLabel="..."
-                  nextLabel=">"
+                  nextLabel="Вперёд"
                   onPageChange={e => {
                     handlePaginate(e.selected + 1)
                   }}
@@ -207,7 +207,7 @@ const ListPageComponent = ({
                   // }}
                   pageRangeDisplayed={5}
                   pageCount={pageCount}
-                  previousLabel="<"
+                  previousLabel="Назад"
                   renderOnZeroPageCount={null}
                   forcePage={currentPage}
                   // hrefAllControls={true}

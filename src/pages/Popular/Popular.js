@@ -129,7 +129,7 @@ const Popular = ({language, location, popular_destinations, getPopularDestinatio
               {pageCount > 1 && (<div className={'pagination'}>
                 <ReactPaginate
                   breakLabel="..."
-                  nextLabel=">"
+                  nextLabel="Вперёд"
                   onPageChange={e => {
                     handlePaginate(e.selected + 1)
                   }}
@@ -138,7 +138,7 @@ const Popular = ({language, location, popular_destinations, getPopularDestinatio
                   // }}
                   pageRangeDisplayed={5}
                   pageCount={pageCount}
-                  previousLabel="<"
+                  previousLabel="Назад"
                   renderOnZeroPageCount={null}
                   forcePage={currentPage}
                   // hrefAllControls={true}

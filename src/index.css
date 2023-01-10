@@ -4888,7 +4888,7 @@ li.select-list:hover {
   color: #2AA2D6;
 }
 
-.pagination ul li a {
+.pagination a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -4927,4 +4927,20 @@ li.select-list:hover {
 .pagination ul li.disabled a:hover {
   border: 1px solid rgba(0, 0, 0, 0.1);
   color: rgba(0, 0, 0, 0.1);
+}
+
+.previous {
+  width: 70px;
+}
+
+.previous a {
+  width: auto;
+}
+
+.next {
+  width: 75px;
+}
+
+li.next a {
+  width: auto;
 }

@@ -73,13 +73,13 @@ const ExpertOrders = ({
       {pageCount > 1 && (<div className={'pagination'}>
         <ReactPaginate
           breakLabel="..."
-          nextLabel=">"
+          nextLabel="Вперёд"
           onPageChange={e => {
             get_all_orders(`page=${e.selected + 1}`)
           }}
           pageRangeDisplayed={5}
           pageCount={pageCount}
-          previousLabel="<"
+          previousLabel="Назад"
           renderOnZeroPageCount={null}
         />
       </div>)}
