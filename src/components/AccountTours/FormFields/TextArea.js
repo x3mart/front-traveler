@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import isNotEmptyObject from "../../../helpers/isNotEmptyObject";
 
 const TextArea = ({
-                    label, action, name, value, rows = 5, required, error = {},
+                    label, action, name, value, rows = 5, required, error = {}, disabled
                   }) => {
   const [data, setData] = useState('')
   const [currentError, setCurrentError] = useState([])
@@ -41,6 +41,7 @@ const TextArea = ({
       value={data}
       onChange={handleData}
       rows={rows}
+      disabled={disabled}
     />
         <div className="errors-list">
           {/*{currentError}*/}

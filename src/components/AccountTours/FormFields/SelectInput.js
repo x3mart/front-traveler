@@ -8,7 +8,7 @@ import {
 } from "../../../redux/actions/toursActions";
 
 const SelectInput = ({action, name, label, val, options, multiple, margin, basic_type, required, tour,
-                       tourToServerUpdate, labelField='name', currency, prc=false, error = {},}) => {
+                       tourToServerUpdate, labelField='name', currency, prc=false, error = {}, disabled=false}) => {
 
   const [data, setData] = useState([])
   const [optionsArray, setOptionsArray] = useState([])
@@ -107,6 +107,7 @@ const SelectInput = ({action, name, label, val, options, multiple, margin, basic
         create={!multiple && true}
         onCreateNew={handleAddNew}
         createNewLabel="Добавить {search}"
+        disabled={disabled}
       />}
       {prc && currency && optionsArray.length> 0 && <Select
         required={required}
@@ -119,6 +120,7 @@ const SelectInput = ({action, name, label, val, options, multiple, margin, basic
         values={data}
         labelField={'name'}
         valueField={'id'}
+        disabled={disabled}
       />}
       <div className="errors-list">
         {/*{currentError}*/}

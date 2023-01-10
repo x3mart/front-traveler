@@ -153,27 +153,27 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
 
   return (
     <div id={name}>
-    <Select
-      required={required}
-      style={{margin: margin, padding: '10px 20px'}}
-      className={`custom-select-style ${currentError.length > 0 ? 'error' : 'ok'}`}
-      placeholder={'Выбрать'}
-      searchable={true}
-      clearable
-      multi={multiple}
-      options={results}
-      onChange={handleSelect}
-      values={data}
-      labelField={'full_name'}
-      valueField={'id'}
-      create={!multiple && true}
-      onCreateNew={handleAddNew}
-      createNewLabel="Добавить {search}"
-      searchFn={onSearch}
-      noDataRenderer={customNoDataRenderer}
-      // dropdownRenderer={customDropdownRenderer}
-      // inputRenderer={({ props, state, methods, inputRef }) => <component ref={inputRef}/>}
-    />
+      <Select
+        required={required}
+        style={{margin: margin, padding: '10px 20px'}}
+        className={`custom-select-style ${currentError.length > 0 ? 'error' : 'ok'}`}
+        placeholder={'Выбрать'}
+        searchable={true}
+        clearable
+        multi={multiple}
+        options={results}
+        onChange={handleSelect}
+        values={data}
+        labelField={'full_name'}
+        valueField={'id'}
+        create={!multiple && true}
+        onCreateNew={handleAddNew}
+        createNewLabel="Добавить {search}"
+        searchFn={onSearch}
+        noDataRenderer={customNoDataRenderer}
+        // dropdownRenderer={customDropdownRenderer}
+        // inputRenderer={({ props, state, methods, inputRef }) => <component ref={inputRef}/>}
+      />
       <div className="errors-list">
         {/*{currentError}*/}
         <ul>
@@ -183,7 +183,7 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
           }
         </ul>
       </div>
-      </div>
+    </div>
   )
 }
 
