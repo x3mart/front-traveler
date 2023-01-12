@@ -63,7 +63,8 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
   }
 
   const handleAddNewCity = () => {
-    if (currentDestination?.length) {
+    console.log(currentDestination?.id)
+    if (currentDestination?.id) {
       tourToServerUpdate({
         ...tour,
         [name]: {
