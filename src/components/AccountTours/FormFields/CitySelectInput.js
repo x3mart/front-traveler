@@ -9,7 +9,6 @@ import Select from 'react-dropdown-select';
 import isNotEmptyObject from "../../../helpers/isNotEmptyObject";
 import {connect} from "react-redux";
 import {
-  getCities,
   tourToServerUpdate,
 } from "../../../redux/actions/toursActions";
 import useDebounce from "../../../hooks/useDebounce";
@@ -28,6 +27,7 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
   const [currentError, setCurrentError] = useState([])
   const [newCity, setNewCity] = useState(null)
   const popup_ref = useRef()
+  const [requireDestinationError, setRequireDestinationError] = useState(false)
   useOutsideClick(popup_ref, () => close_action());
 
   useEffect(() => {
@@ -63,21 +63,26 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
   }
 
   const handleAddNewCity = () => {
-    tourToServerUpdate({
-      ...tour,
-      [name]: {
-        id: null,
-        full_name: newCity.full_name,
-        destination_id: currentDestination.id
-      }
-    }, tour.id)
-    setCurrentError([])
-    setNewCity(null)
-    setCurrentDestination([])
+    if (currentDestination?.length) {
+      tourToServerUpdate({
+        ...tour,
+        [name]: {
+          id: null,
+          full_name: newCity.full_name,
+          destination_id: currentDestination.id
+        }
+      }, tour.id)
+      setCurrentError([])
+      setNewCity(null)
+      setCurrentDestination([])
+    } else {
+      setRequireDestinationError(true)
+    }
   }
 
   const handleDestination = (values) => {
     setCurrentDestination(values[0])
+    setRequireDestinationError(false)
   }
 
   useEffect(() => {
@@ -192,7 +197,7 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
           <Select
             required={true}
             style={{width: '325px', padding: '10px 20px', marginBottom:'20px'}}
-            className={`custom-select-style ok`}
+            className={`custom-select-style ${!requireDestinationError ? 'ok' : 'error'}`}
             placeholder={'Выбрать тур направление'}
             searchable={true}
             searchBy={'name'}
