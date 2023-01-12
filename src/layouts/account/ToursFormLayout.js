@@ -128,6 +128,7 @@ const ToursFormLayout = ({
       clearCurrentTour()
 
     } catch (err) {
+      console.log(err)
       const errStatus = err.response.status
       const errData = err.response.data
       if(errData?.message) {

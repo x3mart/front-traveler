@@ -1,7 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 
 import CircularProgress from '@mui/material/CircularProgress'
-
+import ok from '../../PopUp/ok.svg'
+import close from '../../PopUp/close.svg'
+import styles from '../../PopUp/PopUp.module.css'
+import useOutsideClick from "../../../hooks/useOutsideClick";
 import Select from 'react-dropdown-select';
 import isNotEmptyObject from "../../../helpers/isNotEmptyObject";
 import {connect} from "react-redux";
@@ -13,6 +16,9 @@ import useDebounce from "../../../hooks/useDebounce";
 import axios from "axios";
 import {GET_CITIES_FAIL, GET_CITIES_SUCCESS} from "../../../redux/types";
 import {setConfig} from "../../../functions";
+import Button from "../../AccountTours/Components/Button";
+import PopUp from "../../PopUp/PopUp"
+
 
 const CitySelectInput = ({action, name, label, val, options, multiple, margin, basic_type, required, tour,
                        tourToServerUpdate, labelField='name', error = {},}) => {
@@ -20,6 +26,9 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
   const [data, setData] = useState([])
   const [optionsArray, setOptionsArray] = useState([])
   const [currentError, setCurrentError] = useState([])
+  const [newCity, setNewCity] = useState(null)
+  const popup_ref = useRef()
+  useOutsideClick(popup_ref, () => close_action());
 
   useEffect(() => {
     if(isNotEmptyObject(error) && error.detail) {
@@ -36,21 +45,39 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
   const handleSelect = (values) => {
     if(!multiple){
       action(name, values[0])
+      console.log(name, values[0])
     } else {
       action(name, values)
     }
     setCurrentError([])
   }
 
-  const handleAddNew = (values) => {
+  const confirmAddNew = (values) => {
+    setNewCity(values)
+  }
+
+  const cancelAddNew = () => {
+    setData([])
+    setCurrentDestination([])
+    setNewCity(null)
+  }
+
+  const handleAddNewCity = () => {
     tourToServerUpdate({
       ...tour,
       [name]: {
         id: null,
-        full_name: values.full_name,
+        full_name: newCity.full_name,
+        destination_id: currentDestination.id
       }
     }, tour.id)
     setCurrentError([])
+    setNewCity(null)
+    setCurrentDestination([])
+  }
+
+  const handleDestination = (values) => {
+    setCurrentDestination(values[0])
   }
 
   useEffect(() => {
@@ -73,24 +100,26 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
     }
   }, [val, basic_type])
 
-  // function searchCharacters(search) {
-  //   return fetch(
-  //     `http://x3mart.ru/api/cities/?search=${search}`,
-  //     {
-  //       method: 'GET'
-  //     }
-  //   )
-  //     .then(r => r.json())
-  //     .then(r => r.data.results)
-  //     .catch(error => {
-  //       console.error(error);
-  //       return [];
-  //     });
-  // }
+  useEffect(() => {
+    async function getDestinations() {
+      if (newCity && !destinations?.length) {
+        const config = setConfig(!!localStorage.getItem('access'))
+        try {
+          const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/destinations/`, config)
+          setDestinations(res.data)
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    }
+    getDestinations()
+  }, [newCity])
 
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [destinations, setDestinations] = useState([]);
+  const [currentDestination, setCurrentDestination] = useState([])
 
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
@@ -120,7 +149,7 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
     },
     [debouncedSearchTerm]
   );
-
+ 
   const customNoDataRenderer = ({ props, state, methods }) => {
 
     return (
@@ -153,6 +182,34 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
 
   return (
     <div id={name}>
+      {!!newCity && <div className={styles.popup_wrapper}>
+        <div ref={popup_ref} className={styles.popup_body} style={{maxWidth: '395px'}}>
+          <img className={styles.close_icon} src={close} alt="" onClick={cancelAddNew}/>
+          <div className={styles.popup_icon}><img src={ok} alt=""/></div>
+          <div className={styles.popup_title}>{`Добавить новый город ${newCity.full_name}?`}</div>
+          <div className={styles.popup_text}>{'Обязательно укажите туристическое направление города!'}</div>
+
+          <Select
+            required={true}
+            style={{width: '325px', padding: '10px 20px', marginBottom:'20px'}}
+            className={`custom-select-style ok`}
+            placeholder={'Выбрать тур направление'}
+            searchable={true}
+            searchBy={'name'}
+            clearable={true}
+            multi={false}
+            options={destinations}
+            onChange={handleDestination}
+            values={currentDestination}
+            labelField={'name'}
+            valueField={'id'}
+            // searchFn={onSearch}
+            // noDataRenderer={customNoDataRenderer}
+          />
+          <Button text={'Добавить'} action={handleAddNewCity} color={'button-primary'} width={'100%'} margin={'0'}/>
+          <Button text={'Отменить'} action={cancelAddNew} color={'button-danger'} width={'100%'} margin={'20px 0 0 0'}/>
+        </div>
+      </div>}
       <Select
         required={required}
         style={{margin: margin, padding: '10px 20px'}}
@@ -167,7 +224,7 @@ const CitySelectInput = ({action, name, label, val, options, multiple, margin, b
         labelField={'full_name'}
         valueField={'id'}
         create={!multiple && true}
-        onCreateNew={handleAddNew}
+        onCreateNew={confirmAddNew}
         createNewLabel="Добавить {search}"
         searchFn={onSearch}
         noDataRenderer={customNoDataRenderer}
